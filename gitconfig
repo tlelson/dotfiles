@@ -1,0 +1,19 @@
+[user]
+	name = eL0ck
+	email = tpj800@gmail.com
+[push]
+	default = simple
+	followTags = true
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+	fileMode = false
+[alias]
+        lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
+        st = status -s
+        ci = commit
+        latestcommit = git rev-parse origin/master
