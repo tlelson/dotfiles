@@ -4,21 +4,22 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=/Users/minmac/.vim/dein_installs/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.vim/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('/Users/minmac/.vim/dein_installs')
-  call dein#begin('/Users/minmac/.vim/dein_installs')
+if dein#load_state('/Users/minmac/.vim')
+  call dein#begin('/Users/minmac/.vim')
 
   " Let dein manage dein
   " Required:
-  call dein#add('/Users/minmac/.vim/dein_installs/repos/github.com/Shougo/dein.vim')
+  call dein#add('/Users/minmac/.vim/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
+  call dein#add('scrooloose/nerdcommenter')
 
   " You can specify revision/branch/tag.
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -33,17 +34,16 @@ filetype plugin indent on
 syntax enable
 
 " If you want to install not installed plugins on startup.
-"if dein#check_install()
-"  call dein#install()
-"endif
+if dein#check_install()
+  call dein#install()
+endif
 
-"End dein Scripts-------------------------
-"
+"End dein Scripts------------------------- "
 " NERDTREE
 " Open Nerdtree automatically if no files specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
- 
+
 " N.B NEED BLANK LINE ABOVE !! no idea why by without it NERDTree fails to
 " load and vim errors
 "let NERDTreeChDirMode=2
@@ -51,13 +51,29 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '\.o$']
 let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 let NERDTreeShowBookmarks=1
 map <F3> :NERDTreeToggle<CR>
+"let NERDTreeMinimalUI = 1
+"let NERDTreeDirArrows = 1
 
 " GENERAL APPEARANCE & BEHAVIOURS
 syntax on
 syntax enable
 set background=dark
 set ruler
-set hlsearch
+set hlsearch "hilight search
+" Dont use the following line unless you want to loose
+" function of the arrow keys
+"nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
+" Test leader type leader then letter 'a'
+nnoremap <Leader>a :echo "Hey there "<CR>
+
+" NerdCommenter config
+" This let you use Ctrl+/ to comment blocks
+nmap <C-_> <leader>c<Space>
+vmap <C-_> <leader>c<Space>
+" Multiline comments
+"nmap <C-_> <leader>cm
+"vmap <C-_> <leader>cm
 
 " Configure code folding
 set foldmethod=indent
@@ -94,4 +110,8 @@ au BufNewFile,BufRead *.ps1     set ft=ps1
 au BufNewFile,BufRead *.pp      set ft=puppet
 
 " Possibly should just set a wrap length and then i can easily flip back to nowrap if i want
-set textwidth=100
+set colorcolumn=80
+highlight ColorColumn ctermbg=8
+set textwidth=80
+
+

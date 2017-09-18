@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 
-echo "Setting up vim and vimrc ... "
-for file in vim  vimrc
+echo "Setting up vim with Dein: "
+echo "Installing Dein ... "
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+bash installer.sh ~/.vim
+rm -f installer.sh
+
+echo "Copying vimrc"
+for file in vimrc
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -19,4 +25,7 @@ done
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
 echo "      for ubuntu install: vim-nox"
 echo "      for mac: brew install vim --with-lua"
-echo "2.    :PluginInstall"
+echo "2.    Open vim and do the followining to get bundles:"
+echo "      :call dein#install()"
+echo "      (if dein says the plugins are already installed then automatic
+installation is configured)"
