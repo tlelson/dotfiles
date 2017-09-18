@@ -24,6 +24,7 @@ alias speedtestlocal="wget --report-speed=bits -O /dev/null http://192.168.0.1/s
 alias tree="tree -C "
 alias activate="source activate "
 alias deactivate="source deactivate "
+alias tree="tree -L 3 " # Limit depth to 3
 
 # pip for conda (non upgrading packages installed with conda)
 # pip() {
