@@ -33,6 +33,7 @@ if dein#load_state('/Users/minmac/.vim')
   call dein#add('Quramy/tsuquyomi')
   call dein#add('Quramy/vim-js-pretty-template')
   call dein#add('leafgarland/typescript-vim')
+  "call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
   " Required:
   call dein#end()
@@ -187,12 +188,14 @@ vmap <C-_> <leader>c<Space>
 
 " TYPESCRIPT -------------------------------------------------------------"
 " Tsuquyomi
+" So far works as: synstatic checker, <C-]> <C-t> jump to defintion, <C-^> for other occurances, BUT NOT tooltip!
 autocmd FileType typescript setlocal completeopt+=menu,preview
+let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 " LEAFGARLAND/TYPESCRIPT
-autocmd FileType typescript :set makeprg=tsc
+"autocmd FileType typescript :set makeprg=tsc
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
