@@ -25,6 +25,7 @@ if dein#load_state('/Users/minmac/.vim')
   "call dein#add('Raimondi/delimitMate')
   call dein#add('ervandew/supertab')
   call dein#add('vim-syntastic/syntastic')
+  call dein#add('kristijanhusak/vim-multiple-cursors')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
