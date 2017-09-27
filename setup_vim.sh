@@ -11,7 +11,7 @@ for file in vimrc
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
-        echo "  Already exists as symbolic link. Not linking to new dotfiles version.  If you want it remove your current one ..."
+        echo "  Already exists as symbolic link. Not linking to new dotfiles version.  If you want it, remove your current one ..."
     elif [ -e ~/.${file}  ]; then # Does it exist (implies not symbolic link)?
         echo "  File exists.  Moving to ${file}_old"
         mv ~/.${file} ~/.${file}_old

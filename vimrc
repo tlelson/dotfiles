@@ -26,14 +26,16 @@ if dein#load_state('/Users/minmac/.vim')
   call dein#add('ervandew/supertab')
   call dein#add('vim-syntastic/syntastic')
   call dein#add('kristijanhusak/vim-multiple-cursors')
+  call dein#add('https://github.com/szw/vim-maximizer.git')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
   " TypeScript Stuff
+  call dein#add('leafgarland/typescript-vim')
   call dein#add('Quramy/tsuquyomi')
   call dein#add('Quramy/vim-js-pretty-template')
-  call dein#add('leafgarland/typescript-vim')
+  "call dein#add('pangloss/vim-javascript')  " DONOT USE, BREAKS tsuquyomi !!
   "call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
   " Required:
@@ -187,12 +189,17 @@ vmap <C-_> <leader>c<Space>
 "nmap <C-_> <leader>cm
 "vmap <C-_> <leader>cm
 
-" TYPESCRIPT -------------------------------------------------------------"
-" Tsuquyomi
+" TYPESCRIPT and JAVASCRIPT------------------------------------------------"
+" TSUQUYOMI
 " So far works as: synstatic checker, <C-]> <C-t> jump to defintion, <C-^> for other occurances, BUT NOT tooltip!
+" Debuggin TSUQUYOMI:
+"   :TsuquyomiStatusServer
+"   :TsuquyomiStartServer  - found this doesn't work well. Even reopening it didn't work.  Had to remove .vim/ and use
+"   ./setup_vim.sh again !!
 autocmd FileType typescript setlocal completeopt+=menu,preview
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 " LEAFGARLAND/TYPESCRIPT
@@ -200,8 +207,12 @@ autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
 
+
 " SYNTASTIC -------------------------------"
-" (will auto check on :w {!! not :wq} and display Help window at bottom)
+" !! You need the checker to work on the CLI before expecting it to work in file (on write)
+" For example: check eslint works by $ eslint <filename>
+" (will auto check on :w {!! not :wa} and display Help window at bottom)
+" Debug in vim by seting: :let g:syntastic_debug = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
