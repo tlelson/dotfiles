@@ -210,8 +210,9 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 " SYNTASTIC -------------------------------"
 " !! You need the checker to work on the CLI before expecting it to work in file (on write)
-" For example: check eslint works by $ eslint <filename>
-" (will auto check on :w {!! not :wa} and display Help window at bottom)
+"   For example: check eslint works by $ eslint <filename>
+"   (with the exception of tsuquyomi which is hard to debug)
+" (will auto check on :w {!! not :wa or :wq} and display Help window at bottom)
 " Debug in vim by seting: :let g:syntastic_debug = 1
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
