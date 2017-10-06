@@ -209,6 +209,7 @@ autocmd FileType typescript setlocal completeopt+=menu,preview
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_json_checkers=['jsonlint']
 let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 " LEAFGARLAND/TYPESCRIPT
@@ -233,6 +234,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "let g:syntastic_<filetype>_checkers = ['<checker-name>']
+
+" TAB COMPLETE STUFF
+" Make it start at the top
+let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
 
 " NEOSNIPPETS - default is <C-k> but need this for symbols
 imap <C-j>     <Plug>(neosnippet_expand_or_jump)
