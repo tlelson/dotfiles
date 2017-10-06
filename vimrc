@@ -60,6 +60,8 @@ endif
 
 " Auto-Pairs
 " Can't get the more advanced features unfortunately because I dont know how to make the Meta key work
+" Wanto get the Fast wrapping working
+" let g:AutoPairsShortcutFastWrap = '<C-h-h>'  " or something similar
 
 " AUTOCOMPLETE stuff ----------------------------------------------------------"
 " Enable omni completion.
