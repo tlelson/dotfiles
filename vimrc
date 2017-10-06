@@ -28,6 +28,9 @@ if dein#load_state('/Users/minmac/.vim')
   call dein#add('kristijanhusak/vim-multiple-cursors')
   call dein#add('https://github.com/szw/vim-maximizer.git')
 
+  " Experimental
+  call dein#add('vim-airline/vim-airline')
+
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
 
@@ -231,6 +234,11 @@ smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 
 " MULTI-CURSOR
+" Default mapping - Also use visual selection <C-n> and regex selection
+" let g:multi_cursor_next_key='<C-n>'
+" let g:multi_cursor_prev_key='<C-p>'
+" let g:multi_cursor_skip_key='<C-x>'
+" let g:multi_cursor_quit_key='<Esc>'
 let g:multi_cursor_exit_from_insert_mode=0
 " Called once right before you start selecting multiple cursors
 function! Multiple_cursors_before()
