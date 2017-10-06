@@ -27,9 +27,10 @@ if dein#load_state('/Users/minmac/.vim')
   call dein#add('vim-syntastic/syntastic')
   call dein#add('kristijanhusak/vim-multiple-cursors')
   call dein#add('https://github.com/szw/vim-maximizer.git')
+  call dein#add('vim-airline/vim-airline')
 
   " Experimental
-  call dein#add('vim-airline/vim-airline')
+  call dein#add('jiangmiao/auto-pairs')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -56,6 +57,9 @@ if dein#check_install()
 endif
 
 "End dein Scripts------------------------- "
+
+" Auto-Pairs
+" Can't get the more advanced features unfortunately because I dont know how to make the Meta key work
 
 " AUTOCOMPLETE stuff ----------------------------------------------------------"
 " Enable omni completion.
