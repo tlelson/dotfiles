@@ -59,9 +59,8 @@ endif
 "End dein Scripts------------------------- "
 
 " Auto-Pairs
-" Can't get the more advanced features unfortunately because I dont know how to make the Meta key work
-" Wanto get the Fast wrapping working
-" let g:AutoPairsShortcutFastWrap = '<C-h-h>'  " or something similar
+" the line below wrapps a word witout the default Meta key
+let g:AutoPairsShortcutFastWrap = '<leader>wr'  " or something similar
 
 " AUTOCOMPLETE stuff ----------------------------------------------------------"
 " Enable omni completion.
