@@ -235,9 +235,9 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>490 449 924 485 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>249 393 796 473 0 0 1680 1027 </string>
+	<string>249 159 796 473 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>98 71 1586 950 0 0 1680 1027 </string>
+	<string>0 55 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 64 1680 963 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -245,7 +245,7 @@
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>3 71 1674 949 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>918 43 762 971 0 0 1680 1027 </string>
+	<string>0 42 794 972 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_AABECBD3-2626-4A66-BD4A-189F5B2D2785</key>
@@ -819,7 +819,7 @@
 			<key>Normal Font</key>
 			<string>Monaco 14</string>
 			<key>Option Key Sends</key>
-			<integer>1</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<integer>0</integer>
 			<key>Right Option Key Sends</key>
