@@ -22,15 +22,16 @@ if dein#load_state('/Users/minmac/.vim')
   call dein#add('scrooloose/nerdtree')
   call dein#add('Xuyuanp/nerdtree-git-plugin')
   call dein#add('scrooloose/nerdcommenter')
-  "call dein#add('Raimondi/delimitMate')
   call dein#add('ervandew/supertab')
   call dein#add('vim-syntastic/syntastic')
   call dein#add('kristijanhusak/vim-multiple-cursors')
   call dein#add('https://github.com/szw/vim-maximizer.git')
   call dein#add('vim-airline/vim-airline')
+  call dein#add('jiangmiao/auto-pairs')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('tpope/vim-fugitive')
 
   " Experimental
-  call dein#add('jiangmiao/auto-pairs')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
