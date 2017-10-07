@@ -60,7 +60,7 @@ endif
 
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key
-let g:AutoPairsShortcutFastWrap = '<leader>wr'  " or something similar
+let g:AutoPairsShortcutFastWrap = '<leader>wr'
 
 " AUTOCOMPLETE stuff ----------------------------------------------------------"
 " Enable omni completion.
