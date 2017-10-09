@@ -24,7 +24,7 @@ done
 
 echo "Making a .vim/ for file specific settings"
 mkdir ~/.vim
-cp -r $(pwd)/after ~/.vim
+ln -s $(pwd)/after ~/.vim/after
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
 echo "      for ubuntu install: vim-nox"
