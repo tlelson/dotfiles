@@ -5,6 +5,15 @@ set expandtab
 set shiftwidth=2
 set softtabstop=2
 
+set colorcolumn=100
+highlight ColorColumn ctermbg=8
+set textwidth=100
+
+let g:syntastic_javascript_checkers = ['eslint']
+set noscb
+
+" OLD SHIT I PROBLY SHOULD DELETE BELOW -------------"
+"
 " CONVERT TO Coffee AND DISPLAY IN SPLIT
 " need to $ npm install -g js2coffee
 function! JavascriptToCoffeeWorker()
@@ -22,7 +31,3 @@ endfunction
 
 command! ToCoffee :call JavascriptToCoffeeWorker()
 
-" N.B Currently only installed in the conda env 'serverless-dev'
-let g:syntastic_javascript_checkers = ['eslint']
-
-set noscb
