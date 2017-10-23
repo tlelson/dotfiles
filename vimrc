@@ -30,9 +30,9 @@ if dein#load_state('~/.vim')
   call dein#add('jiangmiao/auto-pairs')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
+  call dein#add('tpope/vim-surround.git')
 
   " Experimental
-  call dein#add('tpope/vim-surround.git')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -63,6 +63,10 @@ endif
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key
 let g:AutoPairsShortcutFastWrap = '<leader>wr'
+
+" Fugitive
+" Consitent command for reviewing file changed before commit
+command Greview :Git! diff --staged
 
 " AUTOCOMPLETE stuff ----------------------------------------------------------"
 " Enable omni completion.
