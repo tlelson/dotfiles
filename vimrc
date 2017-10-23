@@ -32,6 +32,7 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-fugitive')
 
   " Experimental
+  call dein#add('tpope/vim-surround.git')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
