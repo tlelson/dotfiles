@@ -151,6 +151,7 @@ set hlsearch "hilight search
 " Dont use the following line unless you want to loose
 " function of the arrow keys
 "nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+set scrolloff=3 "scrolls before hitting the bottom
 
 " Test leader type leader then letter 'a'
 nnoremap <Leader>a :echo "Hey there "<CR>
