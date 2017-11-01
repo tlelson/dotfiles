@@ -179,7 +179,18 @@ filetype indent on
 set title "Sets title of tab to be the filename
 
 " Clear Whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
+"autocmd BufWritePre * :%s/\s\+$//e
+" Above autocmd was make the cursor skip up randomly even when not saving! might be a conflict with a plugin?? Think it
+" would be fine if it was set up after all plugins
+" Trying bellow:
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Recognise Filetypes (autocmd)
 " others done automatically, check with :set ft
