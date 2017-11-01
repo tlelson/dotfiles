@@ -182,7 +182,8 @@ set title "Sets title of tab to be the filename
 "autocmd BufWritePre * :%s/\s\+$//e
 " Above autocmd was make the cursor skip up randomly even when not saving! might be a conflict with a plugin?? Think it
 " would be fine if it was set up after all plugins
-" Trying bellow:
+" Trying below:
+" UPDATE: Fails but leaving it in
 function! <SID>StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
