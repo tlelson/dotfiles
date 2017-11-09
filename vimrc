@@ -128,6 +128,7 @@ map <F3> :NERDTreeToggle<CR>
 "let NERDTreeDirArrows = 1
 
 " EFFICIENCY - (my shortcuts)
+set shell=/usr/bin/env\ bash\ -i  "Enable my bash shortcuts from vim
 nmap ; :
 "cmap 1 !
 " format JSON
