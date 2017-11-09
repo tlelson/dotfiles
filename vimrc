@@ -131,7 +131,13 @@ map <F3> :NERDTreeToggle<CR>
 nmap ; :
 "cmap 1 !
 " format JSON
-command Json execute ":%!python -m json.tool"
+function MyJson()
+    %s/u'/"/g
+    %s/'/"/g
+    execute ":%!python -m json.tool"
+endfun
+command Json call MyJson()
+
 " Faster macro repeat
 nnoremap Q @q
 " Indent code blocks
