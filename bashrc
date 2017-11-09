@@ -21,10 +21,9 @@ alias grep="grep --color=auto -E "
 alias pytags="ctags -R --language-force=python --python-kinds=-i --exclude=*.hdf -f .tags *"
 alias speedtest="wget --report-speed=bits -O /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip"
 alias speedtestlocal="wget --report-speed=bits -O /dev/null http://192.168.0.1/shares/Drop/test10.zip"
-alias tree="tree -C "
+alias tree="tree -C -L3" # Limit depth to 3
 alias activate="source activate "
 alias deactivate="source deactivate "
-alias tree="tree -L 3 " # Limit depth to 3
 
 # pip for conda (non upgrading packages installed with conda)
 # pip() {
@@ -80,7 +79,3 @@ refactor_recursive(){
 source ~/.bashrc_local
 
 ## Automatically Appended Stuff below
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
