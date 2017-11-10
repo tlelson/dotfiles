@@ -133,6 +133,8 @@ nmap ; :
 "cmap 1 !
 " format JSON
 function MyJson()
+    %s/ True,/ "True",/g
+    %s/ False,/ "True",/g
     %s/u'/"/g
     %s/'/"/g
     execute ":%!python -m json.tool"
