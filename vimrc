@@ -133,8 +133,8 @@ nmap ; :
 "cmap 1 !
 " format JSON
 function MyJson()
-    %s/ True,/ "True",/g
-    %s/ False,/ "True",/g
+    silent! %s/ True,/ "True",/g            " Two ways of suppressing output.  Here silent flag
+    %s/ False,/ "True",/ge                  " ... here use the 'e'
     %s/u'/"/g
     %s/'/"/g
     execute ":%!python -m json.tool"
