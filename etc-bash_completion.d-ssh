@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# This script autocompletes hostnames when ssh-ing by looking in the .ssh/config file.
+# On linux systems, add a soft link to this from /etc/bash_completion.d/ and
+# source the file from .bashrc to get autocomplete
+
+# On Mac's, soft link to this file from $(brew --prefix)/etc/bash_completion
+
+_ssh()
+{
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    #opts=$(grep '^Host' ~/.ssh/config ~/.ssh/config.d/* | grep -v '[?*]' | cut -d ' ' -f 2-)
+    opts=$(grep '^Host' ~/.ssh/config | grep -v '[?*]' | cut -d ' ' -f 2-)
+
+    if [[ ${cur} == * ]] ; then
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0
+    fi
+}
+complete -F _ssh ssh
+complete -F _ssh mosh

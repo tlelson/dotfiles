@@ -24,8 +24,14 @@ web_proxy_stop(){
 ## Brew stuff
 alias ctags='$(brew --prefix)/bin/ctags'
 alias sed="gsed "
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+# Get bash completions for stuff installed with brew.
+# you can also put your own ones here (see ssh example in dotfiles)
+if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
+  . $(brew --prefix)/etc/bash_completion.d/*
+    for f in $(brew --prefix)/etc/bash_completion.d/*
+        do
+            source $f
+        done
 fi
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
