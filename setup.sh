@@ -1,6 +1,6 @@
 
 
-for file in bashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  vim  vimrc  jshintrc gitattributes eslintrc.js
+for file in bashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  vimrc  jshintrc gitattributes eslintrc.js
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
