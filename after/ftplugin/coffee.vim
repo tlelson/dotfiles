@@ -8,7 +8,7 @@ let g:syntastic_coffee_coffeelint_args = "--csv --file ~/dotfiles/coffeelint_con
 
 " For Quickfix listings
 "npm install -g coffeelint
-set noscb
+set noscrollbind
 set tabstop=8
 set expandtab
 set shiftwidth=4

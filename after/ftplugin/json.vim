@@ -6,4 +6,4 @@ set shiftwidth=2
 set softtabstop=2
 
 let g:syntastic_json_checkers = ['jsonlint']
-set noscb
+set noscrollbind

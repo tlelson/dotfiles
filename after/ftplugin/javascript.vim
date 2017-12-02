@@ -10,7 +10,7 @@ highlight ColorColumn ctermbg=8
 set textwidth=100
 
 let g:syntastic_javascript_checkers = ['eslint']
-set noscb
+set noscrollbind
 
 " OLD SHIT I PROBLY SHOULD DELETE BELOW -------------"
 "

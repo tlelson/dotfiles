@@ -103,4 +103,4 @@ function! GetJadeIndent()
     return indent
   endif
 endfunction
-set noscb
+set noscrollbind

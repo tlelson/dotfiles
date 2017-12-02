@@ -17,7 +17,7 @@ endfunction
 "! /usr/local/bin/html2jade % | vsplit %
 "nmap <silent> <leader>ty :call Hex2dec()<CR>
 command! ToJade :call HTMLToJade()
-set noscb
+set noscrollbind
 set tabstop=2
 set shiftwidth=2
 set expandtab
