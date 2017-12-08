@@ -23,7 +23,14 @@ do
 done
 
 echo "Making a .vim/ for file specific settings"
-mkdir ~/.vim
+if [ -d ~/.vim ];
+    then
+        echo "~/.vim already exists";
+    else
+        echo "~/.vim does not exist or is not a directory.";
+        rm -rf ~/.vim
+        mkdir ~/.vim
+fi
 ln -s $(pwd)/after ~/.vim/after
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
