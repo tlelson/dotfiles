@@ -129,6 +129,7 @@ map <F3> :NERDTreeToggle<CR>
 "let NERDTreeDirArrows = 1
 
 " EFFICIENCY - (my shortcuts)
+set tags=.tags "this is where pytags alias in bashrc is saving them
 "set shell=/usr/bin/env\ bash\ -i  "Enable my bash shortcuts from vim
 if &diff == 'nodiff'
     set shellcmdflag=-ic
