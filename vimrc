@@ -130,10 +130,10 @@ map <F3> :NERDTreeToggle<CR>
 
 " EFFICIENCY - (my shortcuts)
 set tags=.tags "this is where pytags alias in bashrc is saving them
-"set shell=/usr/bin/env\ bash\ -i  "Enable my bash shortcuts from vim
 if &diff == 'nodiff'
-    set shellcmdflag=-ic
+    set shellcmdflag=-c
 endif
+set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
 nmap ; :
 "cmap 1 !
 " format JSON
