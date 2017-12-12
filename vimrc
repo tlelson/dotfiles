@@ -31,6 +31,7 @@ if dein#load_state('~/.vim')
   call dein#add('airblade/vim-gitgutter')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround.git')
+  call dein#add('Glench/Vim-Jinja2-Syntax')
 
   " Experimental
 
@@ -215,6 +216,7 @@ au BufNewFile,BufRead *.lib     set ft=sh
 au BufNewFile,BufRead *.ps1     set ft=ps1
 au BufNewFile,BufRead *.pp      set ft=puppet
 au BufRead,BufNewFile *.ts      set ft=typescript
+au BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 " Possibly should just set a wrap length and then i can easily flip back to nowrap if i want
 set colorcolumn=120
