@@ -139,7 +139,7 @@ nmap ; :
 " format JSON
 function MyJson()
     silent! %s/ True,/ "True",/g            " Two ways of suppressing output.  Here silent flag
-    %s/ False,/ "True",/ge                  " ... here use the 'e'
+    %s/ False,/ "False",/ge                 " ... here use the 'e'
     %s/u'/"/g
     %s/'/"/g
     execute ":%!python -m json.tool"
