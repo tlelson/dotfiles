@@ -5,6 +5,7 @@
 *checkpoint.ipynb
 .netrwhist
 *.swp
+*.swo
 node_modules
 bundle/
 .idea/
