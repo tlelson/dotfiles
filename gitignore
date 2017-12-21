@@ -21,6 +21,7 @@ bundle/
 ###################
 *.com
 *.pyc
+*.pyr
 *.class
 *.dll
 *.exe
