@@ -238,7 +238,7 @@ vmap <C-_> <leader>c<Space>
 "   :TsuquyomiStatusServer
 "   :TsuquyomiStartServer  - found this doesn't work well. Even reopening it didn't work.  Had to remove .vim/ and use
 "   ./setup_vim.sh again !!
-autocmd FileType typescript setlocal completeopt+=menu,preview
+autocmd FileType typescript setlocal completeopt+=menu
 let g:tsuquyomi_completion_detail = 1
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_javascript_checkers=['eslint']
@@ -277,6 +277,9 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 imap <C-j>     <Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
+
+" NEOCOMPLETE
+set completeopt-=preview  "Disable preview window
 
 " MULTI-CURSOR
 " Default mapping - Also use visual selection <C-n> and regex selection
