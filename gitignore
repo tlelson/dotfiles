@@ -16,6 +16,8 @@ bundle/
 /build/
 /*.egg-info
 /*.egg
+.cache/
+Untitled*.ipynb
 
 # Compiled source #
 ###################
