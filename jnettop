@@ -1,0 +1,8 @@
+interface "en0"
+local_aggregation host
+promisc off
+resolve on
+rule "https" "dst port 443"
+select_rule "https"
+local_aggregation none
+remote_aggregation host
