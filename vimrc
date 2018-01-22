@@ -135,7 +135,7 @@ endif
 set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
 nmap ; :
 "cmap 1 !
-" format JSON
+" format JSON from Python Dict.  See below, the quote rules are too general
 function MyJson()
     silent! %s/ True/ "True"/g            " Two ways of suppressing output.  Here silent flag
     %s/ False/ "False"/ge                 " ... here use the 'e'
