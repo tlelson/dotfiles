@@ -77,6 +77,8 @@ refactor_recursive(){
     fi
 }
 
-source ~/.bashrc_local
+if [ -f ~/.bashrc_local ]; then
+    source ~/.bashrc_local
+fi
 
 ## Automatically Appended Stuff below
