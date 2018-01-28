@@ -1,5 +1,6 @@
 # Exports
 export PATH=/Users/minmac/miniconda3/bin:/usr/local/sbin:/usr/local/bin:${PATH}
+export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 
 # Alias
 alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
