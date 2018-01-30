@@ -73,7 +73,7 @@ refactor_recursive(){
       echo "Usage:  refactor_recursive <old_word> <new_word>"
       echo "When matching on parenthesis '()' enclose in []"
     else
-        grep -Ir "$1" * | cut -d: -f1 | uniq | xargs -I {} sed -ir 's/'"$1"'/'"$2"'/g' {}
+        grep -Ir "$1" * | cut -d: -f1 | uniq | xargs -I {} sed -i 's/'"$1"'/'"$2"'/g' {}
     fi
 }
 
