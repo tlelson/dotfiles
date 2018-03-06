@@ -7,8 +7,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import tims_py_utils.pandas_utils as tpu
-import tims_py_utils.py_utils as tu
 pd.set_option('display.max_columns', 12)
 pd.set_option('display.max_rows', 10)
 pd.set_option('display.width', 500)
