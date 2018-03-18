@@ -5,8 +5,8 @@ let g:neocomplete#auto_completion_start_length = 0
 set tags:.tags
 
 " Python syntax checking
-let g:syntastic_python_checkers=['pycodestyle'] "renamed PEP8
-let g:syntastic_python_pycodestyle_args='--ignore=E501'
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_flake8_args=' --ignore=E501'
 set textwidth=0  " lines longer than this columns will be broken, ignoring PEP8 error for +80
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
 set tabstop=4     " a hard TAB displays as 4 columns
