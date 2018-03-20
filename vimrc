@@ -220,9 +220,9 @@ au BufRead,BufNewFile *.ts      set ft=typescript
 au BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 " Possibly should just set a wrap length and then i can easily flip back to nowrap if i want
-set colorcolumn=120
+"set colorcolumn=120
 highlight ColorColumn ctermbg=8
-set textwidth=120
+"set textwidth=120
 
 " NERDCOMMENTER config ---------------------------------------------------
 " This let you use Ctrl+/ to comment blocks
