@@ -24,6 +24,7 @@ if env_pth:
         exec(open(config_file).read())
     except IOError:
         print("No env specific 'ipython_setup.py' found in {} ...".format(env_pth))
+        del config_file
 else:
     print("Not in a conda environment ...")
 
