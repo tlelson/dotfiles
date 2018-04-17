@@ -129,6 +129,8 @@ map <F3> :NERDTreeToggle<CR>
 "let NERDTreeDirArrows = 1
 
 " EFFICIENCY - (my shortcuts)
+" The following line keep the current register after you put it (multiple pastes)
+vnoremap p "_dP
 set tags=.tags "this is where pytags alias in bashrc is saving them
 if &diff == 'nodiff'
     set shellcmdflag=-c
