@@ -1,5 +1,6 @@
 # Mine #
 ########
+.pytest_cache/
 *tags
 /.ipynb_checkpoints/
 *checkpoint.ipynb
@@ -8,7 +9,7 @@
 *.swo
 node_modules
 bundle/
-.idea/
+/.idea/
 *.sln
 *.pyproj
 # Python stuff
