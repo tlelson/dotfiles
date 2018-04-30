@@ -82,8 +82,19 @@ refactor_recursive(){
     fi
 }
 
+pyclean(){
+    find . -name '*egg-info' | xargs rm -rf
+    find . -name '__pycache__' | xargs rm -rf
+    find . -name 'build' | xargs rm -rf
+    find . -name 'dist' | xargs rm -rf
+    find . -name '*.pyc' | xargs rm -f
+}
+
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
 ## Automatically Appended Stuff below
+
+# added by travis gem
+[ -f /Users/minmac/.travis/travis.sh ] && source /Users/minmac/.travis/travis.sh
