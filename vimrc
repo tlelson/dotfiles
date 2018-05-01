@@ -122,7 +122,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeIgnore=[
             \'__pycache__',
             \'\.pyc',
-            '\.egg-info'
+            \'\.egg-info'
             \]
 
 " N.B NEED BLANK LINE ABOVE !! no idea why by without it NERDTree fails to
