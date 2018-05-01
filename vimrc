@@ -80,6 +80,8 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+" Try this, should reduce the options
+set completeopt=longest,menuone
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
@@ -119,7 +121,8 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeIgnore=[
             \'__pycache__',
-            \'*.pyc',
+            \'\.pyc',
+            '\.egg-info'
             \]
 
 " N.B NEED BLANK LINE ABOVE !! no idea why by without it NERDTree fails to
