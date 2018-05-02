@@ -89,6 +89,10 @@ pyclean(){
     find . -name '*.pyc' | xargs rm -f
 }
 
+# Get AWS Credentials
+# Automatically load into existing session without copy/paste
+gac(){ for i in "$( gac "$@" --quiet)"; do eval "${i}"; done;}
+
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
