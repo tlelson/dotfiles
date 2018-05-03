@@ -91,7 +91,7 @@ pyclean(){
 
 # Get AWS Credentials
 # Automatically load into existing session without copy/paste
-gac(){ for i in "$( gac "$@" --quiet)"; do eval "${i}"; done;}
+gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
