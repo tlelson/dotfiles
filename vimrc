@@ -210,6 +210,7 @@ set title "Sets title of tab to be the filename
 " Trying below:
 " UPDATE: Fails but leaving it in
 function! <SID>StripTrailingWhitespaces()
+    retab
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
