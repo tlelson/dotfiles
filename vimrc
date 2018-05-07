@@ -156,8 +156,11 @@ function MyJson()
 endfun
 command Json call MyJson()
 
+" MACROS
 " Faster macro repeat
 nnoremap Q @q
+set nowrapscan  " If using search in a macro you dont want it repeating endlessly
+
 " Indent code blocks
 vnoremap < <gv
 vnoremap > >gv
