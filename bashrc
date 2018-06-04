@@ -93,6 +93,15 @@ pyclean(){
 # Automatically load into existing session without copy/paste
 gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 
+latest-stack-events() {
+    if [ "$#" != 1 ]
+    then
+      echo "Usage:  latest-stack-events <stack-name>"
+    else
+    aws cloudformation describe-stack-events --stack-name "$1" | jq -c '.StackEvents|sort_by(.Timestamp)[0] | [.Timestamp, .StackName, .LogicalResourceId, .ResourceType, .ResourceStatus, .ResourceStatusReason]' | tail -n 10
+    fi
+}
+
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi

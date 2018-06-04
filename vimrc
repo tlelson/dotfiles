@@ -147,14 +147,20 @@ set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use in
 nmap ; :
 "cmap 1 !
 " format JSON from Python Dict.  See below, the quote rules are too general
-function MyJson()
+" TODO: Should use the python json.load/dump instead
+function DictToJson()
     silent! %s/ True/ "True"/g            " Two ways of suppressing output.  Here silent flag
     %s/ False/ "False"/ge                 " ... here use the 'e'
     %s/u'/"/g
     %s/'/"/g
     execute ":%!python -m json.tool"
 endfun
-command Json call MyJson()
+command DictToJson call DictToJson()
+" Format unindented JSON
+function JSON()
+    execute ":%!python -m json.tool"
+endfun
+command JSON call JSON()
 
 " MACROS
 " Faster macro repeat
