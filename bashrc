@@ -33,7 +33,7 @@ alias deactivate="source deactivate "
 # pip() {
 #     if [[ ${1} == "install" ]]; then
 #         #echo "pip install ${@:2}"
-# 	echo "Using custom 'install' function ... "
+#       echo "Using custom 'install' function ... "
 #         command pip install -U --no-deps "${@:2}"  # use all arguments from 2nd on ...
 #     else
 #         command pip "${@}"
@@ -42,10 +42,10 @@ alias deactivate="source deactivate "
 
 # fast file filtering
 lsg(){
-	ls -a | grep -i "$1"
+        ls -a | grep -i "$1"
 }
 llg(){
-	ll -ah | grep -i "$1"
+        ll -ah | grep -i "$1"
 }
 
 # Progress copy
@@ -98,7 +98,7 @@ latest-stack-events() {
     then
       echo "Usage:  latest-stack-events <stack-name>"
     else
-    aws cloudformation describe-stack-events --stack-name "$1" | jq -c '.StackEvents|sort_by(.Timestamp)[0] | [.Timestamp, .StackName, .LogicalResourceId, .ResourceType, .ResourceStatus, .ResourceStatusReason]' | tail -n 10
+    aws cloudformation describe-stack-events --stack-name "$1" | jq -c '.StackEvents | select(.ResourceStatusReason!=null)|sort_by(.Timestamp)[] | [.Timestamp, .StackName, .LogicalResourceId, .ResourceType, .ResourceStatus, .ResourceStatusReason] ' | tail -n 10
     fi
 }
 
