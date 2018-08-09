@@ -31,7 +31,7 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround.git')
   call dein#add('Glench/Vim-Jinja2-Syntax')
-  call dein#add('mileszs/ack.vim')
+  call dein#add('ervandew/ag')
 
   " Experimental
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
