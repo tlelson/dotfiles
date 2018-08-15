@@ -7,4 +7,5 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set noscrollbind
-set textwidth=1000  " Dont want \n in my copy pasted cmds
+set textwidth=120
+
