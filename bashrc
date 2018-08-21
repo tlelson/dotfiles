@@ -1,4 +1,9 @@
-PS1="[\u@\h \W]# "
+#PS1="[\u@\h \W]# "
+LTGREEN="\[\033[40;1;32m\]"
+LTBLUE="\[\033[40;1;34m\]"
+CLEAR="\[\033[0m\]"
+LIGHT_GRAY="\[\033[40;1;33m\]"
+export PS1="$LTGREEN\u$LTBLUE@\h:$LIGHT_GRAY\w$CLEAR ❯ "
 
 export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
