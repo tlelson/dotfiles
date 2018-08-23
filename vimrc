@@ -31,7 +31,7 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround.git')
   call dein#add('Glench/Vim-Jinja2-Syntax')
-  call dein#add('ervandew/ag')
+  call dein#add('mileszs/ack.vim')
 
   " Experimental
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
@@ -60,6 +60,13 @@ if dein#check_install()
 endif
 
 "End dein Scripts------------------------- "
+
+"Test Ripgrep integration
+if executable("rg")
+    let g:ackprg = 'rg --vimgrep --no-heading'
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
 
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key
