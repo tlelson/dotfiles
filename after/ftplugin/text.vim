@@ -7,5 +7,5 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set noscrollbind
-set textwidth=120
+set textwidth=140
 
