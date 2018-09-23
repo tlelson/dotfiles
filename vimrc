@@ -32,9 +32,9 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-surround.git')
   call dein#add('Glench/Vim-Jinja2-Syntax')
   call dein#add('mileszs/ack.vim')
+  call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
 
   " Experimental
-  call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })

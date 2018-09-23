@@ -36,3 +36,8 @@ custom_style = {
 #BLUE = '#5C81C4'
 #DARKBLUE = sns.xkcd_rgb["denim blue"]
 #GREEN = sns.xkcd_rgb["medium green"]
+
+# Use a theme and fix the plotting
+# jt -t chesterish  # Install a theme
+from jupyterthemes import jtplot
+jtplot.style()
