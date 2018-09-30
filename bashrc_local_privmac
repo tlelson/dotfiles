@@ -1,8 +1,9 @@
 # Exports
-export PATH=/Users/minmac/miniconda3/bin:/usr/local/sbin:/usr/local/bin:${PATH}
+export PATH=~/miniconda3/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 
 # Alias
+alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
 alias documents_backup="/Library/Management/documents_backup_crypt.sh"
 alias top="top -s1 -o cpu -R -F"
@@ -13,12 +14,12 @@ alias tester="echo 'yass'; activate general2"
 # Proxy stuff
 web_proxy_start(){
     activate general2;
-    python /Users/minmac/Code/devops-randoms/boto3/squid_proxy_start.py "$@";
+    python ~/Code/devops-randoms/boto3/squid_proxy_start.py "$@";
     deactivate
 }
 web_proxy_stop(){
     activate general2;
-    python /Users/minmac/Code/devops-randoms/boto3/squid_proxy_stop.py "$@";
+    python ~/Code/devops-randoms/boto3/squid_proxy_stop.py "$@";
     deactivate
 }
 
@@ -36,8 +37,6 @@ if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
 fi
 export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
-# Utilities that couldn't be linked
-export PATH=/usr/local/Cellar/vnstat/1.14/bin:${PATH}
 
 ## ----------- FOR COMPILING CODE ONLY !! ------------ ##
 ## this may be required when installing from brew also. Only enable
@@ -53,8 +52,6 @@ export PATH=/usr/local/Cellar/vnstat/1.14/bin:${PATH}
 
 ## ----------- END TEMP COMPILATION STUFF  ------------ ##
 
-export HOME=/Users/minmac
-
 autopush(){
     if [ -n "$1" ]
     then
@@ -67,3 +64,9 @@ autopush(){
         echo "provide a path to the repo ..."
     fi
 }
+
+## ----------- Testing iTerm2 shell integration -------- ##
+source ~/.iterm2_shell_integration.bash
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh

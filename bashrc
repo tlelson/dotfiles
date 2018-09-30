@@ -33,18 +33,7 @@ alias speedtestlocal="wget --report-speed=bits -O /dev/null http://192.168.0.1/s
 alias tree="tree -C -L 3 " # Limit depth to 3
 alias activate="source activate "
 alias deactivate="source deactivate "
-alias curl="curl -sSL -D - " # Sick of not seeing any info
-
-# pip for conda (non upgrading packages installed with conda)
-# pip() {
-#     if [[ ${1} == "install" ]]; then
-#         #echo "pip install ${@:2}"
-#       echo "Using custom 'install' function ... "
-#         command pip install -U --no-deps "${@:2}"  # use all arguments from 2nd on ...
-#     else
-#         command pip "${@}"
-#     fi
-# }
+alias fullcurl="curl -sSL -D - " # Sick of not seeing any info
 
 # fast file filtering
 lsg(){
@@ -99,20 +88,9 @@ pyclean(){
 # Automatically load into existing session without copy/paste
 gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 
-latest-stack-events() {
-    if [ "$#" != 1 ]
-    then
-      echo "Usage:  latest-stack-events <stack-name>"
-    else
-    aws cloudformation describe-stack-events --stack-name "$1" | jq -c '.StackEvents | select(.ResourceStatusReason!=null)|sort_by(.Timestamp)[] | [.Timestamp, .StackName, .LogicalResourceId, .ResourceType, .ResourceStatus, .ResourceStatusReason] ' | tail -n 10
-    fi
-}
-
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
 ## Automatically Appended Stuff below
 
-# added by travis gem
-[ -f /Users/minmac/.travis/travis.sh ] && source /Users/minmac/.travis/travis.sh

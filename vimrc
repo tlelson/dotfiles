@@ -35,6 +35,7 @@ if dein#load_state('~/.vim')
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
 
   " Experimental
+  call dein#add('reedes/vim-lexical')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -60,13 +61,19 @@ if dein#check_install()
 endif
 
 "End dein Scripts------------------------- "
+fun! SetupCommandAlias(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() is# ":" && getcmdline() is# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfun
 
-"Test Ripgrep integration
+"Ripgrep integration
 if executable("rg")
     let g:ackprg = 'rg --vimgrep --no-heading'
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+call SetupCommandAlias("Rg","Ack")
 
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key

@@ -1,11 +1,7 @@
 # Mine #
 ########
 commit_spoofer.sh
-__pycache__/
-.pytest_cache/
 *tags
-/.ipynb_checkpoints/
-*checkpoint.ipynb
 .netrwhist
 *.swp
 *.swo
@@ -15,17 +11,21 @@ bundle/
 *.sln
 *.pyproj
 # Python stuff
+__pycache__/
+.pytest_cache/
+/.ipynb_checkpoints/
+*checkpoint.ipynb
 /dist/
 /build/
 /*.egg-info
 /*.egg
 .cache/
 Untitled*.ipynb
+*.pyc
 
 # Compiled source #
 ###################
 *.com
-*.pyc
 *.pyr
 *.class
 *.dll
