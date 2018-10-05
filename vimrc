@@ -223,6 +223,7 @@ set autoindent
 filetype on
 filetype plugin on
 filetype indent on
+autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 
 set title "Sets title of tab to be the filename
 
