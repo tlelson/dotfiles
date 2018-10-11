@@ -151,6 +151,11 @@ map <F3> :NERDTreeToggle<CR>
 "let NERDTreeDirArrows = 1
 
 " EFFICIENCY - (my shortcuts)
+" Spell checking: Ctrl-f moves to the next error and chooses the first
+" suggestion
+imap <c-f> <c-g>u<Esc>]s1z=`]a<c-g>u
+nmap <c-f> ]s1z=<c-o>
+
 " The following line keep the current register after you put it (multiple pastes)
 vnoremap p "_dP
 set tags=.tags "this is where pytags alias in bashrc is saving them
@@ -223,7 +228,6 @@ set autoindent
 filetype on
 filetype plugin on
 filetype indent on
-autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
 
 set title "Sets title of tab to be the filename
 
@@ -245,14 +249,15 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Recognise Filetypes (autocmd)
 " others done automatically, check with :set ft
-au BufRead,BufNewFile *.txt     set ft=text
-au BufRead,BufNewFile *.coffee  set ft=coffee
-au BufRead,BufNewFile *.jade    set ft=jade
-au BufNewFile,BufRead *.lib     set ft=sh
-au BufNewFile,BufRead *.ps1     set ft=ps1
-au BufNewFile,BufRead *.pp      set ft=puppet
-au BufRead,BufNewFile *.ts      set ft=typescript
-au BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
+autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
+autocmd BufRead,BufNewFile *.txt     set ft=text
+autocmd BufRead,BufNewFile *.coffee  set ft=coffee
+autocmd BufRead,BufNewFile *.jade    set ft=jade
+autocmd BufNewFile,BufRead *.lib     set ft=sh
+autocmd BufNewFile,BufRead *.ps1     set ft=ps1
+autocmd BufNewFile,BufRead *.pp      set ft=puppet
+autocmd BufRead,BufNewFile *.ts      set ft=typescript
+autocmd BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 " Possibly should just set a wrap length and then i can easily flip back to nowrap if i want
 "set colorcolumn=120
