@@ -14,12 +14,12 @@ alias tester="echo 'yass'; activate general2"
 # Proxy stuff
 web_proxy_start(){
     activate general2;
-    python ~/Code/devops-randoms/boto3/squid_proxy_start.py "$@";
+    python ~/Code/cloud-notes/AWS/boto3/squid_proxy_start.py "$@";
     deactivate
 }
 web_proxy_stop(){
     activate general2;
-    python ~/Code/devops-randoms/boto3/squid_proxy_stop.py "$@";
+    python ~/Code/cloud-notes/AWS/boto3/squid_proxy_stop.py "$@";
     deactivate
 }
 

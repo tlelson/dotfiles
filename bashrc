@@ -34,6 +34,7 @@ alias tree="tree -C -L 3 " # Limit depth to 3
 alias activate="source activate "
 alias deactivate="source deactivate "
 alias fullcurl="curl -sSL -D - " # Sick of not seeing any info
+alias ping="prettyping --nolegend "
 
 # fast file filtering
 lsg(){
