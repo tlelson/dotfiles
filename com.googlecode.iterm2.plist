@@ -655,6 +655,11 @@
 		<key>TB Size Mode</key>
 		<integer>1</integer>
 	</dict>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>1169 110 445 347 0 0 1680 1027 </string>
 	<key>NSWindow Frame Preferences</key>
@@ -662,19 +667,19 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>445 371 599 388 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>493 1431 918 512 -307 1050 1920 1057 </string>
+	<string>629 437 770 429 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 454 634 573 0 0 1680 1027 </string>
+	<string>0 55 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>838 118 842 909 0 0 1680 1050 </string>
+	<string>0 44 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>70 52 1610 962 0 0 1680 1027 </string>
+	<string>0 42 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>0 54 1680 962 0 0 1680 1027 </string>
+	<string>0 44 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>0 51 1680 972 0 0 1680 1027 </string>
+	<string>0 54 1680 962 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>0 65 1680 962 0 0 1680 1027 </string>
+	<string>0 44 1680 972 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
 	<string>0 42 1680 985 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -944,7 +949,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string></string>
+			<string>activate general &amp;&amp; clear </string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>

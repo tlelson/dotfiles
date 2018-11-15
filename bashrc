@@ -48,7 +48,7 @@ llg(){
 pcp(){
     if [ "$#" != 2 ]
     then
-      echo "Usage:  pcp src/ target/"
+      echo "Usage:  \n\t$ pcp {SRC_DIR} {DEST_DIR}"
     else
         rsync -avEP "${1}" "${2}"
     fi
