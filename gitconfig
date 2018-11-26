@@ -18,3 +18,5 @@
         st = status -s
         ci = commit
         latestcommit = git rev-parse origin/master
+[submodule]
+	recurse = true
