@@ -34,7 +34,10 @@ fi
 ln -s $(pwd)/after ~/.vim/after
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
-echo "      for ubuntu install: vim-nox"
+echo "      for ubuntu install: "
+echo "         add-apt-repository universe"
+echo "         apt-get update"
+echo "         apt install vim-nox"
 echo "      for mac: brew install vim --with-lua"
 echo "2.    Open vim and do the followining to get bundles:"
 echo "      :call dein#install()"
