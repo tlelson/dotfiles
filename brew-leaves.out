@@ -1,10 +1,13 @@
-ripgrep
+coreutils
 gnu-sed
 htop
+hugo
 mas
 mosh
 ncdu
+nmap
 prettyping
+ripgrep
 tig
 tldr
 tmux

@@ -67,6 +67,9 @@ fun! SetupCommandAlias(from, to)
         \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfun
 
+"GitGutter
+set updatetime=100
+
 "Ripgrep integration
 if executable("rg")
     let g:ackprg = 'rg --vimgrep --no-heading'
