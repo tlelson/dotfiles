@@ -6,12 +6,17 @@ mas
 mosh
 ncdu
 nmap
+ntfs-3g
 prettyping
 ripgrep
 tig
 tldr
 tmux
 tree
+unrar
 vim --with-lua
+vnstat
 watch
 wget
+wireshark  # tshark only. use ` --with-qt` for gui wireshark
+wireshark-chmodbpf  # For wireshark to use mac osx interfaces
