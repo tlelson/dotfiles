@@ -28,3 +28,6 @@ if env_pth:
 else:
     print("Not in a conda environment ...")
 
+# Ipython stuff
+%load_ext autoreload
+%autoreload 2
