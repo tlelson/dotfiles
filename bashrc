@@ -13,9 +13,10 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 
 #set -o vi
 
+# GO setup
 export GOPATH=~/go                            # For installed binaries
 # Can't get this shit to work
-export PATH=$PATH:/usr/local/opt/go/libexec/bin:${GOPATH}/bin   # Suggestion from homebrew install delve
+export PATH=${PATH}:${GOPATH}/bin:/usr/local/go/bin
 
 # Conda build path
 export CONDA_BLD_PATH=/tmp/
