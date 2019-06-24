@@ -35,7 +35,8 @@ if dein#load_state('~/.vim')
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
 
   " Experimental
-  call dein#add('reedes/vim-lexical')
+  "call dein#add('reedes/vim-lexical')
+  call dein#add('elixir-editors/vim-elixir')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -260,7 +261,7 @@ autocmd BufNewFile,BufRead *.lib     set ft=sh
 autocmd BufNewFile,BufRead *.ps1     set ft=ps1
 autocmd BufNewFile,BufRead *.pp      set ft=puppet
 autocmd BufRead,BufNewFile *.ts      set ft=typescript
-autocmd BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
+"autocmd BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 " Possibly should just set a wrap length and then i can easily flip back to nowrap if i want
 "set colorcolumn=120

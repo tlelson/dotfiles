@@ -643,13 +643,15 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 487 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>256 457 918 514 0 0 1680 1027 </string>
+	<string>256 431 918 512 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 88 1550 939 0 0 1680 1027 </string>
+	<string>11 145 1620 882 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 107 1641 920 0 0 1680 1027 </string>
+	<string>60 145 1620 882 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 55 1680 972 0 0 1680 1027 </string>
+	<string>60 145 1620 882 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>18 145 1620 882 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_AABECBD3-2626-4A66-BD4A-189F5B2D2785</key>
@@ -917,7 +919,7 @@
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
-			<string>activate general &amp;&amp; clear </string>
+			<string>source activate general &amp;&amp; clear </string>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -1409,7 +1411,7 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 	<key>NoSyncInstallationId</key>
 	<string>D9D2300F-2930-424D-98E8-F06781086D01</string>
 	<key>NoSyncLastTipTime</key>
-	<real>565052152.07960904</real>
+	<real>565138643.666888</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -1418,11 +1420,14 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>564874075.92905796</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
 	<key>NoSyncTipsToNotShow</key>
 	<array>
 		<string>000</string>
 		<string>0000</string>
 		<string>0001</string>
+		<string>0002</string>
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
@@ -1492,7 +1497,7 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-11-27T22:55:32Z</date>
+	<date>2019-05-20T01:09:30Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -1546,6 +1551,6 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.6</string>
+	<string>3.2.9</string>
 </dict>
 </plist>

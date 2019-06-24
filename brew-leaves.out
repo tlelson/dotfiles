@@ -2,6 +2,7 @@ coreutils
 gnu-sed
 htop
 hugo
+jq
 mas
 mosh
 ncdu

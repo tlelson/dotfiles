@@ -7,5 +7,6 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set noscrollbind
-set textwidth=140
+" Set textwidth slightly less than width of half screen terminal
+set textwidth=115
 
