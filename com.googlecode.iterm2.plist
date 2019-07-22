@@ -643,15 +643,17 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 487 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>256 431 918 512 0 0 1680 1027 </string>
+	<string>256 327 918 512 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>11 145 1620 882 0 0 1680 1027 </string>
+	<string>515 46 1165 981 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>60 145 1620 882 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>60 145 1620 882 0 0 1680 1027 </string>
+	<string>60 123 1620 882 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>18 145 1620 882 0 0 1680 1027 </string>
+	<string>0 145 1620 882 0 0 1680 1027 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>963 69 717 958 0 0 1680 1027 </string>
 	<key>NeverWarnAboutMeta</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_AABECBD3-2626-4A66-BD4A-189F5B2D2785</key>
@@ -1402,6 +1404,8 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 			<true/>
 			<key>Window Type</key>
 			<integer>0</integer>
+			<key>Working Directory</key>
+			<string></string>
 		</dict>
 	</array>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
@@ -1497,7 +1501,7 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-05-20T01:09:30Z</date>
+	<date>2019-07-01T10:32:25Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>

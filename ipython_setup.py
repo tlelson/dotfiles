@@ -1,8 +1,10 @@
 ## This allows different ipython setup for each conda environment
 ## simply put a file named 'ipython_setup.py' in the root env directory
 ## find by:
-##      $ echo ${CONDA_ENV_PATH}
+##      $ echo ${CONDA_PREFIX}
 
+
+## Setup --------------------------------------------------------------------##
 import os
 import sys
 
@@ -27,6 +29,8 @@ if env_pth:
         del config_file
 else:
     print("Not in a conda environment ...")
+
+## Global Config -----------------------------------------------------------------##
 
 # Ipython stuff
 %load_ext autoreload

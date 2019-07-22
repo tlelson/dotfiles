@@ -1,6 +1,7 @@
 # Exports
 export PATH=~/miniconda3/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 export DEFAULT_GIT_EMAIL=tpj800@gmail.com
+#export HOST='localhost'  # For webpack (React/Vue)
 
 # Alias
 alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
@@ -55,7 +56,7 @@ autopush(){
 }
 
 ## ----------- Testing iTerm2 shell integration -------- ##
-source ~/.iterm2_shell_integration.bash
+# source ~/.iterm2_shell_integration.bash
 
 # added by travis gem
 [ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
