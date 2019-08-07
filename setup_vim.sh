@@ -33,6 +33,11 @@ if [ -d ~/.vim ];
 fi
 ln -s $(pwd)/after ~/.vim/after
 
+# Color schemes
+git clone https://github.com/lifepillar/vim-solarized8.git ~/.vim/pack/themes/opt/solarized8
+git clone https://github.com/Tumbler/oceannight.git ~/.vim/pack/themes/opt/oceannight
+git clone https://github.com/sainnhe/vim-color-lost-shrine.git ~/.vim/pack/themes/opt/vim-color-lost-shrine
+
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
 echo "      for ubuntu install: "
 echo "         add-apt-repository universe"

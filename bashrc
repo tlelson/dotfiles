@@ -94,5 +94,5 @@ if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
 
-## Automatically Appended Stuff below
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

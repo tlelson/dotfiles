@@ -1,6 +1,6 @@
 
 
-for file in bashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc
+for file in bashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -23,3 +23,10 @@ ln -s $(pwd)/ipython_setup.py ~/.ipython/profile_default/startup/ipython_setup.p
 #ln -s $(pwd)/pudb.cfg ~/.config/pudb/pudb.cfg
 
 echo "Rename your .bashrc_old to .bashrc_local if you want its settings."
+
+# Set up TMUX
+echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for details ..."
+git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
+ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
+# This needs to exist long term for the attached scripts
+

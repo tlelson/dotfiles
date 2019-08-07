@@ -33,6 +33,8 @@ if dein#load_state('~/.vim')
   call dein#add('Glench/Vim-Jinja2-Syntax')
   call dein#add('mileszs/ack.vim')
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
 
   " Experimental
   "call dein#add('reedes/vim-lexical')
@@ -202,6 +204,7 @@ imap <C-S-s> <C-k>s* " This doesn't work for some reason.
 syntax on
 syntax enable
 set background=dark
+colorscheme lost-shrine "downloaded by `setup_vim.sh` other options exist
 set ruler
 set hlsearch "hilight search
 " Dont use the following line unless you want to loose
@@ -348,22 +351,22 @@ function! Multiple_cursors_after()
 endfunction
 
 " MOVE SPLITS - \mw to mark first window, \pw to mark and swap with the second
-function! MarkWindowSwap()
-    let g:markedWinNum = winnr()
-endfunction
-function! DoWindowSwap()
-    "Mark destination
-    let curNum = winnr()
-    let curBuf = bufnr( "%" )
-    exe g:markedWinNum . "wincmd w"
-    "Switch to source and shuffle dest->source
-    let markedBuf = bufnr( "%" )
-    "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' curBuf
-    "Switch to dest and shuffle source->dest
-    exe curNum . "wincmd w"
-    "Hide and open so that we aren't prompted and keep history
-    exe 'hide buf' markedBuf
-endfunction
-nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
-nmap <silent> <leader>sw :call DoWindowSwap()<CR>"
+"function! MarkWindowSwap()
+    "let g:markedWinNum = winnr()
+"endfunction
+"function! DoWindowSwap()
+    ""Mark destination
+    "let curNum = winnr()
+    "let curBuf = bufnr( "%" )
+    "exe g:markedWinNum . "wincmd w"
+    ""Switch to source and shuffle dest->source
+    "let markedBuf = bufnr( "%" )
+    ""Hide and open so that we aren't prompted and keep history
+    "exe 'hide buf' curBuf
+    ""Switch to dest and shuffle source->dest
+    "exe curNum . "wincmd w"
+    ""Hide and open so that we aren't prompted and keep history
+    "exe 'hide buf' markedBuf
+"endfunction
+"nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
+"nmap <silent> <leader>sw :call DoWindowSwap()<CR>"

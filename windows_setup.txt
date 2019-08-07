@@ -1,0 +1,8 @@
+WINDOWS SETUP
+
+Get:
+    1.  WSL Ubuntu
+    2.  Windows terminal (set default to wsl ubuntu)
+    3.  Install miniconda
+    4.  Remap CAPS to ESC with https://github.com/ililim/dual-key-remap/releases
+
