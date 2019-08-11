@@ -1,6 +1,6 @@
 
 
-for file in bashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local
+for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -14,6 +14,9 @@ do
         ln -s $(pwd)/${file} ~/.${file}
     fi
 done
+
+# Set use my bash config
+echo "source ~/.mybashrc" >> .~/.bashrc
 
 # Setup Ipython preferences
 mkdir -p ~/.ipython/profile_default/startup/
