@@ -205,7 +205,7 @@ imap <C-S-s> <C-k>s* " This doesn't work for some reason.
 syntax on
 syntax enable
 set background=dark
-colorscheme lost-shrine "downloaded by `setup_vim.sh` other options exist
+colorscheme codedark
 set ruler
 set hlsearch "hilight search
 " Dont use the following line unless you want to loose
@@ -371,3 +371,19 @@ endfunction
 "endfunction
 "nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
 "nmap <silent> <leader>sw :call DoWindowSwap()<CR>"
+
+" Making it faster to set paste mode
+" Option 1 - map pastetoggle to a key
+"set pastetoggle=<F2>
+
+" Option 2 - Auto paste toggle before and after paste
+let &t_SI .= "\<Esc>[?2004h"
+let &t_EI .= "\<Esc>[?2004l"
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
