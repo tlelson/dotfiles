@@ -20,7 +20,7 @@ echo "source ~/.mybashrc" >> .~/.bashrc
 
 # Setup Ipython preferences      # TODO: Does this need to be *.ipy ??
 mkdir -p ~/.ipython/profile_default/startup/
-ln -s $(pwd)/ipython_setup.py ~/.ipython/profile_default/startup/ipython_setup.py
+ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
 
 # setup Python pudb preferences
 #ln -s $(pwd)/pudb.cfg ~/.config/pudb/pudb.cfg
