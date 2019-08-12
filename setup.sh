@@ -1,6 +1,6 @@
 
 
-for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors
+for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors fzf.bash
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -18,7 +18,7 @@ done
 # Set use my bash config
 echo "source ~/.mybashrc" >> .~/.bashrc
 
-# Setup Ipython preferences
+# Setup Ipython preferences      # TODO: Does this need to be *.ipy ??
 mkdir -p ~/.ipython/profile_default/startup/
 ln -s $(pwd)/ipython_setup.py ~/.ipython/profile_default/startup/ipython_setup.py
 
@@ -32,4 +32,3 @@ echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for d
 git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
-
