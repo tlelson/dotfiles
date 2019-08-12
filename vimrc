@@ -35,7 +35,7 @@ if dein#load_state('~/.vim')
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })
-  call dein#add('tomasiser/vim-code-dark')
+  call dein#add('eL0ck/vim-code-dark')
 
   " Experimental
   "call dein#add('reedes/vim-lexical')
