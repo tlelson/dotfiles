@@ -4,14 +4,10 @@ export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 #export HOST='localhost'  # For webpack (React/Vue)
 
 # Alias
-alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
 alias documents_backup="/Library/Management/documents_backup_crypt.sh"
-alias top="top -s1 -o cpu -R -F"
 alias timemachineBackup="bash /Library/Management/WorkerScripts/timemachineBackup.sh"
 alias timemachineMount="bash /Library/Management/WorkerScripts/timemachineMount.sh"
-alias torrent-search="we-get " # Use with `webtorrent` for downloading
-#alias webtorrent="webtorrent --not-on-top --keep-seeding "
 
 ## Brew stuff
 alias ctags='$(brew --prefix)/bin/ctags'
