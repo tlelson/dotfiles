@@ -1,5 +1,5 @@
 
-
+echo "Copying dotfiles into location ..."
 for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors fzf.bash
 do
     echo "looking for ~/.${file} .."
@@ -16,19 +16,25 @@ do
 done
 
 # Set use my bash config
+echo "Sourcing '~/.mybashrc' from system '~/.bashrc' ... "
 echo "source ~/.mybashrc" >> .~/.bashrc
 
 # Setup Ipython preferences      # TODO: Does this need to be *.ipy ??
+echo "Setting up ipython auto start config ..."
 mkdir -p ~/.ipython/profile_default/startup/
 ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
-
-# setup Python pudb preferences
-#ln -s $(pwd)/pudb.cfg ~/.config/pudb/pudb.cfg
-
-echo "Rename your .bashrc_old to .bashrc_local if you want its settings."
 
 # Set up TMUX
 echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for details ..."
 git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
+
+echo "To configure your required applications use:"
+echo 'for MacOS'
+echo '    $ brew install $(cat brew-leaves.out)'
+echo 'or for debian:'
+echo '    $ sudo apt install -y $(grep -v '#' apt-packs | xargs )'
+
+echo ""
+echo "Note the following packages must be installed from source: [fzf, prettyping]"

@@ -299,3 +299,6 @@ unbind C-a
 
 # move status line to top
 #set -g status-position top
+#
+# Reattache to existing session if available
+new-session -n $HOST
