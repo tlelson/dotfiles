@@ -1,2 +1,6 @@
 set main-view-id = yes
 set status-show-untracked-files = yes
+
+# Override cursor color because can't read highlighted line
+# https://github.com/jonas/tig/blob/master/doc/tigrc.5.adoc#color-command
+color cursor            default     100
