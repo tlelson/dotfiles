@@ -23,7 +23,8 @@ export PATH=${PATH}:${GOPATH}/bin:/usr/local/go/bin
 export CONDA_BLD_PATH=/tmp/
 
 #alias h="head -n 5"
-alias llt="ll | tail"
+alias ll="ls -ltrh "
+alias llt="ls -ltrh | tail"
 alias lsh="ls -a | grep '^\.'"
 alias llh="ls -lhta | grep ' \.'"
 alias grep="grep --color=auto -E "
@@ -37,7 +38,7 @@ alias ping="prettyping --nolegend "
 alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias top="top -s1 -o cpu -R -F"
 alias torrent-search="we-get " # Use with `webtorrent` for downloading
-#alias webtorrent="webtorrent --not-on-top --keep-seeding "
+alias webtorrent="webtorrent --not-on-top --keep-seeding "
 
 # fast file filtering
 lsg(){
