@@ -2,7 +2,25 @@ WINDOWS SETUP
 
 Get:
     1.  WSL Ubuntu
-    2.  Windows terminal (set default to wsl ubuntu)
-    3.  Install miniconda
+    2.  Windows terminal (set default to wsl ubuntu)  - NO GOOD YET, use mintty
     4.  Remap CAPS to ESC with https://github.com/ililim/dual-key-remap/releases
 
+WSL/MINTTY
+    - Download mintty
+    - Get copy gruvbox theme into `config` file:
+        - https://github.com/morhetz/gruvbox-contrib/blob/master/mintty/gruvbox.minttyrc
+        - C:\Users\timle\AppData\Roaming\wsltty\config
+    - Set options like you want:
+        - Block Cursor
+        - 11pt Consolas Font
+        - All shortcut boxes ticked
+        - Disable bell ticks by:
+    - Make directory in windows user space to act as linux home dir
+
+    Inside Linux
+        - Fix WSL mounts of external drives (eg /c/ not /mnt/c/) and file permissions by copying `etc_wsl.conf`
+        into place at `/etc/wsl.conf`
+        - Change your home dir in `etc/passwd`
+        - Reboot
+
+    3.  Install miniconda

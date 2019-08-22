@@ -38,3 +38,7 @@ echo '    $ sudo apt install -y $(grep -v '#' apt-packs | xargs )'
 
 echo ""
 echo "Note the following packages must be installed from source: [fzf, prettyping]"
+
+echo ""
+echo "If you're running on WSL.  Fix mounts and permissions with:"
+echo "  $ cp etc_wsl.conf /etc/wsl.conf"
