@@ -19,8 +19,11 @@ done
 echo "Sourcing '~/.mybashrc' from system '~/.bashrc' ... "
 echo "source ~/.mybashrc" >> .~/.bashrc
 
-# Setup Ipython preferences      # TODO: Does this need to be *.ipy ??
+# Setup Ipython preferences
+# Notice that two files go up.  The higher one has access to the `c` config object
+# and the other doesn't.  There may be a way to merge them but its fine for now
 echo "Setting up ipython auto start config ..."
+ln -s $(pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 mkdir -p ~/.ipython/profile_default/startup/
 ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
 
