@@ -68,6 +68,19 @@ json_to_yaml(){
     fi
 }
 
+weather(){
+    if [ "$#" -lt 1 ]
+    then
+      echo "Usage:  weather sydney"
+    else
+        for location in $@;
+            do
+                echo "Getting weather in: ${location}"
+                curl wttr.in/${location}
+            done
+    fi
+}
+
 refactor_recursive(){
     # Usage: refactor_recursive <word to replace> <new word>
     # Will recurse into any subdirectories

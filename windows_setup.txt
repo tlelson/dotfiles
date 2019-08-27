@@ -15,11 +15,14 @@ WSL/MINTTY
         - 11pt Consolas Font
         - All shortcut boxes ticked
         - Disable bell ticks by:
-    - Make directory in windows user space to act as linux home dir
+    - [DEPRICATED]: Make directory in windows user space to act as linux home dir
+        - [WHY]:
+            - Most of that stuff is linux specific.
+            - things that are required accross multiple systems are stored in `Documents/linux-shared-resources`
 
     Inside Linux
         - Fix WSL mounts of external drives (eg /c/ not /mnt/c/) and file permissions by copying `etc_wsl.conf`
-        into place at `/etc/wsl.conf`
+        into place at `/etc/wsl.conf`  (instructions in `setup.sh`)
         - Change your home dir in `etc/passwd`
         - Reboot
 
