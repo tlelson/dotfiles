@@ -40,6 +40,7 @@ if dein#load_state('~/.vim')
   " Experimental
   "call dein#add('reedes/vim-lexical')
   call dein#add('elixir-editors/vim-elixir')
+  call dein#add('tpope/vim-unimpaired')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -73,6 +74,7 @@ endfun
 
 "GitGutter
 set updatetime=100
+nmap ghs <Plug>(GitGutterStageHunk)  " <Leader>hs stopped working. Use vimdiff to do more complicated stuff
 
 "Ripgrep integration
 if executable("rg")
@@ -256,7 +258,7 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Recognise Filetypes (autocmd)
 " others done automatically, check with :set ft
-autocmd BufNewFile,BufRead Dockerfile* set syntax=Dockerfile
+autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
 autocmd BufRead,BufNewFile *.txt     set ft=text
 autocmd BufRead,BufNewFile *.coffee  set ft=coffee
 autocmd BufRead,BufNewFile *.jade    set ft=jade
