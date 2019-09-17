@@ -9,6 +9,7 @@ export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
 export EDITOR=vim
 export SVN_EDITOR=vim
+export HISTFILESIZE=5000
 export HISTSIZE=10000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 
@@ -39,6 +40,11 @@ alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias top="top -s1 -o cpu -R -F"
 alias torrent-search="we-get " # Use with `webtorrent` for downloading
 alias webtorrent="webtorrent --not-on-top --keep-seeding "
+
+# Python package
+list-py-reqs(){
+    grep --include \*.py -r 'import' * -h | awk -F '[.[:space:]]' '{print $2}' | sort -u
+}
 
 # fast file filtering
 lsg(){

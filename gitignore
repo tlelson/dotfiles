@@ -7,18 +7,18 @@ commit_spoofer.sh
 *.swo
 node_modules
 bundle/
-/.idea/
+.idea/
 *.sln
 *.pyproj
 # Python stuff
 __pycache__/
 .pytest_cache/
-/.ipynb_checkpoints/
+.ipynb_checkpoints/
 *checkpoint.ipynb
-/dist/
-/build/
-/*.egg-info
-/*.egg
+dist/
+build/
+*.egg-info/
+*.egg
 .cache/
 Untitled*.ipynb
 *.pyc
