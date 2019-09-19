@@ -75,6 +75,7 @@ endfun
 "GitGutter
 set updatetime=100
 nmap ghs <Plug>(GitGutterStageHunk)  " <Leader>hs stopped working. Use vimdiff to do more complicated stuff
+nmap ghu <Plug>(GitGutterUndoHunk)
 
 "Ripgrep integration
 if executable("rg")
@@ -351,31 +352,6 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteEnable'
   endif
 endfunction
-
-" MOVE SPLITS - \mw to mark first window, \pw to mark and swap with the second
-"function! MarkWindowSwap()
-    "let g:markedWinNum = winnr()
-"endfunction
-"function! DoWindowSwap()
-    ""Mark destination
-    "let curNum = winnr()
-    "let curBuf = bufnr( "%" )
-    "exe g:markedWinNum . "wincmd w"
-    ""Switch to source and shuffle dest->source
-    "let markedBuf = bufnr( "%" )
-    ""Hide and open so that we aren't prompted and keep history
-    "exe 'hide buf' curBuf
-    ""Switch to dest and shuffle source->dest
-    "exe curNum . "wincmd w"
-    ""Hide and open so that we aren't prompted and keep history
-    "exe 'hide buf' markedBuf
-"endfunction
-"nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
-"nmap <silent> <leader>sw :call DoWindowSwap()<CR>"
-
-" Making it faster to set paste mode
-" Option 1 - map pastetoggle to a key
-"set pastetoggle=<F2>
 
 " Option 2 - Auto paste toggle before and after paste
 let &t_SI .= "\<Esc>[?2004h"
