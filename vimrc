@@ -77,12 +77,16 @@ set updatetime=100
 nmap ghs <Plug>(GitGutterStageHunk)  " <Leader>hs stopped working. Use vimdiff to do more complicated stuff
 nmap ghu <Plug>(GitGutterUndoHunk)
 
+" Searching
+" :Ack
 "Ripgrep integration
 if executable("rg")
     let g:ackprg = 'rg --vimgrep --no-heading'
     set grepprg=rg\ --vimgrep\ --no-heading
     set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
+" :Rg (comes from fzf-vim)
+"let g:fzf_layout = { 'down': '~20%' }
 
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key
