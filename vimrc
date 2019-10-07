@@ -87,6 +87,14 @@ if executable("rg")
 endif
 " :Rg (comes from fzf-vim)
 "let g:fzf_layout = { 'down': '~20%' }
+"Redefine Rg command to allow rg arguments to pass through
+" such as `-tyaml` for yaml files or `-F` for literal strings
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>),
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 " Auto-Pairs
 " the line below wrapps a word witout the default Meta key
