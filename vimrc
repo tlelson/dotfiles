@@ -36,16 +36,13 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround.git')
   call dein#add('Glench/Vim-Jinja2-Syntax')
-  call dein#add('mileszs/ack.vim')
   call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
-  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  })
-  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })  " See fzf config in mybashrc
   call dein#add('eL0ck/vim-code-dark')
+  call dein#add('tpope/vim-unimpaired')
 
   " Experimental
   "call dein#add('reedes/vim-lexical')
   call dein#add('elixir-editors/vim-elixir')
-  call dein#add('tpope/vim-unimpaired')
 
   " You can specify revision/branch/tag.
   "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
@@ -96,7 +93,7 @@ endif
 " such as `-tyaml` for yaml files or `-F` for literal strings
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>),
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
