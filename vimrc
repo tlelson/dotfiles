@@ -15,6 +15,11 @@ if dein#load_state('~/.vim')
   call dein#add('~/.vim/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
+  " General
+  call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  })
+  call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })  " See fzf config in mybashrc
+
+  " Coding
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/neocomplete.vim')

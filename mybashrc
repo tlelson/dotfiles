@@ -116,6 +116,3 @@ gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
-
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

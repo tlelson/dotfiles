@@ -1,6 +1,6 @@
 
 echo "Copying dotfiles into location ..."
-for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors fzf.bash
+for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -40,7 +40,7 @@ echo 'or for debian:'
 echo '    $ sudo apt install -y $(grep -v '#' apt-packs | xargs )'
 
 echo ""
-echo "Note the following packages must be installed from source: [fzf, prettyping]"
+echo "Note the following packages must be installed from source: [prettyping]"
 
 echo ""
 echo "If you're running on WSL.  Fix mounts and permissions with:"
