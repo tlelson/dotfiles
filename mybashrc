@@ -113,6 +113,16 @@ pyclean(){
 # Automatically load into existing session without copy/paste
 gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 
+# My FZF custom settings (.fzf.bash is automatically installed)
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m'
+fif() {
+  if [ ! "$#" -ge 1 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null \
+      | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 \
+      || rg --ignore-case --pretty --context 10 $1 {}"
+}
+
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi

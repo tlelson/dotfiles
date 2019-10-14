@@ -15,11 +15,10 @@ if dein#load_state('~/.vim')
   call dein#add('~/.vim/repos/github.com/Shougo/dein.vim')
 
   " Add or remove your plugins here:
-  " General
+  " You can specify revision/branch/tag.
+  "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0  })
   call dein#add('junegunn/fzf.vim', { 'depends': 'fzf'  })  " See fzf config in mybashrc
-
-  " Coding
   call dein#add('Shougo/neosnippet.vim')
   call dein#add('Shougo/neosnippet-snippets')
   call dein#add('Shougo/neocomplete.vim')
@@ -36,23 +35,22 @@ if dein#load_state('~/.vim')
   call dein#add('tpope/vim-fugitive')
   call dein#add('tpope/vim-surround.git')
   call dein#add('Glench/Vim-Jinja2-Syntax')
-  call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
   call dein#add('eL0ck/vim-code-dark')
   call dein#add('tpope/vim-unimpaired')
 
-  " Experimental
-  "call dein#add('reedes/vim-lexical')
-  call dein#add('elixir-editors/vim-elixir')
-
-  " You can specify revision/branch/tag.
-  "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
-
+  " Lang Specific
+  " Python
+  call dein#add('davidhalter/jedi-vim')
+  " Go
+  "call dein#add('fatih/vim-go')  "then  :GoInstalBinaries
   " TypeScript Stuff
-  call dein#add('leafgarland/typescript-vim')
-  call dein#add('Quramy/tsuquyomi')
-  call dein#add('Quramy/vim-js-pretty-template')
+  "call dein#add('leafgarland/typescript-vim')
+  "call dein#add('Quramy/tsuquyomi')
+  "call dein#add('Quramy/vim-js-pretty-template')
   "call dein#add('pangloss/vim-javascript')  " DONOT USE, BREAKS tsuquyomi !!
   "call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
+
+  " Experimental
 
   " Required:
   call dein#end()
