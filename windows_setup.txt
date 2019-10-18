@@ -10,11 +10,12 @@ WSL/MINTTY
     - Get copy gruvbox theme into `config` file:
         - https://github.com/morhetz/gruvbox-contrib/blob/master/mintty/gruvbox.minttyrc
         - C:\Users\timle\AppData\Roaming\wsltty\config
-    - Set options like you want:
+    - Set options like you want (or wait and get the config file from dotfiles):
         - Block Cursor
-        - 11pt Consolas Font
+        - 11pt DejaVu Sans Mono Font
         - All shortcut boxes ticked
         - Disable bell ticks by:
+        - No scroll bar
     - [DEPRICATED]: Make directory in windows user space to act as linux home dir
         - [WHY]:
             - Most of that stuff is linux specific.
@@ -26,4 +27,7 @@ WSL/MINTTY
         - Change your home dir in `etc/passwd`
         - Reboot
 
-    3.  Install miniconda
+    3.  Carry on as ususal in Linux:
+        - Install miniconda
+        - Get Dotfiles
+        ... etc

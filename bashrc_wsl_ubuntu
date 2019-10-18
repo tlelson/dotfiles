@@ -24,7 +24,7 @@ unset __conda_setup
 # Work inside general conda env (TODO logicl to handle it not existing)
 conda activate general
 
-# Start tmux
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux attach
-fi
+# Start tmux by default and attach to existing session if available (conf in tmux.conf)
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  #exec tmux attach
+#fi
