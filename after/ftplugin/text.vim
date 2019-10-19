@@ -8,5 +8,5 @@ set shiftwidth=4
 set softtabstop=4
 set noscrollbind
 " Set textwidth slightly less than width of half screen terminal
-set textwidth=124  " Wider screen on the windows box"
+set textwidth=123  " Wider screen on the windows box"
 
