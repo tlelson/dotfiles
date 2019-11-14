@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 
+# TODO: Change to Plug
 echo "Setting up vim with Dein: "
 echo "Installing Dein ... "
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 bash installer.sh ~/.vim
 rm -f installer.sh
+
+# Setup for YCM (ubuntu)
+#sudo apt install -y cmake python3-dev build-essential
 
 echo "Copying vimrc"
 for file in vimrc

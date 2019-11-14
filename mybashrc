@@ -41,6 +41,7 @@ alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias top="top -s1 -o cpu -R -F"
 alias torrent-search="we-get " # Use with `webtorrent` for downloading
 alias webtorrent="webtorrent --not-on-top --keep-seeding "
+alias recent="find  -maxdepth 1 -mtime -1 "
 
 # Python package
 list-py-reqs(){
@@ -125,4 +126,9 @@ fif() {
 
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
+fi
+
+# Reduce need to Get session creds multiple times for each shell
+if [ -f /tmp/awscreds ]; then
+    source /tmp/awscreds
 fi
