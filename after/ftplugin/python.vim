@@ -8,7 +8,7 @@
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_python_checkers=['flake8']
-let g:syntastic_python_flake8_args=' --ignore=E501'
+let g:syntastic_python_flake8_args=' --ignore=E501,W503'
 
 set textwidth=0  " lines longer than this columns will be broken, ignoring PEP8 error for +80
 set shiftwidth=4  " operation >> indents 4 columns; << unindents 4 columns
