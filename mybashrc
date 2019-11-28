@@ -118,7 +118,8 @@ gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m'
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -20'"
-export FZF_COMPLETION_OPTS="--preview 'head -10 {}'"
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}'"
+export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}'"
 fif() {
   if [ ! "$#" -ge 1 ]; then echo "Need a string to search for!"; return 1; fi
   rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null \

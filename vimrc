@@ -31,6 +31,10 @@ Plug 'simnalamburt/vim-mundo'
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
+" Spell checking: Ctrl-f moves to the next error and chooses the first suggestion
+imap <c-f> <c-g>u<Esc>]s1z=`]a<c-g>u
+nmap <c-f> ]s1z=<c-o>
+
 " Auto paste toggle before and after paste - Never Remove!!
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
