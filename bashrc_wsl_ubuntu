@@ -29,5 +29,5 @@ conda activate general
   #exec tmux attach
 #fi
 
-# Edith GO ENV 
-source ~/.edith.env
+# Edith GO ENV
+#source ~/.edith.env

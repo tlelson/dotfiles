@@ -3,7 +3,8 @@ LTGREEN="\[\033[40;1;32m\]"
 LTBLUE="\[\033[40;1;34m\]"
 CLEAR="\[\033[0m\]"
 LIGHT_GRAY="\[\033[40;1;33m\]"
-export PS1="$LTGREEN\u$LTBLUE@\h:$LIGHT_GRAY\W$CLEAR ❯ "
+#export PS1="$LTGREEN\u$LTBLUE@\h:$LIGHT_GRAY\W$CLEAR ❯ "
+export PS1="$LIGHT_GRAY\W$CLEAR ❯ "
 
 export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
@@ -89,6 +90,16 @@ weather(){
     fi
 }
 
+timestampe_to_iso(){
+    if [ "$#" -lt 1 ]
+    then
+      echo "Usage:  timestamp_to_iso 1575551200"
+    else
+      #echo ${1}
+      python -c "from datetime import datetime, timezone; print(datetime.fromtimestamp(${1}, tz=timezone.utc).isoformat(sep=' ', timespec='minutes'))"
+    fi
+}
+
 refactor_recursive(){
     # Usage: refactor_recursive <word to replace> <new word>
     # Will recurse into any subdirectories
@@ -108,6 +119,7 @@ pyclean(){
     find . -name 'build' | xargs rm -rf
     find . -name 'dist' | xargs rm -rf
     find . -name '*.pyc' | xargs rm -f
+    find . -name '*.pytest_cache' | xargs rm -f
 }
 
 # Get AWS Credentials
