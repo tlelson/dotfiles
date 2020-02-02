@@ -4,9 +4,13 @@ hugo
 jq
 mosh
 ncdu
-ripgrep
+#ripgrep
 tig
 tldr
 tree
 unrar
 vnstat
+vim-nox
+cmake
+python3-dev
+build-essential

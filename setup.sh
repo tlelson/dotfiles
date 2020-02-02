@@ -17,7 +17,7 @@ done
 
 # Set use my bash config
 echo "Sourcing '~/.mybashrc' from system '~/.bashrc' ... "
-echo "source ~/.mybashrc" >> .~/.bashrc
+echo "source ~/.mybashrc" >> ~/.bashrc
 
 # Setup Ipython preferences
 # Notice that two files go up.  The higher one has access to the `c` config object
@@ -33,16 +33,6 @@ git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
 
-echo "To configure your required applications use:"
-echo 'for MacOS'
-echo '    $ brew install $(cat brew-leaves.out)'
-echo 'or for debian:'
-echo '    $ sudo apt update && sudo apt update -y'
-echo '    $ sudo apt install -y $(grep -v "#" apt-packs | xargs )'
-
-echo ""
-echo "Note the following packages must be installed from source: [prettyping]"
-
-echo ""
-echo "If you're running on WSL.  Fix mounts and permissions with:"
-echo "  $ cp etc_wsl.conf /etc/wsl.conf"
+echo "Run the setup script for your system:"
+echo "	- setup_wsl.sh"
+echo " 	... more to come ..."

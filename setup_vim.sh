@@ -15,9 +15,6 @@ echo 'Setting up vim with `junegunn/vim-plug` .... '
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# Setup for YCM (ubuntu)
-#sudo apt install -y cmake python3-dev build-essential
-
 echo "Copying vimrc"
 for file in vimrc
 do
@@ -34,11 +31,6 @@ do
     fi
 done
 
-
-# Color schemes
-#git clone https://github.com/lifepillar/vim-solarized8.git ~/.vim/pack/themes/opt/solarized8
-#git clone https://github.com/Tumbler/oceannight.git ~/.vim/pack/themes/opt/oceannight
-#git clone https://github.com/sainnhe/vim-color-lost-shrine.git ~/.vim/pack/themes/opt/vim-color-lost-shrine
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
 echo "      for ubuntu install: "
