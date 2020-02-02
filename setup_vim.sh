@@ -1,11 +1,19 @@
 #!/usr/bin/env bash
 
-# TODO: Change to Plug
-echo "Setting up vim with Dein: "
-echo "Installing Dein ... "
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
-bash installer.sh ~/.vim
-rm -f installer.sh
+# Setup Plugin manager
+echo "Making a .vim/ for file specific settings"
+if [ -d ~/.vim ];
+    then
+        echo "~/.vim already exists";
+    else
+        echo "~/.vim does not exist or is not a directory.";
+        rm -rf ~/.vim
+        mkdir ~/.vim
+fi
+ln -s $(pwd)/after ~/.vim/after
+echo 'Setting up vim with `junegunn/vim-plug` .... '
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Setup for YCM (ubuntu)
 #sudo apt install -y cmake python3-dev build-essential
@@ -26,21 +34,11 @@ do
     fi
 done
 
-echo "Making a .vim/ for file specific settings"
-if [ -d ~/.vim ];
-    then
-        echo "~/.vim already exists";
-    else
-        echo "~/.vim does not exist or is not a directory.";
-        rm -rf ~/.vim
-        mkdir ~/.vim
-fi
-ln -s $(pwd)/after ~/.vim/after
 
 # Color schemes
-git clone https://github.com/lifepillar/vim-solarized8.git ~/.vim/pack/themes/opt/solarized8
-git clone https://github.com/Tumbler/oceannight.git ~/.vim/pack/themes/opt/oceannight
-git clone https://github.com/sainnhe/vim-color-lost-shrine.git ~/.vim/pack/themes/opt/vim-color-lost-shrine
+#git clone https://github.com/lifepillar/vim-solarized8.git ~/.vim/pack/themes/opt/solarized8
+#git clone https://github.com/Tumbler/oceannight.git ~/.vim/pack/themes/opt/oceannight
+#git clone https://github.com/sainnhe/vim-color-lost-shrine.git ~/.vim/pack/themes/opt/vim-color-lost-shrine
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
 echo "      for ubuntu install: "
@@ -49,6 +47,4 @@ echo "         apt-get update"
 echo "         apt install vim-nox"
 echo "      for mac: brew install vim --with-lua"
 echo "2.    Open vim and do the followining to get bundles:"
-echo "      :call dein#install()"
-echo "      (if dein says the plugins are already installed then automatic
-installation is configured)"
+echo "          :PlugInstall"

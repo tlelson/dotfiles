@@ -19,22 +19,20 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' , 'for': ['python', 'c', 'go']}
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'simnalamburt/vim-mundo'
+Plug 'ludovicchabant/vim-gutentags'
+"Plug 'terryma/vim-multiple-cursors'  " Think this is slowing crashing vim
 
 "Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'rickhowe/diffchar.vim'  " Good for vimdiff, how does it go with other plugins?
 
 " To test
 "Plug 'fatih-vim-go', { 'for': 'go' , 'do': ':GoInstallBinaries' }
-Plug 'simnalamburt/vim-mundo'
+"Plug 'lepture/vim-jinja'
 
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
-" Spell checking: Ctrl-f moves to the next error and chooses the first suggestion
-imap <c-f> <c-g>u<Esc>]s1z=`]a<c-g>u
-nmap <c-f> ]s1z=<c-o>
-
 " Auto paste toggle before and after paste - Never Remove!!
 let &t_SI .= "\<Esc>[?2004h"
 let &t_EI .= "\<Esc>[?2004l"
@@ -167,7 +165,7 @@ xmap <C-j>     <Plug>(neosnippet_expand_target)
 " Limelight
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_default_coefficient = 0.5
-let g:limelight_paragraph_span = 1
+let g:limelight_paragraph_span = 0
 "autocmd VimEnter * Limelight  " On by default
 
 "GitGutter
