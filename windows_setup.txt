@@ -7,27 +7,16 @@ Get:
 
 WSL/MINTTY
     - Download mintty
-    - Get copy gruvbox theme into `config` file:
-        - https://github.com/morhetz/gruvbox-contrib/blob/master/mintty/gruvbox.minttyrc
-        - C:\Users\timle\AppData\Roaming\wsltty\config
     - Set options like you want (or wait and get the config file from dotfiles):
         - Block Cursor
         - 11pt DejaVu Sans Mono Font
         - All shortcut boxes ticked
         - Disable bell ticks by:
         - No scroll bar
-    - [DEPRICATED]: Make directory in windows user space to act as linux home dir
-        - [WHY]:
-            - Most of that stuff is linux specific.
-            - things that are required accross multiple systems are stored in `Documents/linux-shared-resources`
+        Alternatively - use someone elses from here:
+            - https://github.com/morhetz/gruvbox-contrib/blob/master/mintty/gruvbox.minttyrc
+            - C:\Users\timle\AppData\Roaming\wsltty\config
 
     Inside Linux
-        - Fix WSL mounts of external drives (eg /c/ not /mnt/c/) and file permissions by copying `etc_wsl.conf`
-        into place at `/etc/wsl.conf`  (instructions in `setup.sh`)
-        - Change your home dir in `etc/passwd`
-        - Reboot
+        Refer to 'machine_change.txt' in notes repo
 
-    3.  Carry on as ususal in Linux:
-        - Install miniconda
-        - Get Dotfiles
-        ... etc
