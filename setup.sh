@@ -37,7 +37,8 @@ echo "To configure your required applications use:"
 echo 'for MacOS'
 echo '    $ brew install $(cat brew-leaves.out)'
 echo 'or for debian:'
-echo '    $ sudo apt install -y $(grep -v '#' apt-packs | xargs )'
+echo '    $ sudo apt update && sudo apt update -y'
+echo '    $ sudo apt install -y $(grep -v "#" apt-packs | xargs )'
 
 echo ""
 echo "Note the following packages must be installed from source: [prettyping]"

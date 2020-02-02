@@ -22,3 +22,6 @@
 	recurse = true
 [rebase]
 	autosquash = true
+[user]
+	email = tim.l.elson@gmail.com
+	name = tim
