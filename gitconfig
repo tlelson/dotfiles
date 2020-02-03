@@ -19,9 +19,6 @@
         ci = commit
         latestcommit = git rev-parse origin/master
 [submodule]
-	recurse = true
+    recurse = true
 [rebase]
-	autosquash = true
-[user]
-	email = tpj800@gmail.com
-	name = eL0ck
+    autosquash = true
