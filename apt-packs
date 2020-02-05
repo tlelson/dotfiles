@@ -4,7 +4,6 @@ hugo
 jq
 mosh
 ncdu
-#ripgrep
 tig
 tldr
 tree
@@ -14,3 +13,5 @@ vim-nox
 cmake
 python3-dev
 build-essential
+#ripgrep
+#fzf  (installed by vim, just make sure bin is in path)

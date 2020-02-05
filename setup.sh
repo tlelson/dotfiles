@@ -1,6 +1,6 @@
 
 echo "Copying dotfiles into location ..."
-for file in mybashrc  bash_profile  htoprc gitconfig  tmux.conf gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors
+for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors fzf.bash
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -34,5 +34,5 @@ ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
 
 echo "Run the setup script for your system:"
-echo "	- setup_wsl.sh"
-echo " 	... more to come ..."
+echo "  - setup_wsl.sh"
+echo "  ... more to come ..."
