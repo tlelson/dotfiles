@@ -10,8 +10,8 @@ tree
 unrar
 vnstat
 vim-nox
-cmake
-python3-dev
-build-essential
+cmake               # For YCM
+python3-dev         # For YCM
+build-essential     # For YCM
 #ripgrep
 #fzf  (installed by vim, just make sure bin is in path)

@@ -16,7 +16,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --all' , 'for': ['python', 'c', 'go']}
+" Install go binary and `apt-packs` before installing YCM
+"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' , 'for': ['python', 'c', 'go']}
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
 Plug 'simnalamburt/vim-mundo'
@@ -211,6 +212,8 @@ map <F3> :NERDTreeToggle<CR>
 " Don't do the following remap. YCM uses the jumplist not the taglist
 " but its an example of a remap
 "map <c-]> :YcmCompleter GoToDefinition<CR>
+let g:ycm_auto_trigger = 0      " Require <C-Space> to show completion options. `1` shows automatically
+let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 set  completeopt=menuone  " Remove `preview` window by default
