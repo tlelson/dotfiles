@@ -16,7 +16,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-" Install go binary and `apt-packs` before installing YCM
+" YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
+" Install go binary and `apt-packs` BEFORE installing YCM
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' , 'for': ['python', 'c', 'go']}
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
@@ -30,6 +31,7 @@ Plug 'ludovicchabant/vim-gutentags'
 " To test
 "Plug 'fatih-vim-go', { 'for': 'go' , 'do': ':GoInstallBinaries' }
 "Plug 'lepture/vim-jinja'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 

@@ -9,4 +9,4 @@ set shiftwidth=4
 set softtabstop=4
 set noscrollbind
 set textwidth=80
-autocmd VimEnter * Limelight  " On by default
+"autocmd VimEnter * Limelight  " On by default
