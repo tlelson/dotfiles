@@ -12,10 +12,9 @@ Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'vim-airline/vim-airline'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+"Plug 'Xuyuanp/nerdtree-git-plugin'  " MUST DISABLE for large typescript repos
+Plug 'airblade/vim-gitgutter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 " Install go binary and `apt-packs` BEFORE installing YCM
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' , 'for': ['python', 'c', 'go']}
@@ -23,15 +22,14 @@ Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
 Plug 'simnalamburt/vim-mundo'
 Plug 'ludovicchabant/vim-gutentags'
-"Plug 'terryma/vim-multiple-cursors'  " Think this is slowing crashing vim
-
-"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-"Plug 'rickhowe/diffchar.vim'  " Good for vimdiff, how does it go with other plugins?
+Plug 'leafgarland/typescript-vim'
 
 " To test
 "Plug 'fatih-vim-go', { 'for': 'go' , 'do': ':GoInstallBinaries' }
 "Plug 'lepture/vim-jinja'
-Plug 'leafgarland/typescript-vim'
+"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+"Plug 'rickhowe/diffchar.vim'  " Good for vimdiff, how does it go with other plugins?
+
 
 call plug#end()
 
