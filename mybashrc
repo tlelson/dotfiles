@@ -157,3 +157,7 @@ fi
 if [ -f /tmp/awscreds ]; then
     source /tmp/awscreds
 fi
+
+if [ -f ~/.project_envs ]; then
+    source ~/.project_envs
+fi
