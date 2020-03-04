@@ -1,9 +1,9 @@
 set textwidth=0
 
-set tabstop=8
-set expandtab
+"set tabstop=8
+"set expandtab
 set shiftwidth=2
-set softtabstop=2
+"set softtabstop=2
 
 " CONVERT TO HTML AND DISPLAY IN SPLIT
 " need to $ npm install -g jade
@@ -16,7 +16,7 @@ function! JadeToHTMLWorker()
   let s:html_file = substitute(cleaned_name, '\(.*\)\.jade$', '/tmp/\1.html', '')
   echo s:html_file
   let shellcmd = "jade -o /tmp % 2> ".s:html_file
-  silent execute '!'.shellcmd  
+  silent execute '!'.shellcmd
   redraw!
   execute 'vsplit' s:html_file
 endfunction
@@ -27,7 +27,7 @@ function! JadeToHTML()
     execute ":%s/<[^>]*>/\r&\r/ge" | execute ":silent! %g/^$/d"
     normal gg=G
     execute "w"
-endfunction    
+endfunction
 
 "nmap <silent> <leader>ty :call Hex2dec()<CR>
 command! ToHTML :call JadeToHTML()
