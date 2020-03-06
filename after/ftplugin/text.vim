@@ -9,5 +9,5 @@ set softtabstop=4
 set noscrollbind
 " Set textwidth slightly less than width of half screen terminal
 set textwidth=123  " Wider screen on the windows box"
-autocmd VimEnter * Limelight  " On by default
+"autocmd VimEnter * Limelight  " On by default
 

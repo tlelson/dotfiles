@@ -1,3 +1,5 @@
+curl            # ubu native
+xclip           # for tmux copy on ubuntu native
 exuberant-ctags
 htop
 hugo
@@ -15,3 +17,4 @@ python3-dev         # For YCM
 build-essential     # For YCM
 #ripgrep
 #fzf  (installed by vim, just make sure bin is in path)
+bat                 # Used by fzf and rg for previews

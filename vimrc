@@ -6,8 +6,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'eL0ck/vim-code-dark'
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/fzf', { 'build': './install --all', 'merged': 0  }
+"Plug 'junegunn/limelight.vim'
+Plug 'junegunn/fzf', { 'do': './install --all'}
 Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
@@ -17,8 +17,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
-"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' , 'for': ['python', 'c', 'go']}
 " Install go binary, `apt-packs` and nodejs BEFORE installing YCM
+"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer' , 'for': ['python', 'c', 'go']}
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
 Plug 'simnalamburt/vim-mundo'
@@ -128,6 +128,10 @@ color codedark
 "let g:seoul256_background = 234
 "color seoul256
 set hlsearch "hilight search
+" Should these be in the color scheme ??
+highlight Normal ctermbg=none      " Use the terminal background
+highlight LineNr ctermbg=none
+"highlight NonText ctermbg=none
 
 " Configure code folding
 set foldmethod=indent
@@ -157,7 +161,6 @@ autocmd BufRead,BufNewFile *.ts      set ft=typescript
 "autocmd BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<  " Use with :set list to see whitespace
-
 " ------------------- Plugin Settings -------------------
 " NEOSNIPPETS - default is <C-k> but need this for symbols
 imap <C-j>     <Plug>(neosnippet_expand_or_jump)
@@ -165,9 +168,9 @@ smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 
 " Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_default_coefficient = 0.5
-let g:limelight_paragraph_span = 0
+"let g:limelight_conceal_ctermfg = 'gray'
+"let g:limelight_default_coefficient = 0.5
+"let g:limelight_paragraph_span = 0
 "autocmd VimEnter * Limelight  " On by default
 
 "GitGutter

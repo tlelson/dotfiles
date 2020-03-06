@@ -6,10 +6,10 @@ fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/home/timbo/.vim/plugged/fzf/shell/completion.bash" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME/.vim/plugged/fzf/shell/completion.bash" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/home/timbo/.vim/plugged/fzf/shell/key-bindings.bash"
+source "$HOME/.vim/plugged/fzf/shell/key-bindings.bash"
 
 
