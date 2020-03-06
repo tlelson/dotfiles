@@ -1,5 +1,9 @@
-curl            # ubu native
-xclip           # for tmux copy on ubuntu native
+## N.B! any line with a # anywhere will be skipped!!
+# Ubu native packs
+curl
+xclip
+
+# WSL or UBU
 exuberant-ctags
 htop
 hugo
@@ -12,9 +16,13 @@ tree
 unrar
 vnstat
 vim-nox
-cmake               # For YCM
-python3-dev         # For YCM
-build-essential     # For YCM
+bat
+
+# For YCM
+cmake
+python3-dev
+build-essential
+
+# Install manually
 #ripgrep
 #fzf  (installed by vim, just make sure bin is in path)
-bat                 # Used by fzf and rg for previews

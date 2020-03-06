@@ -117,7 +117,7 @@ pyclean(){
     find . -name 'build' | xargs rm -rf
     find . -name 'dist' | xargs rm -rf
     find . -name '*.pyc' | xargs rm -f
-    find . -name '*.pytest_cache' | xargs rm -f
+    find . -name '*.pytest_cache' | xargs rm -rf
 }
 
 # Get AWS Credentials
