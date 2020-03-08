@@ -1,6 +1,6 @@
 
 echo "Copying dotfiles into location ..."
-for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors fzf.bash
+for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local dircolors dir_colors fzf.bash
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?

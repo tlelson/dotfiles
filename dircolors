@@ -1,3 +1,8 @@
+# TIMS Notes:
+#   If colors seem dull or hard to see make sure your terminal emulator has:
+#       - Built-in color scheme set to 'Solarized'
+#       - 'Show bold as bright colors'
+#
 # Exact Solarized Dark color theme for the color GNU ls utility.
 # Designed for dircolors (GNU coreutils) 5.97
 #
