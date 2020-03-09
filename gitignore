@@ -25,6 +25,7 @@ Untitled*.ipynb
 
 # Compiled source #
 ###################
+app     # The name i compile go apps to test them locally
 *.com
 *.pyr
 *.class
