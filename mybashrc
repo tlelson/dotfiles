@@ -1,10 +1,9 @@
 #PS1="[\u@\h \W]# "
-LTGREEN="\[\033[40;1;32m\]"
-LTBLUE="\[\033[40;1;34m\]"
-CLEAR="\[\033[0m\]"
-LIGHT_GRAY="\[\033[40;1;33m\]"
-#export PS1="$LTGREEN\u$LTBLUE@\h:$LIGHT_GRAY\W$CLEAR ❯ "
-export PS1="$LIGHT_GRAY\W$CLEAR ❯ "
+GREEN='\033[1;32m'
+RED='\033[0;31m'
+NC='\033[0m'
+export PS1="${GREEN}\W ${RED}❯${NC} "
+
 
 export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
@@ -37,7 +36,6 @@ alias speedtestlocal="wget --report-speed=bits -O /dev/null http://192.168.0.1/s
 alias tree="tree -C -L 3 " # Limit depth to 3
 alias fullcurl="curl -sSL -D - " # Sick of not seeing any info
 alias prettyping="prettyping --nolegend "
-alias vlc='/usr/local/Caskroom/vlc/2.2.1/VLC.app/Contents/MacOS/VLC'
 alias top="top -s1 -o cpu -R -F"
 alias torrent-search="we-get " # Use with `webtorrent` for downloading
 alias webtorrent="webtorrent --not-on-top --keep-seeding "

@@ -216,7 +216,7 @@ map <F3> :NERDTreeToggle<CR>
 " Don't do the following remap. YCM uses the jumplist not the taglist
 " but its an example of a remap
 "map <c-]> :YcmCompleter GoToDefinition<CR>
-let g:ycm_auto_trigger = 0      " Require <C-Space> to show completion options. `1` shows automatically
+let g:ycm_auto_trigger = 1      " Require <C-Space> to show completion options. `1` shows automatically
 let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
