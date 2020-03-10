@@ -1,3 +1,7 @@
+alias open='xdg-open '
+
+export LS_COLORS="$(vivid generate molokai)"
+
 ## This stuff is Automatically Appended but needs to happen before conda env is activated
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
