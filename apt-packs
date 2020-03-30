@@ -17,6 +17,7 @@ unrar
 vnstat
 vim-nox
 bat
+pv
 
 # For YCM
 cmake

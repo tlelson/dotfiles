@@ -1,7 +1,7 @@
 #PS1="[\u@\h \W]# "
-GREEN='\033[1;32m'
-RED='\033[0;31m'
-NC='\033[0m'
+GREEN='\[\033[1;32m\]'
+RED='\[\033[0;31m\]'
+NC='\[\033[0m\]'
 export PS1="${GREEN}\W ${RED}❯${NC} "
 
 
@@ -40,7 +40,8 @@ alias top="top -s1 -o cpu -R -F"
 alias torrent-search="we-get " # Use with `webtorrent` for downloading
 alias webtorrent="webtorrent --not-on-top --keep-seeding "
 alias recent="find  -maxdepth 1 -mtime -1 "
-alias rgall='rg -L --hidden --no-ignore '
+alias rg='rg -L '
+alias rgall='rg --hidden --no-ignore '
 
 # Python package
 list-py-reqs(){
@@ -128,7 +129,7 @@ gac(){ for i in "$( get-aws-creds "$@" --quiet)"; do eval "${i}"; done;}
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=${PATH}:~/.vim/plugged/fzf/bin
 
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden '
+export FZF_DEFAULT_COMMAND='rg -i -L --files --no-ignore-vcs --hidden '
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'"  # --preview-window down:3:hidden:wrap
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m  --exact --tiebreak=length'  # --algo=v1'  #
 export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "

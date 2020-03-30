@@ -6,21 +6,20 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'eL0ck/vim-code-dark'
 Plug 'junegunn/seoul256.vim'
-"Plug 'junegunn/limelight.vim'
 Plug 'junegunn/fzf', { 'do': './install --all'}
 Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet.vim'  " Only seem to use these for ipdb
+Plug 'Shougo/neosnippet-snippets'  " As above 
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'  " MUST DISABLE for large typescript repos
+Plug 'Xuyuanp/nerdtree-git-plugin', " MUST DISABLE for large typescript repos
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 " Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer' , 'for': ['python', 'c', 'go']}
-Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'
+"Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'simnalamburt/vim-mundo'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'leafgarland/typescript-vim'
@@ -62,7 +61,7 @@ endif
 " such as `-tyaml` for yaml files or `-F` for literal strings
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
+  \   'rg -L --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
@@ -81,7 +80,7 @@ set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use in
 nmap ; :
 
 function JSON()
-    execute ":%!python -m json.tool"
+    execute ":%!python -m json.tool --sort-keys"
 endfun
 command JSON call JSON()
 function DictToJson()
@@ -89,7 +88,7 @@ function DictToJson()
     %s/ False/ "False"/ge                 " ... here use the 'e'
     %s/u'/"/g
     %s/'/"/g
-    execute ":%!python -m json.tool"
+    execute ":%!python -m json.tool --sort-keys"
 endfun
 command DictToJson call DictToJson()
 
@@ -110,15 +109,17 @@ vnoremap > >gv
 " Trying below:
 " UPDATE: Fails but leaving it in
 function! <SID>StripTrailingWhitespaces()
-    retab
+    %retab!
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
     call cursor(l, c)
 endfun
 "Disabling for work with Ian
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+" Use tab to complete file paths rather than default 
+"inoremap <Tab> <C-X><C-F> 
 
 "------------------- Style/Appearance ----------------------------------------
 color codedark
@@ -138,13 +139,13 @@ set foldmethod=indent
 set foldnestmax=10
 set foldlevel=1
 
-" Override this for filetypes
-set tabstop=4
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-set noscrollbind
+" Default here: Override this for filetypes 
+" New policy is to just leave whatever space exists be (tab or space)
+set tabstop=4  		" Size of a tab
+set shiftwidth=4  	" Size of indentation operation
+" set expand tab 	" Converts tabs to spaces
 
+set noscrollbind
 set cindent
 set autoindent
 
@@ -167,11 +168,9 @@ imap <C-j>     <Plug>(neosnippet_expand_or_jump)
 smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-j>     <Plug>(neosnippet_expand_target)
 
-" Limelight
-"let g:limelight_conceal_ctermfg = 'gray'
-"let g:limelight_default_coefficient = 0.5
-"let g:limelight_paragraph_span = 0
-"autocmd VimEnter * Limelight  " On by default
+" fatih/vim-go
+let g:go_fmt_autosave = 0  " Use the autocmd in go.vim
+"let g:go_fmt_autoclose = 1  " Trying experimental setting
 
 "GitGutter
 set updatetime=100
@@ -221,6 +220,17 @@ let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 set  completeopt=menuone  " Remove `preview` window by default
+let g:ycm_filetype_blacklist = {
+      \ 'nerdtree': 1,  
+      \ 'tagbar': 1,
+      \ 'netrw': 1,
+      \ 'unite': 1,
+      \ 'vimwiki': 1,
+      \ 'pandoc': 1,
+      \ 'infolog': 1,
+      \ 'leaderf': 1,
+      \ 'mail': 1
+      \}
 map K :YcmCompleter GetDoc<CR>
 
 " SYNTASTIC

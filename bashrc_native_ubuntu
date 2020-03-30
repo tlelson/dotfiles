@@ -1,6 +1,7 @@
 alias open='xdg-open '
+alias pbcopy='xclip -selection clipboard '
 
-export LS_COLORS="$(vivid generate molokai)"
+export LS_COLORS=$(vivid generate solarized-dark)  # molokai
 
 ## This stuff is Automatically Appended but needs to happen before conda env is activated
 # >>> conda initialize >>>
