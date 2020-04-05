@@ -73,6 +73,8 @@ nmap <c-f> ]s1z=<c-o>
 " The following line keep the current register after you put it (multiple pastes)
 vnoremap p "_dP
 set tags=.tags "this is where pytags alias in bashrc is saving them
+" Below allows tag to open in a new tab - from naveen
+nnoremap <space><C-]> :tab tag <C-r><C-w><CR>  
 if &diff == 'nodiff'
     set shellcmdflag=-c
 endif
