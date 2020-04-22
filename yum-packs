@@ -5,7 +5,7 @@ curl
 xclip
 
 # WSL or UBU
-exuberant-ctags
+#exuberant-ctags
 htop
 hugo
 jq
@@ -14,16 +14,16 @@ ncdu
 tig
 tldr
 tree
-unrar
+#unrar
 vnstat
-vim-nox
+#vim-nox
 bat
 pv
 
 # For YCM
 cmake
-python3-dev
-build-essential
+#python3-dev
+#build-essential
 
 # Install manually
 #ripgrep
