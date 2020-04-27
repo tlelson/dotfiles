@@ -18,8 +18,8 @@ Plug 'scrooloose/nerdcommenter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 " Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer' , 'for': ['python', 'c', 'go']}
-Plug 'jiangmiao/auto-pairs'
-"Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
+Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
+Plug 'jiangmiao/auto-pairs'  
 Plug 'simnalamburt/vim-mundo'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'leafgarland/typescript-vim'
@@ -30,6 +30,7 @@ Plug 'leafgarland/typescript-vim'
 "Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 "Plug 'rickhowe/diffchar.vim'  " Good for vimdiff, how does it go with other plugins?
 
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 
 call plug#end()
 
@@ -110,7 +111,8 @@ vnoremap > >gv
 " would be fine if it was set up after all plugins
 " Trying below:
 " UPDATE: Fails but leaving it in
-function! <SID>StripTrailingWhitespaces()
+"function! <SID>StripTrailingWhitespaces()
+function StripTrailingWhitespaces()
     %retab!
     let l = line(".")
     let c = col(".")
@@ -175,9 +177,11 @@ let g:go_fmt_autosave = 0  " Use the autocmd in go.vim
 "let g:go_fmt_autoclose = 1  " Trying experimental setting
 
 "GitGutter
-set updatetime=100
+set updatetime=1000
 "nmap ghs <Plug>(GitGutterStageHunk)  " <Leader>hs stopped working. Use vimdiff to do more complicated stuff
 "nmap ghu <Plug>(GitGutterUndoHunk)
+"let g:gitgutter_log=1 "For debugging issues
+"let g:gitgutter_async=0 "Was failing when trying asyncronoushly
 
 " NERDTREE
 " Open Nerdtree automatically if no files specified
