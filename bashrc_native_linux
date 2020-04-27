@@ -1,0 +1,12 @@
+alias open='xdg-open '
+alias pbcopy='xclip -selection clipboard '
+
+export LS_COLORS=$(vivid generate solarized-dark)  # molokai
+
+# Don't need conda init stuff if you dnf install conda
+conda activate general
+
+# Start tmux by default and attach to existing session if available (conf in tmux.conf)
+#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  #exec tmux attach
+#fi

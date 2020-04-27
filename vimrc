@@ -16,10 +16,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin', " MUST DISABLE for large typescript repos
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
-" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 "Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer' , 'for': ['python', 'c', 'go']}
+" Install go binary, `apt-packs` or `yum-packs` and npm BEFORE installing YCM
+Plug 'jiangmiao/auto-pairs'
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
-Plug 'jiangmiao/auto-pairs'  
 Plug 'simnalamburt/vim-mundo'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'leafgarland/typescript-vim'
