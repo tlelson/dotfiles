@@ -1,7 +1,8 @@
 # Mine #
 ########
 commit_spoofer.sh
-*tags*
+tags
+.tags
 .netrwhist
 *.swp
 *.swo
