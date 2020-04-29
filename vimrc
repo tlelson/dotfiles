@@ -17,19 +17,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdcommenter'
 " YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 " Install go binary, `apt-packs` and nodejs BEFORE installing YCM
-"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer' , 'for': ['python', 'c', 'go']}
+"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'} 
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 Plug 'jiangmiao/auto-pairs'  
-Plug 'simnalamburt/vim-mundo'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'leafgarland/typescript-vim'
-
-" To test
-"Plug 'fatih-vim-go', { 'for': 'go' , 'do': ':GoInstallBinaries' }
-"Plug 'lepture/vim-jinja'
-"Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-"Plug 'rickhowe/diffchar.vim'  " Good for vimdiff, how does it go with other plugins?
-
 Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 
 call plug#end()
@@ -218,9 +209,10 @@ map <F3> :NERDTreeToggle<CR>
 "let NERDTreeDirArrows = 1
 
 " YCM
-" Don't do the following remap. YCM uses the jumplist not the taglist
-" but its an example of a remap
-"map <c-]> :YcmCompleter GoToDefinition<CR>
+" Gutentags not generating under some circumstances, so using Ycm to replace
+" tags. https://github.com/ludovicchabant/vim-gutentags/issues/274
+nnoremap <leader>d :YcmCompleter GoTo<CR>
+map K :YcmCompleter GetDoc<CR>
 let g:ycm_auto_trigger = 1      " Require <C-Space> to show completion options. `1` shows automatically
 let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -237,7 +229,6 @@ let g:ycm_filetype_blacklist = {
       \ 'leaderf': 1,
       \ 'mail': 1
       \}
-map K :YcmCompleter GetDoc<CR>
 
 " SYNTASTIC
 " !! You need the checker to work on the CLI before expecting it to work in file (on write)
