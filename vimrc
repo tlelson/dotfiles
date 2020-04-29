@@ -40,23 +40,6 @@ endfunction
 set nu
 nnoremap <Leader>a :echo "Hey there "<CR>
 
-" Searching
-"Ripgrep integration
-if executable("rg")
-    let g:ackprg = 'rg --vimgrep --no-heading'
-    set grepprg=rg\ --vimgrep\ --no-heading
-    set grepformat=%f:%l:%c:%m,%f:%l:%m
-endif
-" :Rg (comes from fzf-vim)
-"let g:fzf_layout = { 'down': '~20%' }
-"Redefine Rg command to allow rg arguments to pass through
-" such as `-tyaml` for yaml files or `-F` for literal strings
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg -L --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
 " Spell checking: Ctrl-f moves to the next error and chooses the first
 " suggestion
 imap <c-f> <c-g>u<Esc>]s1z=`]a<c-g>u
@@ -248,3 +231,22 @@ let g:syntastic_check_on_wq = 0  " Default off
 " This let you use Ctrl+/ to comment blocks
 nmap <C-_> <leader>c<Space>
 vmap <C-_> <leader>c<Space>
+ 
+" FZF config
+"Ripgrep integration
+if executable("rg")
+    let g:ackprg = 'rg --vimgrep --no-heading'
+    set grepprg=rg\ --vimgrep\ --no-heading
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
+" :Rg (comes from fzf-vim)
+"let g:fzf_layout = { 'down': '~20%' }
+"Redefine Rg command to allow rg arguments to pass through
+" such as `-tyaml` for yaml files or `-F` for literal strings
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg -L --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+let g:fzf_tags_command = 'ctags --exclude=*json -R'
