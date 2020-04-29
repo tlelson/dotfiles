@@ -34,5 +34,6 @@ ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
 
 echo "Run the setup script for your system:"
-echo "  - setup_wsl.sh"
+echo "  - setup_wsl_ubuntu.sh"
+echo "  - setup_native_ubuntu.sh"
 echo "  ... more to come ..."
