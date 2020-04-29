@@ -1,11 +1,8 @@
 ## N.B! any line with a # anywhere will be skipped!!
-# Ubu native packs
 tmux
 curl
 xclip
-
-# WSL or UBU
-#exuberant-ctags
+ctags
 htop
 hugo
 jq
@@ -14,9 +11,7 @@ ncdu
 tig
 tldr
 tree
-#unrar
 vnstat
-#vim-nox
 bat
 pv
 conda
