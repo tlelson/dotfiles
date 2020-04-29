@@ -5,3 +5,9 @@ set textwidth=0  " lines longer than this columns will be broken, ignoring PEP8 
 "set expandtab     " Do not expand to spaces for go
 set tabstop=4       " Display size of a tab
 set shiftwidth=4    " Display size of indentation operation
+
+function GoFormat()
+	call StripTrailingWhitespaces()
+	:YcmCompleter Format
+endfunction
+autocmd BufWritePre * :call GoFormat()
