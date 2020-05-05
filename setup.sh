@@ -33,7 +33,24 @@ git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 # This needs to exist long term for the attached scripts
 
-echo "Run the setup script for your system:"
-echo "  - setup_wsl_ubuntu.sh"
-echo "  - setup_native_ubuntu.sh"
-echo "  ... more to come ..."
+#echo "Run the setup script for your system:"
+#echo "  - setup_wsl_ubuntu.sh"
+#echo "  - setup_native_ubuntu.sh"
+#echo "  ... more to come ..."
+
+if ( command -v dnf  ); then
+	echo "'dnf' found. Assuming CentOS-ish ..."
+	#sudo dnf update && sudo dnf upgrade -y
+	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
+elif ( command -v apt ); then
+	echo "'apt' found. Assuming debian ..."
+	sudo apt update && sudo apt upgrade -y
+	sudo apt install -y $(grep -v "#" apt-packs | xargs )
+elif ( command -v brew ); then
+	echo "'brew' found. Assuming OSX ..."
+	echo "NOT IMPLEMENTED !! Install brew packages manually!"
+	exit 1
+else
+	echo "Unknown system ... "
+fi
+

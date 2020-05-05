@@ -140,16 +140,11 @@ export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color alway
     #FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS --tac --sync -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS +m" $(__fzfcmd)
 #)
 
-fif() {
-  if [ ! "$#" -ge 1 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null \
-      | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 \
-      || rg --ignore-case --pretty --context 10 $1 {}"
-}
-
 if [ -f ~/.bashrc_local ]; then
     source ~/.bashrc_local
 fi
+
+
 
 # Get AWS Credentials
 # Automatically load into existing session without copy/paste
@@ -168,8 +163,4 @@ gac(){
 unset AWS_ACCESS_KEY_ID AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY
 if [ -f /tmp/awscreds ]; then
     source /tmp/awscreds
-fi
-
-if [ -f ~/.project_envs ]; then
-    source ~/.project_envs
 fi
