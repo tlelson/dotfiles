@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-sensible'
 	Plug 'tpope/vim-surround'
 	Plug 'eL0ck/vim-code-dark'
-	Plug 'junegunn/seoul256.vim'
 	Plug 'junegunn/fzf', { 'do': './install --all'}
 	Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 	Plug 'Shougo/neosnippet.vim'  " Only seem to use these for ipdb
@@ -35,16 +34,18 @@ call plug#end()
 		  set paste
 		  return ""
 		endfunction
+
 	" Test leader type leader then letter 'a'
 		set nu
 		nnoremap <Leader>a :echo "Hey there "<CR>
-	" Spell checking: Ctrl-f moves to the next error and chooses the first
-	" suggestion
+
+	" Spell checking: Ctrl-f moves to the next error and chooses the first suggestion
 		imap <c-f> <c-g>u<Esc>]s1z=`]a<c-g>u
 		nmap <c-f> ]s1z=<c-o>
+
 	" The following line keep the current register after you put it (multiple pastes)
 		vnoremap p "_dP
-		"set tags=.tags "this is where pytags alias in bashrc is saving them
+
 	" Below allows tag to open in a new tab - from naveen
 		nnoremap <space><C-]> :tab tag <C-r><C-w><CR>  
 		if &diff == 'nodiff'
@@ -52,19 +53,21 @@ call plug#end()
 		endif
 		set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
 		nmap ; :
+
 	" JSON fixer
 		function JSON()
 			execute ":%!python -m json.tool --sort-keys"
 		endfun
 		command JSON call JSON()
+
 	" MACROS
 		" Faster macro repeat
 			nnoremap Q @q
 			set nowrapscan  " If using search in a macro you dont want it repeating endlessly
 
-		" Indent code blocks
-			vnoremap < <gv
-			vnoremap > >gv
+	" Indent code blocks
+		vnoremap < <gv
+		vnoremap > >gv
 
 	" Clear Whitespace on save
 		function StripTrailingWhitespaces()
@@ -76,7 +79,7 @@ call plug#end()
 		endfun
 		"Disabling for work with Ian
 		"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
+		  
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
 		color codedark " torte, elflord, 
@@ -160,10 +163,6 @@ call plug#end()
 			\ 'Ignored'   : '☒',
 			\ "Unknown"   : "?"
 			\ }
-
-
-		" N.B NEED BLANK LINE ABOVE !! no idea why by without it NERDTree fails to
-		" load and vim errors
 		"let NERDTreeChDirMode=2
 		let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
 		let NERDTreeShowBookmarks=1
