@@ -301,7 +301,7 @@ unbind C-a
 #set -g status-position top
 #
 # Reattache to existing session if available
-new-session -n $HOST
+#new-session -n $HOST
 
 # Overriding .tmux.conf
 unbind -n C-l  # his default config clear all tmux scoll back after a C-l

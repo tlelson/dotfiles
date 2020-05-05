@@ -31,24 +31,22 @@ ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.
 echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for details ..."
 git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
-# This needs to exist long term for the attached scripts
-
-#echo "Run the setup script for your system:"
-#echo "  - setup_wsl_ubuntu.sh"
-#echo "  - setup_native_ubuntu.sh"
-#echo "  ... more to come ..."
 
 if ( command -v dnf  ); then
 	echo "'dnf' found. Assuming CentOS-ish ..."
-	#sudo dnf update && sudo dnf upgrade -y
+	sudo dnf update && sudo dnf upgrade -y
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
+	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
 elif ( command -v apt ); then
 	echo "'apt' found. Assuming debian ..."
 	sudo apt update && sudo apt upgrade -y
 	sudo apt install -y $(grep -v "#" apt-packs | xargs )
+	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
 elif ( command -v brew ); then
 	echo "'brew' found. Assuming OSX ..."
-	echo "NOT IMPLEMENTED !! Install brew packages manually!"
+	echo "NOT IMPLEMENTED !! TODO: Install brew homebrew!"
+	#brew install $(cat brew-leaves.out)
+	#ln -s $(pwd)/bashrc_osx ~/.bashrc_local
 	exit 1
 else
 	echo "Unknown system ... "

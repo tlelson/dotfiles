@@ -1,13 +1,5 @@
 # Exports
-export PATH=~/miniconda3/bin:/usr/local/sbin:/usr/local/bin:${PATH}
 export DEFAULT_GIT_EMAIL=tpj800@gmail.com
-#export HOST='localhost'  # For webpack (React/Vue)
-
-# Alias
-alias truecrypt='/Applications/TrueCrypt.app/Contents/MacOS/Truecrypt --text'
-alias documents_backup="/Library/Management/documents_backup_crypt.sh"
-alias timemachineBackup="bash /Library/Management/WorkerScripts/timemachineBackup.sh"
-alias timemachineMount="bash /Library/Management/WorkerScripts/timemachineMount.sh"
 
 ## Brew stuff
 alias ctags='$(brew --prefix)/bin/ctags'
@@ -37,22 +29,6 @@ export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 
 
 ## ----------- END TEMP COMPILATION STUFF  ------------ ##
-
-autopush(){
-    if [ -n "$1" ]
-    then
-        cd $1
-        git add -A
-        git commit -m'Auto commit'
-        git push
-        cd -
-    else
-        echo "provide a path to the repo ..."
-    fi
-}
-
+#
 ## ----------- Testing iTerm2 shell integration -------- ##
 # source ~/.iterm2_shell_integration.bash
-
-# added by travis gem
-[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh

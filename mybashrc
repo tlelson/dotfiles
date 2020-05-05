@@ -122,6 +122,16 @@ pyclean(){
     find . -name '*.pytest_cache' | xargs rm -rf
 }
 
+what() {
+    if [ ${#@} -lt 2  ]; then 
+		echo "what vim ipython instead of vim `which ipython`"
+        echo Usage:
+        echo "  what <command [args..]> <arg_to_resolve_with_which>"
+    else 
+        ${@:1:$((${#@} - 1))} $(which ${@:${#@}})
+    fi  
+}
+
 # My FZF custom settings (.fzf.bash is installed by setup.sh, fzf itself is installed by setup_vim.sh)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export PATH=${PATH}:~/.vim/plugged/fzf/bin

@@ -1,30 +1,7 @@
-
 # WSL Alias
 alias open='cmd.exe /C start '
 
 # For WSL
 export DOCKER_HOST=tcp://localhost:2375
 
-## This stuff is Automatically Appended but needs to happen before conda env is activated
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/timbo/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/timbo/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/timbo/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/timbo/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# Work inside general conda env (TODO logicl to handle it not existing)
-conda activate general
-
-# Start tmux by default and attach to existing session if available (conf in tmux.conf)
-#if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  #exec tmux attach
-#fi
+# conda activate general
