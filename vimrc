@@ -25,6 +25,9 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
+	" Write under root	
+	command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 	" Auto paste toggle before and after paste - Never Remove!!
 		let &t_SI .= "\<Esc>[?2004h"
 		let &t_EI .= "\<Esc>[?2004l"
@@ -71,7 +74,7 @@ call plug#end()
 
 	" Clear Whitespace on save
 		function StripTrailingWhitespaces()
-			%retab!
+			"%retab!  " Will replace 3 spaces with a tab NOT GOOD
 			let l = line(".")
 			let c = col(".")
 			%s/\s\+$//e
@@ -174,6 +177,8 @@ call plug#end()
 		" Alternative to tags. Ycm uses the jump list
 		nnoremap <leader>d :YcmCompleter GoTo<CR>  
 		map K :YcmCompleter GetDoc<CR>
+		"let g:ycm_open_loclist_on_ycm_diags = 1
+		"let g:ycm_warning_symbol = '??'
 		let g:ycm_auto_trigger = 1      " Require <C-Space> to show completion options. `1` shows automatically
 		let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 		let g:ycm_autoclose_preview_window_after_completion = 1
@@ -231,7 +236,7 @@ call plug#end()
 
 	" GUTENTAGS 
 		" config project root markers.
-		"let g:gutentags_project_root = ['.root']
+		let g:gutentags_project_root = ['.root']
 		" generate datebases in my cache directory, prevent gtags files polluting my project
 		let g:gutentags_cache_dir = expand('~/.cache/tags')
 		" change focus to quickfix window after search (optional).
