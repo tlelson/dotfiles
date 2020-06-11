@@ -4,15 +4,15 @@
 [push]
         default = simple
         followTags = true
-[color]
-        ui = true
-        status = auto
-        branch = auto
+;[color]
+        ;ui = true
+        ;status = auto
+        ;branch = auto
 [core]
         editor = vim
         excludesfile = ~/.gitignore
         fileMode = false
-        sshCommand = ssh -i $HOME/.ssh/id_rsa_$(git config --get user.email || echo $DEFAULT_GIT_EMAIL) # -F /dev/null, for debugging ssh
+        sshCommand = ssh -i $HOME/.ssh/current/id_rsa_$(git config --get user.email || echo $DEFAULT_GIT_EMAIL) # -F /dev/null, for debugging ssh
 [alias]
         lg = log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr %an)%Creset' --abbrev-commit --date=relative
         st = status -s

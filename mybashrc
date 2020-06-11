@@ -25,7 +25,7 @@ export CONDA_BLD_PATH=/tmp/
 
 #alias h="head -n 5"
 alias ll="ls -ltrh "
-alias llt="ls -ltrh | tail"
+alias llt="ls -ltrh --color=always | tail"
 alias lsh="ls -a | grep '^\.'"
 alias llh="ls -lhta | grep ' \.'"
 alias grep="grep --color=auto -E "
@@ -42,7 +42,7 @@ alias webtorrent="webtorrent --not-on-top --keep-seeding "
 alias recent="find  -maxdepth 1 -mtime -1 "
 alias rg='rg -L '
 alias rgall='rg --hidden --no-ignore '
-alias golint='golangci-lint run --enable golint,stylecheck '
+#alias golint='golangci-lint run --enable golint,stylecheck '
 
 # Python package
 list-py-reqs(){

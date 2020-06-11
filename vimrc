@@ -22,12 +22,13 @@ call plug#begin('~/.vim/plugged')
 	Plug 'leafgarland/typescript-vim'
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 	Plug 'ludovicchabant/vim-gutentags'
+
+	" Experimental
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }        
+	Plug 'tpope/vim-sleuth'  " Removes need for any tabstop/softtabstop/expandtab settings
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
-	" Write under root	
-	command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
-
 	" Auto paste toggle before and after paste - Never Remove!!
 		let &t_SI .= "\<Esc>[?2004h"
 		let &t_EI .= "\<Esc>[?2004l"
@@ -63,6 +64,13 @@ call plug#end()
 		endfun
 		command JSON call JSON()
 
+		" Unfixer - Shrink all formated json to one line
+		" and remove unnessesary spaces UNTESTED
+		function JSONunpretty()
+			%j 						" Remove linebreaks
+			:%s/\v([{\[:,"]) /\1/g  " Space after
+			:%s/\v ([}\]:,"])/\1/g  " Space before
+		endfun
 	" MACROS
 		" Faster macro repeat
 			nnoremap Q @q
@@ -83,6 +91,9 @@ call plug#end()
 		"Disabling for work with Ian
 		"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 		  
+	" Write under root	
+		command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
 		color codedark " torte, elflord, 
@@ -91,26 +102,10 @@ call plug#end()
 		"   Default: 237
 		"let g:seoul256_background = 234
 
-	" Inherit Background color from terminal
-		" Should these be in the color scheme ??
-		"so $VIMRUNTIME/syntax/hitest.vim	
-		"highlight Normal ctermbg=none guibg=NONE
-		"highlight LineNr ctermbg=none guibg=NONE 
-		"highlight NonText ctermbg=none guibg=NONE 
-		"highlight EndOfBuffer ctermbg=none guibg=NONE 
-		"highlight Directory ctermbg=none guibg=NONE 
-
 	" Configure code folding
 		set foldmethod=indent
 		set foldnestmax=10
 		set foldlevel=1
-
-	" Default here: Override this for filetypes 
-		" Generic policy is to just leave whatever space exists be (tab or space)
-		" and set file specific in after files.
-		set tabstop=4  		" Size of a tab
-		set shiftwidth=4  	" Size of indentation operation
-		" set expand tab 	" NO!
 
 	" Misc
 		set noscrollbind
@@ -177,7 +172,8 @@ call plug#end()
 		" Alternative to tags. Ycm uses the jump list
 		nnoremap <leader>d :YcmCompleter GoTo<CR>  
 		map K :YcmCompleter GetDoc<CR>
-		"let g:ycm_open_loclist_on_ycm_diags = 1
+		let g:ycm_always_populate_location_list = 1
+		let g:ycm_open_loclist_on_ycm_diags = 1
 		"let g:ycm_warning_symbol = '??'
 		let g:ycm_auto_trigger = 1      " Require <C-Space> to show completion options. `1` shows automatically
 		let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
@@ -245,3 +241,6 @@ call plug#end()
 		"let g:gutentags_trace = 1
 		let g:gutentags_ctags_auto_set_tags = 1
 		
+	" Vim-Go 
+	let g:go_metalinter_command = 'golangci-lint run --print-issued-lines=false --enable golint,stylecheck,wsl '
+	let g:go_fmt_experimental = 1  " To stop folds being closed on write
