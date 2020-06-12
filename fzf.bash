@@ -1,7 +1,7 @@
 # Setup fzf
 # ---------
 if [[ ! "$PATH" == */$HOME/.vim/plugged/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}/$HOME/.vim/plugged/fzf/bin"
+  export PATH="${PATH:+${PATH}:}$HOME/.vim/plugged/fzf/bin"
 fi
 
 # Auto-completion
@@ -11,5 +11,3 @@ fi
 # Key bindings
 # ------------
 source "$HOME/.vim/plugged/fzf/shell/key-bindings.bash"
-
-
