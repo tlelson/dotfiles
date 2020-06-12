@@ -15,6 +15,7 @@ vnstat
 bat
 pv
 conda
+vim-enhanced
 
 # For YCM
 cmake 

@@ -1,6 +1,7 @@
 alias open='xdg-open '
 alias pbcopy='xclip -selection clipboard '
 
+# https://github.com/sharkdp/vivid/releases
 export LS_COLORS=$(vivid generate solarized-dark)
 
 # Don't need conda init stuff if you dnf install conda

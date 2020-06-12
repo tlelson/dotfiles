@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 echo "Copying dotfiles into location ..."
 for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local fzf.bash ctags
@@ -23,8 +24,8 @@ echo "source ~/.mybashrc" >> ~/.bashrc
 # Notice that two files go up.  The higher one has access to the `c` config object
 # and the other doesn't.  There may be a way to merge them but its fine for now
 echo "Setting up ipython auto start config ..."
-ln -s $(pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 mkdir -p ~/.ipython/profile_default/startup/
+ln -s $(pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
 
 # Set up TMUX
@@ -37,6 +38,7 @@ if ( command -v dnf  ); then
 	sudo dnf update && sudo dnf upgrade -y
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
+	conda create -n general python ipython nodejs
 elif ( command -v apt ); then
 	echo "'apt' found. Assuming debian ..."
 	sudo apt update && sudo apt upgrade -y
@@ -52,3 +54,6 @@ else
 	echo "Unknown system ... "
 fi
 
+echo "LS_COLORS are generated with `vivid` which must be installed manually ..."
+echo "	see: https://github.com/sharkdp/vivid"
+echo "	If you don't need it remove the line from dotfiles/bashrc_linux"
