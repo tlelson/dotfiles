@@ -17,7 +17,6 @@ call plug#begin('~/.vim/plugged')
 	" YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 	" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'} 
-	Plug 'vim-syntastic/syntastic', { 'for': ['python', 'yaml'] }  " YCM for others
 	Plug 'jiangmiao/auto-pairs'  
 	Plug 'leafgarland/typescript-vim'
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
@@ -191,20 +190,6 @@ call plug#end()
 			  \ 'leaderf': 1,
 			  \ 'mail': 1
 			  \}
-
-	" SYNTASTIC
-		" !! You need the checker to work on the CLI before expecting it to work in file (on write)
-		"   For example: check eslint works by $ eslint <filename>
-		"   (with the exception of tsuquyomi which is hard to debug)
-		" (will auto check on :w {!! not :wa or :wq} and display Help window at bottom)
-		" Debug in vim by seting: :let g:syntastic_debug = 1
-		set statusline+=%#warningmsg#
-		set statusline+=%{SyntasticStatuslineFlag()}
-		set statusline+=%*
-		let g:syntastic_always_populate_loc_list = 1
-		let g:syntastic_auto_loc_list = 1
-		let g:syntastic_check_on_open = 0
-		let g:syntastic_check_on_wq = 0  " Default off
 
 	" NERDCOMMENTER config
 		" This let you use Ctrl+/ to comment blocks
