@@ -17,7 +17,6 @@ call plug#begin('~/.vim/plugged')
 	" YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
 	" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'} 
-	Plug 'jiangmiao/auto-pairs'  
 	Plug 'leafgarland/typescript-vim'
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 	Plug 'ludovicchabant/vim-gutentags'
@@ -131,6 +130,9 @@ call plug#end()
 		imap <C-j>     <Plug>(neosnippet_expand_or_jump)
 		smap <C-j>     <Plug>(neosnippet_expand_or_jump)
 		xmap <C-j>     <Plug>(neosnippet_expand_target)
+	" SURROUND
+		inoremap {<C-s>}
+		inoremap {<CR> <C-s><C-s>}
 
 	"GITGUTTER
 		set updatetime=1000
