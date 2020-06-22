@@ -18,8 +18,3 @@ endfunction
 "nmap <silent> <leader>ty :call Hex2dec()<CR>
 command! ToJade :call HTMLToJade()
 set noscrollbind
-"set tabstop=2
-set shiftwidth=2
-"set expandtab
-"set softtabstop=2
-

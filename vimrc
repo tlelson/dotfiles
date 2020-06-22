@@ -1,29 +1,28 @@
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+	" Gods of Vim
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-fugitive'
 	Plug 'tpope/vim-sensible'
 	Plug 'tpope/vim-surround'
-	Plug 'eL0ck/vim-code-dark'
+	Plug 'tpope/vim-endwise'
+	Plug 'tpope/vim-sleuth'  " Removes need for any tabstop/softtabstop/expandtab settings
+	Plug 'eL0ck/vim-code-dark' " Forked for slight tweaks for transparent backgrounds
 	Plug 'junegunn/fzf', { 'do': './install --all'}
 	Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
-	Plug 'Shougo/neosnippet.vim'  " Only seem to use these for ipdb
-	Plug 'Shougo/neosnippet-snippets'  " As above 
+	" Navigation and Version Control
 	Plug 'vim-airline/vim-airline'
 	Plug 'scrooloose/nerdtree'
 	Plug 'Xuyuanp/nerdtree-git-plugin', " MUST DISABLE for large typescript repos
 	Plug 'airblade/vim-gitgutter'
+	" Coding
 	Plug 'scrooloose/nerdcommenter'
-	" YCM SHOULD COMMENTED OUT FOR NEW INSTALLS !!
+	Plug 'ludovicchabant/vim-gutentags'
 	" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
 	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'} 
-	Plug 'leafgarland/typescript-vim'
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
-	Plug 'ludovicchabant/vim-gutentags'
-
-	" Experimental
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }        
-	Plug 'tpope/vim-sleuth'  " Removes need for any tabstop/softtabstop/expandtab settings
+	"Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
@@ -71,8 +70,8 @@ call plug#end()
 		endfun
 	" MACROS
 		" Faster macro repeat
-			nnoremap Q @q
-			set nowrapscan  " If using search in a macro you dont want it repeating endlessly
+		nnoremap Q @q
+		set nowrapscan  " If using search in a macro you dont want it repeating endlessly
 
 	" Indent code blocks
 		vnoremap < <gv
@@ -120,19 +119,20 @@ call plug#end()
 		autocmd BufNewFile,BufRead *.ps1     set ft=ps1
 		autocmd BufNewFile,BufRead *.pp      set ft=puppet
 		autocmd BufRead,BufNewFile *.ts      set ft=typescript
-		"autocmd BufNewFile,BufRead *.json,*.html,*.htm,*.shtml,*.stm set ft=jinja
 
 	" Visualise whitespace (:set list)
 		set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<  
 
 " ------------------- Plugin Settings -------------------
-	" NEOSNIPPETS - default is <C-k> but need this for symbols
-		imap <C-j>     <Plug>(neosnippet_expand_or_jump)
-		smap <C-j>     <Plug>(neosnippet_expand_or_jump)
-		xmap <C-j>     <Plug>(neosnippet_expand_target)
 	" SURROUND
-		inoremap {<C-s>}
-		inoremap {<CR> <C-s><C-s>}
+		" Auto close following only (not quotes)
+		imap { <C-s>}
+		imap {<CR> <C-s><C-s>}
+		imap ( <C-s>)
+		imap (<CR> <C-s><C-s>)
+		"Allow empty
+		imap () ()
+		imap {} {}
 
 	"GITGUTTER
 		set updatetime=1000
@@ -144,12 +144,12 @@ call plug#end()
 		autocmd StdinReadPre * let s:std_in=1
 		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 		let g:NERDTreeIgnore=[
-					\'__pycache__',
-					\'^build$',
-					\'^dist$',
-					\'\.pyc',
-					\'\.egg-info'
-					\]
+			\'__pycache__',
+			\'^build$',
+			\'^dist$',
+			\'\.pyc',
+			\'\.egg-info'
+			\]
 		let g:NERDTreeIndicatorMapCustom = {
 			\ "Modified"  : "✹",
 			\ "Staged"    : "✚",
@@ -172,11 +172,10 @@ call plug#end()
 	" YCM
 		" Alternative to tags. Ycm uses the jump list
 		nnoremap <leader>d :YcmCompleter GoTo<CR>  
-		map K :YcmCompleter GetDoc<CR>
 		let g:ycm_always_populate_location_list = 1
 		let g:ycm_open_loclist_on_ycm_diags = 1
 		"let g:ycm_warning_symbol = '??'
-		let g:ycm_auto_trigger = 1      " Require <C-Space> to show completion options. `1` shows automatically
+		let g:ycm_auto_trigger = 1  " Complete without Ctrl-<space>    
 		let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
 		let g:ycm_autoclose_preview_window_after_completion = 1
 		let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -205,17 +204,6 @@ call plug#end()
 			set grepprg=rg\ --vimgrep\ --no-heading
 			set grepformat=%f:%l:%c:%m,%f:%l:%m
 		endif
-		" :Rg (comes from fzf-vim)
-		"let g:fzf_layout = { 'down': '~20%' }
-		"Redefine Rg command to allow rg arguments to pass through
-		" such as `-tyaml` for yaml files or `-F` for literal strings
-		command! -bang -nargs=* Rg
-		  \ call fzf#vim#grep(
-		  \   'rg -L --column --line-number --no-heading --color=always --smart-case '.(<q-args>), 1,
-		  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-		  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-		  \   <bang>0)
-		"let g:fzf_tags_command = 'ctags --exclude=*json -R'
 
 	" GUTENTAGS 
 		" config project root markers.
@@ -228,6 +216,7 @@ call plug#end()
 		"let g:gutentags_trace = 1
 		let g:gutentags_ctags_auto_set_tags = 1
 		
-	" Vim-Go 
-	let g:go_metalinter_command = 'golangci-lint run --print-issued-lines=false --enable golint,stylecheck,wsl '
-	let g:go_fmt_experimental = 1  " To stop folds being closed on write
+	" VIM-GO 
+		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
+		let g:go_fmt_experimental = 1  " To stop folds being closed on write
+		let g:go_def_mapping_enabled = 1 " Disable remap to Ctrl-] Ctrl-T
