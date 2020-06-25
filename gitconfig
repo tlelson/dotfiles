@@ -22,7 +22,5 @@
     recurse = true
 [rebase]
     autosquash = true
-[url "git@bitbucket.org:"]
-    insteadOf = https://bitbucket.org/
 [credential]
 	helper = store

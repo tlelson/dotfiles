@@ -23,6 +23,7 @@ build/
 .cache/
 Untitled*.ipynb
 *.pyc
+.ignore
 
 # Compiled source #
 ###################

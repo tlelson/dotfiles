@@ -219,4 +219,4 @@ call plug#end()
 	" VIM-GO 
 		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
 		let g:go_fmt_experimental = 1  " To stop folds being closed on write
-		let g:go_def_mapping_enabled = 1 " Disable remap to Ctrl-] Ctrl-T
+		let g:go_def_mapping_enabled = 0 " Disable remap to Ctrl-] Ctrl-T

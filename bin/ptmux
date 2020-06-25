@@ -1,0 +1,21 @@
+#!/bin/bash
+# assume the command is the first arg
+cmd=$1
+shift
+
+# create a new window to shove the panes in to
+tmux new-window
+
+for target in $@; do
+    if [ "$target" != "$1" ]; then  # don't split on the first iteration
+        tmux split-window
+    fi
+    # run the command (C-m == newline)
+    tmux send-keys "$cmd $target" 'C-m'
+
+    # make sure we reset the layout or else we'll only be splitting inside the one window
+    tmux select-layout tiled >/dev/null
+done
+
+# synchronize panes by default
+tmux set-window-option synchronize-panes on >/dev/null
