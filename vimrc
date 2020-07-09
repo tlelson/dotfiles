@@ -23,6 +23,10 @@ call plug#begin('~/.vim/plugged')
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }        
 	"Plug 'leafgarland/typescript-vim'
+	Plug 'w0rp/ale'
+	
+	" Experimental
+	Plug 'eL0ck/vim-notebook', { 'branch': 'dev' }
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
@@ -32,7 +36,7 @@ call plug#end()
 		inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 		function! XTermPasteBegin()
 		  set pastetoggle=<Esc>[201~
-		  set paste
+		  set paste " let &paste = 1
 		  return ""
 		endfunction
 
@@ -53,7 +57,7 @@ call plug#end()
 			set shellcmdflag=-c
 		endif
 		set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
-		nmap ; :
+		nnoremap ; :
 
 	" JSON fixer
 		function JSON()
@@ -68,6 +72,15 @@ call plug#end()
 			:%s/\v([{\[:,"]) /\1/g  " Space after
 			:%s/\v ([}\]:,"])/\1/g  " Space before
 		endfun
+
+	" XML formatter
+		function XML()
+			%!python -c "import sys, xml.dom.minidom as x; print(x.parse(sys.stdin).toprettyxml())"
+			g/^\s*$/d
+			:execute "normal gg=G"
+		endfunction
+		command XML call XML()
+		
 	" MACROS
 		" Faster macro repeat
 		nnoremap Q @q
@@ -90,6 +103,10 @@ call plug#end()
 		  
 	" Write under root	
 		command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
+	
+	" Terminal Mode
+		" Use standard escape to exit insert mode
+		tnoremap <Esc> <C-\><C-n>
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
@@ -105,20 +122,22 @@ call plug#end()
 		set foldlevel=1
 
 	" Misc
+		set tabstop=4
 		set noscrollbind
 		set cindent
 		set autoindent
 
-	" Recognise Filetypes (autocmd)
-		" others done automatically, check with :set ft
-		autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
-		autocmd BufRead,BufNewFile *.txt     set ft=text
-		autocmd BufRead,BufNewFile *.coffee  set ft=coffee
-		autocmd BufRead,BufNewFile *.jade    set ft=jade
-		autocmd BufNewFile,BufRead *.lib     set ft=sh
-		autocmd BufNewFile,BufRead *.ps1     set ft=ps1
-		autocmd BufNewFile,BufRead *.pp      set ft=puppet
-		autocmd BufRead,BufNewFile *.ts      set ft=typescript
+	" Set Filetypes for those not guessed
+		augroup ft_set
+			autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
+			autocmd BufNewFile,BufRead *.txt     set ft=text
+			autocmd BufNewFile,BufRead *.coffee  set ft=coffee
+			autocmd BufNewFile,BufRead *.jade    set ft=jade
+			autocmd BufNewFile,BufRead *.lib     set ft=sh
+			autocmd BufNewFile,BufRead *.ps1     set ft=ps1
+			autocmd BufNewFile,BufRead *.pp      set ft=puppet
+			autocmd BufNewFile,BufRead *.ts      set ft=typescript
+		augroup end
 
 	" Visualise whitespace (:set list)
 		set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<  
@@ -199,11 +218,11 @@ call plug#end()
 	 
 	" FZF config
 		"Ripgrep integration
-		if executable("rg")
-			let g:ackprg = 'rg --vimgrep --no-heading'
-			set grepprg=rg\ --vimgrep\ --no-heading
-			set grepformat=%f:%l:%c:%m,%f:%l:%m
-		endif
+		"if executable("rg")
+			"let g:ackprg = 'rg --vimgrep --no-heading'
+			"set grepprg=rg\ --vimgrep\ --no-heading
+			"set grepformat=%f:%l:%c:%m,%f:%l:%m
+		"endif
 
 	" GUTENTAGS 
 		" config project root markers.

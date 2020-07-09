@@ -10,7 +10,7 @@ if [ -d ~/.vim ];
         rm -rf ~/.vim
         mkdir ~/.vim
 fi
-ln -s $(pwd)/after ~/.vim/after
+ln -s $(pwd)/ftplugin ~/.vim/ftplugin
 echo 'Setting up vim with `junegunn/vim-plug` .... '
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim

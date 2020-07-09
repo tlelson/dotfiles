@@ -304,5 +304,5 @@ unbind C-a
 #new-session -n $HOST
 
 # Overriding .tmux.conf
-unbind -n C-l  # his default config clear all tmux scoll back after a C-l
-bind-key e setw synchronize-panes  # Toggle all input
+#unbind -n C-l  # his default config clear all tmux scoll back after a C-l
+#bind-key e setw synchronize-panes  # Toggle all input
