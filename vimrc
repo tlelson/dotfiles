@@ -52,7 +52,10 @@ call plug#end()
 		vnoremap p "_dP
 
 	" Below allows tag to open in a new tab - from naveen
+		" :help c_CTRL-R_CTRL-W 
 		nnoremap <space><C-]> :tab tag <C-r><C-w><CR>  
+
+	" Misc	
 		if &diff == 'nodiff'
 			set shellcmdflag=-c
 		endif
@@ -106,7 +109,7 @@ call plug#end()
 	
 	" Terminal Mode
 		" Use standard escape to exit insert mode
-		tnoremap <Esc> <C-\><C-n>
+		"tnoremap <Esc> <C-\><C-n>
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
@@ -189,14 +192,10 @@ call plug#end()
 		"let NERDTreeDirArrows = 1
 
 	" YCM
-		" Alternative to tags. Ycm uses the jump list
-		nnoremap <leader>d :YcmCompleter GoTo<CR>  
 		let g:ycm_always_populate_location_list = 1
 		let g:ycm_open_loclist_on_ycm_diags = 1
 		"let g:ycm_warning_symbol = '??'
 		let g:ycm_auto_trigger = 1  " Complete without Ctrl-<space>    
-		let g:ycm_max_num_identifier_candidates = 0  " Show all completion candidates
-		let g:ycm_autoclose_preview_window_after_completion = 1
 		let g:ycm_autoclose_preview_window_after_insertion = 1
 		set  completeopt=menuone  " Remove `preview` window by default
 		let g:ycm_filetype_blacklist = {
@@ -210,6 +209,16 @@ call plug#end()
 			  \ 'leaderf': 1,
 			  \ 'mail': 1
 			  \}
+		
+		" Alternative to tags. Ycm uses the jump list
+		nnoremap <leader>d :YcmCompleter GoTo<CR>  
+		nnoremap K :YcmCompleter GetDoc<CR>
+		function GoToType()
+			:split
+			:YcmCompleter GoToType
+			:execute "normal zt"
+		endfunction
+		noremap	T :call GoToType()<CR>
 
 	" NERDCOMMENTER config
 		" This let you use Ctrl+/ to comment blocks
@@ -223,6 +232,9 @@ call plug#end()
 			"set grepprg=rg\ --vimgrep\ --no-heading
 			"set grepformat=%f:%l:%c:%m,%f:%l:%m
 		"endif
+		" Rg search word under cursor
+		"nnoremap <leader>rg :Rg <C-R><C-W><CR>
+		nnoremap <leader>rg :execute 'Rg ' . expand('<cword>')<CR>
 
 	" GUTENTAGS 
 		" config project root markers.
@@ -236,6 +248,19 @@ call plug#end()
 		let g:gutentags_ctags_auto_set_tags = 1
 		
 	" VIM-GO 
+		let g:go_fmt_fail_silently = 1 " don't open location list by default
 		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
 		let g:go_fmt_experimental = 1  " To stop folds being closed on write
 		let g:go_def_mapping_enabled = 0 " Disable remap to Ctrl-] Ctrl-T
+		let g:go_term_enabled = 1
+		let g:go_term_mode = "silent belowright 15 split"
+		"let g:go_debug_log_output = 'debugger'
+		let g:go_debug_log_output = 'lldbout'
+		let g:go_debug_windows = {
+			  \ 'vars':       'rightbelow 80vnew',
+			  \ 'stack':      'rightbelow 20new',
+			  \ 'out':        'botright 5new',
+		\ }
+
+	" ALE
+	let g:ale_python_flake8_options = '--ignore=E501'
