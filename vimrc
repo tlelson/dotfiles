@@ -52,10 +52,10 @@ call plug#end()
 		vnoremap p "_dP
 
 	" Below allows tag to open in a new tab - from naveen
-		" :help c_CTRL-R_CTRL-W 
-		nnoremap <space><C-]> :tab tag <C-r><C-w><CR>  
+		" :help c_CTRL-R_CTRL-W
+		nnoremap <space><C-]> :tab tag <C-r><C-w><CR>
 
-	" Misc	
+	" Misc
 		if &diff == 'nodiff'
 			set shellcmdflag=-c
 		endif
@@ -83,7 +83,7 @@ call plug#end()
 			:execute "normal gg=G"
 		endfunction
 		command XML call XML()
-		
+
 	" MACROS
 		" Faster macro repeat
 		nnoremap Q @q
@@ -95,25 +95,25 @@ call plug#end()
 
 	" Clear Whitespace on save
 		function StripTrailingWhitespaces()
-			"%retab!  " Will replace 3 spaces with a tab NOT GOOD
 			let l = line(".")
 			let c = col(".")
-			%s/\s\+$//e
+			keepp %s/\s\+$//e
 			call cursor(l, c)
 		endfun
-		"Disabling for work with Ian
-		"autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-		  
-	" Write under root	
+		augroup strip_space
+			autocmd BufWritePre * undojoin | :call StripTrailingWhitespaces()
+		augroup end
+
+	" Write under root
 		command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
-	
+
 	" Terminal Mode
 		" Use standard escape to exit insert mode
 		"tnoremap <Esc> <C-\><C-n>
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
-		color codedark " torte, elflord, 
+		color codedark " torte, elflord,
 		" seoul256 (dark):
 		"   Range:   233 (darkest) ~ 239 (lightest)
 		"   Default: 237
@@ -140,10 +140,11 @@ call plug#end()
 			autocmd BufNewFile,BufRead *.ps1     set ft=ps1
 			autocmd BufNewFile,BufRead *.pp      set ft=puppet
 			autocmd BufNewFile,BufRead *.ts      set ft=typescript
+			autocmd BufNewFile,BufRead *.mdx     set ft=markdown
 		augroup end
 
 	" Visualise whitespace (:set list)
-		set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<  
+		set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 " ------------------- Plugin Settings -------------------
 	" SURROUND
@@ -195,11 +196,11 @@ call plug#end()
 		let g:ycm_always_populate_location_list = 1
 		let g:ycm_open_loclist_on_ycm_diags = 1
 		"let g:ycm_warning_symbol = '??'
-		let g:ycm_auto_trigger = 1  " Complete without Ctrl-<space>    
+		let g:ycm_auto_trigger = 1  " Complete without Ctrl-<space>
 		let g:ycm_autoclose_preview_window_after_insertion = 1
 		set  completeopt=menuone  " Remove `preview` window by default
 		let g:ycm_filetype_blacklist = {
-			  \ 'nerdtree': 1,  
+			  \ 'nerdtree': 1,
 			  \ 'tagbar': 1,
 			  \ 'netrw': 1,
 			  \ 'unite': 1,
@@ -209,9 +210,9 @@ call plug#end()
 			  \ 'leaderf': 1,
 			  \ 'mail': 1
 			  \}
-		
+
 		" Alternative to tags. Ycm uses the jump list
-		nnoremap <leader>d :YcmCompleter GoTo<CR>  
+		nnoremap <leader>d :YcmCompleter GoTo<CR>
 		nnoremap K :YcmCompleter GetDoc<CR>
 		function GoToType()
 			:split
@@ -224,7 +225,7 @@ call plug#end()
 		" This let you use Ctrl+/ to comment blocks
 		nmap <C-_> <leader>c<Space>
 		vmap <C-_> <leader>c<Space>
-	 
+
 	" FZF config
 		"Ripgrep integration
 		"if executable("rg")
@@ -236,7 +237,7 @@ call plug#end()
 		"nnoremap <leader>rg :Rg <C-R><C-W><CR>
 		nnoremap <leader>rg :execute 'Rg ' . expand('<cword>')<CR>
 
-	" GUTENTAGS 
+	" GUTENTAGS
 		" config project root markers.
 		let g:gutentags_project_root = ['.root']
 		" generate datebases in my cache directory, prevent gtags files polluting my project
@@ -246,8 +247,8 @@ call plug#end()
 		set statusline+=%{gutentags#statusline()}
 		"let g:gutentags_trace = 1
 		let g:gutentags_ctags_auto_set_tags = 1
-		
-	" VIM-GO 
+
+	" VIM-GO
 		let g:go_fmt_fail_silently = 1 " don't open location list by default
 		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
 		let g:go_fmt_experimental = 1  " To stop folds being closed on write
