@@ -19,14 +19,15 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'ludovicchabant/vim-gutentags'
 	" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
-	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'} 
+	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'}
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }        
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
 	"Plug 'leafgarland/typescript-vim'
 	Plug 'w0rp/ale'
-	
+
 	" Experimental
 	Plug 'eL0ck/vim-notebook', { 'branch': 'dev' }
+	Plug 'mfukar/robotframework-vim'
 call plug#end()
 
 "------------------- Efficiency --------------------------------------------------------
@@ -234,8 +235,10 @@ call plug#end()
 			"set grepformat=%f:%l:%c:%m,%f:%l:%m
 		"endif
 		" Rg search word under cursor
-		"nnoremap <leader>rg :Rg <C-R><C-W><CR>
 		nnoremap <leader>rg :execute 'Rg ' . expand('<cword>')<CR>
+		" Override default vim history with FZF's
+		cnoremap <C-f> :execute 'History:'<CR>
+		nnoremap q: :execute 'History:'<CR>
 
 	" GUTENTAGS
 		" config project root markers.
@@ -265,3 +268,4 @@ call plug#end()
 
 	" ALE
 	let g:ale_python_flake8_options = '--ignore=E501'
+	let g:ale_sign_error = '✗'
