@@ -1,5 +1,7 @@
 " PLUGINS
 call plug#begin('~/.vim/plugged')
+	Plug 'tlelson/vim-code-dark' " Forked for slight tweaks for transparent backgrounds
+
 	" Gods of Vim
 	Plug 'tpope/vim-unimpaired'
 	Plug 'tpope/vim-fugitive'
@@ -7,14 +9,12 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-sleuth'  " Removes need for any tabstop/softtabstop/expandtab settings
-	Plug 'eL0ck/vim-code-dark' " Forked for slight tweaks for transparent backgrounds
 	Plug 'junegunn/fzf', { 'do': './install --all'}
 	Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 	" Navigation and Version Control
 	Plug 'vim-airline/vim-airline'
-	Plug 'scrooloose/nerdtree'
-	Plug 'Xuyuanp/nerdtree-git-plugin', " MUST DISABLE for large typescript repos
 	Plug 'airblade/vim-gitgutter'
+
 	" Coding
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'ludovicchabant/vim-gutentags'
@@ -22,13 +22,19 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'}
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
-	"Plug 'leafgarland/typescript-vim'
-	Plug 'w0rp/ale'
+	Plug 'dense-analysis/ale'
 
 	" Experimental
-	Plug 'eL0ck/vim-notebook', { 'branch': 'dev' }
+	Plug 'tlelson/vim-notebook', { 'branch': 'dev' }
 	Plug 'mfukar/robotframework-vim'
 call plug#end()
+
+"------------------- NETRW -------------------------------------------------------------
+	let g:netrw_banner = 0
+	let g:netrw_liststyle = 3
+	let g:netrw_browse_split = 4
+	let g:netrw_altv = 1
+	let g:netrw_winsize = 25
 
 "------------------- Efficiency --------------------------------------------------------
 	" Auto paste toggle before and after paste - Never Remove!!
@@ -51,10 +57,6 @@ call plug#end()
 
 	" The following line keep the current register after you put it (multiple pastes)
 		vnoremap p "_dP
-
-	" Below allows tag to open in a new tab - from naveen
-		" :help c_CTRL-R_CTRL-W
-		nnoremap <space><C-]> :tab tag <C-r><C-w><CR>
 
 	" Misc
 		if &diff == 'nodiff'
@@ -112,6 +114,15 @@ call plug#end()
 		" Use standard escape to exit insert mode
 		"tnoremap <Esc> <C-\><C-n>
 
+	" Tabs/Splits/Windows
+		" These are default key bindings for the functionality but slighly
+		" modified for effect
+		nnoremap <C-w>+ :resize +10<CR>
+		nnoremap <C-w>- :resize -10<CR>
+		nnoremap <C-w>< :vert resize +10<CR>
+		nnoremap <C-w>> :vert resize -10<CR>
+		nnoremap <C-w>] :rightbelow vsplit +tag<CR>
+
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
 		color codedark " torte, elflord,
@@ -142,6 +153,7 @@ call plug#end()
 			autocmd BufNewFile,BufRead *.pp      set ft=puppet
 			autocmd BufNewFile,BufRead *.ts      set ft=typescript
 			autocmd BufNewFile,BufRead *.mdx     set ft=markdown
+			autocmd BufNewFile,BufRead *bashrc   set ft=bash
 		augroup end
 
 	" Visualise whitespace (:set list)
@@ -162,36 +174,6 @@ call plug#end()
 		set updatetime=1000
 		"let g:gitgutter_log=1 "For debugging issues
 		"let g:gitgutter_async=0 "Was failing when trying asyncronoushly
-
-	" NERDTREE
-		" Open Nerdtree automatically if no files specified
-		autocmd StdinReadPre * let s:std_in=1
-		autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-		let g:NERDTreeIgnore=[
-			\'__pycache__',
-			\'^build$',
-			\'^dist$',
-			\'\.pyc',
-			\'\.egg-info'
-			\]
-		let g:NERDTreeIndicatorMapCustom = {
-			\ "Modified"  : "✹",
-			\ "Staged"    : "✚",
-			\ "Untracked" : "✭",
-			\ "Renamed"   : "➜",
-			\ "Unmerged"  : "═",
-			\ "Deleted"   : "✖",
-			\ "Dirty"     : "✗",
-			\ "Clean"     : "✔︎",
-			\ 'Ignored'   : '☒',
-			\ "Unknown"   : "?"
-			\ }
-		"let NERDTreeChDirMode=2
-		let NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$',  '\~$']
-		let NERDTreeShowBookmarks=1
-		map <F3> :NERDTreeToggle<CR>
-		"let NERDTreeMinimalUI = 1
-		"let NERDTreeDirArrows = 1
 
 	" YCM
 		let g:ycm_always_populate_location_list = 1
@@ -214,13 +196,17 @@ call plug#end()
 
 		" Alternative to tags. Ycm uses the jump list
 		nnoremap <leader>d :YcmCompleter GoTo<CR>
-		nnoremap K :YcmCompleter GetDoc<CR>
 		function GoToType()
 			:split
 			:YcmCompleter GoToType
 			:execute "normal zt"
 		endfunction
 		noremap	T :call GoToType()<CR>
+
+		" Disable automatic doc popup. Manually control
+		let g:ycm_auto_hover=''
+		" This needs be allow recursive mappings ?!
+		nmap <C-p> <plug>(YCMHover)
 
 	" NERDCOMMENTER config
 		" This let you use Ctrl+/ to comment blocks
@@ -229,11 +215,6 @@ call plug#end()
 
 	" FZF config
 		"Ripgrep integration
-		"if executable("rg")
-			"let g:ackprg = 'rg --vimgrep --no-heading'
-			"set grepprg=rg\ --vimgrep\ --no-heading
-			"set grepformat=%f:%l:%c:%m,%f:%l:%m
-		"endif
 		" Rg search word under cursor
 		nnoremap <leader>rg :execute 'Rg ' . expand('<cword>')<CR>
 		" Override default vim history with FZF's
@@ -252,6 +233,7 @@ call plug#end()
 		let g:gutentags_ctags_auto_set_tags = 1
 
 	" VIM-GO
+		let g:go_diagnostics_enabled = 0 " Doesn't seem to update properly. Using ALE instead.
 		let g:go_fmt_fail_silently = 1 " don't open location list by default
 		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
 		let g:go_fmt_experimental = 1  " To stop folds being closed on write

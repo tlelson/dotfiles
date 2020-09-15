@@ -12,6 +12,7 @@ export HISTFILESIZE=6000
 export HISTSIZE=5000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTCONTROL=erasedups
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
 shopt -s dotglob nullglob  # * match .git so moving files doesn't drop hidden ones
 
 # GO setup
@@ -123,20 +124,20 @@ pyclean(){
 }
 
 what() {
-    if [ ${#@} -lt 2  ]; then 
+    if [ ${#@} -lt 2  ]; then
 		echo "what vim ipython instead of vim `which ipython`"
         echo Usage:
         echo "  what <command [args..]> <arg_to_resolve_with_which>"
-    else 
+    else
         ${@:1:$((${#@} - 1))} $(which ${@:${#@}})
-    fi  
+    fi
 }
 
 # My FZF custom settings (.fzf.bash is installed by setup.sh, fzf itself is installed by setup_vim.sh)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'"  # --preview-window down:3:hidden:wrap
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m  --exact --tiebreak=length'  # --algo=v1'  #
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m --tiebreak=length'  # --algo=v1'  --exact  #
 export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
@@ -147,11 +148,11 @@ fi
 
 # Get AWS Credentials
 # Automatically load into existing session without copy/paste
-gac(){ 
+gac(){
 	rm -f /tmp/awscreds
-	for i in "$( get-aws-creds "$@" --quiet)" 
-	do 
-		eval "${i}" 
+	for i in "$( get-aws-creds "$@" --quiet)"
+	do
+		eval "${i}"
 		echo "${i}" >> /tmp/awscreds
 	done
 }
