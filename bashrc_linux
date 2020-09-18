@@ -3,7 +3,8 @@ alias pbcopy='xclip -selection clipboard '
 alias pbpaste='xclip -o '
 
 # https://github.com/sharkdp/vivid/releases
-export LS_COLORS=$(vivid generate solarized-dark)
+#export LS_COLORS=$(vivid generate solarized-dark)
+export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
 
 # Don't need conda init stuff if you dnf install conda
 conda activate general

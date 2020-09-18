@@ -60,6 +60,5 @@ else
 	echo "Unknown system ... "
 fi
 
-echo "LS_COLORS are generated with `vivid` which must be installed manually ..."
-echo "	see: https://github.com/sharkdp/vivid"
-echo "	If you don't need it remove the line from dotfiles/bashrc_linux"
+echo "LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)"
+echo "	If they don't for your system disable or regenerate var in dotfiles/bashrc_linux"
