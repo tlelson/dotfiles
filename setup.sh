@@ -39,6 +39,12 @@ if ( command -v dnf  ); then
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
 	conda create -n general python ipython nodejs
+elif ( command -v yum  ); then
+	echo "'yum' found. Assuming Old CentOS-ish ..."
+	sudo yum update && sudo yum upgrade -y
+	sudo yum install -y $(grep -v "#" dnf-packs | xargs )
+	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
+	conda create -n general python ipython nodejs
 elif ( command -v apt ); then
 	echo "'apt' found. Assuming debian ..."
 	sudo apt update && sudo apt upgrade -y
