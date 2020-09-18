@@ -115,13 +115,14 @@ call plug#end()
 		"tnoremap <Esc> <C-\><C-n>
 
 	" Tabs/Splits/Windows
+		set splitright " Default all splits to go right
 		" These are default key bindings for the functionality but slighly
 		" modified for effect
 		nnoremap <C-w>+ :resize +10<CR>
 		nnoremap <C-w>- :resize -10<CR>
 		nnoremap <C-w>< :vert resize +10<CR>
 		nnoremap <C-w>> :vert resize -10<CR>
-		nnoremap <C-w>] :rightbelow vsplit +tag<CR>
+		nnoremap <C-w>] :vsplit +tag\ <C-r><C-w><CR>
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
