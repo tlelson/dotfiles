@@ -32,9 +32,10 @@ call plug#end()
 "------------------- NETRW -------------------------------------------------------------
 	let g:netrw_banner = 0
 	let g:netrw_liststyle = 3
-	let g:netrw_browse_split = 4
-	let g:netrw_altv = 1
-	let g:netrw_winsize = 25
+	let g:netrw_browse_split = 4 "
+	let g:netrw_winsize = 15
+	let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
+	nnoremap <leader>rw :Vex<CR>
 
 "------------------- Efficiency --------------------------------------------------------
 	" Auto paste toggle before and after paste - Never Remove!!
@@ -171,7 +172,7 @@ call plug#end()
 		imap () ()
 		imap {} {}
 
-	"GITGUTTER
+	" GITGUTTER
 		set updatetime=1000
 		"let g:gitgutter_log=1 "For debugging issues
 		"let g:gitgutter_async=0 "Was failing when trying asyncronoushly
@@ -250,5 +251,10 @@ call plug#end()
 		\ }
 
 	" ALE
-	let g:ale_python_flake8_options = '--ignore=E501'
-	let g:ale_sign_error = '✗'
+		let g:ale_python_flake8_options = '--ignore=E501'
+		let g:ale_sign_error = '✗'
+
+	" Fugitive
+		nnoremap <leader>gs :Git<CR>
+		nnoremap <leader>gl :Gclog<CR>
+
