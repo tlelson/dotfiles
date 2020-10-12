@@ -178,8 +178,8 @@ call plug#end()
 		"let g:gitgutter_async=0 "Was failing when trying asyncronoushly
 
 	" YCM
-		let g:ycm_always_populate_location_list = 1
-		let g:ycm_open_loclist_on_ycm_diags = 1
+		"let g:ycm_always_populate_location_list = 1
+		"let g:ycm_open_loclist_on_ycm_diags = 1
 		"let g:ycm_warning_symbol = '??'
 		let g:ycm_auto_trigger = 1  " Complete without Ctrl-<space>
 		let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -240,6 +240,7 @@ call plug#end()
 		let g:go_metalinter_enabled = ['golint', 'stylecheck'] " wsl
 		let g:go_fmt_experimental = 1  " To stop folds being closed on write
 		let g:go_def_mapping_enabled = 0 " Disable remap to Ctrl-] Ctrl-T
+		let g:go_list_type = "quickfix" " There's a conflict with ALE when GoTest tries to populate the locationlist
 		let g:go_term_enabled = 1
 		let g:go_term_mode = "silent belowright 15 split"
 		"let g:go_debug_log_output = 'debugger'
