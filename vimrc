@@ -32,7 +32,7 @@ call plug#end()
 "------------------- NETRW -------------------------------------------------------------
 	let g:netrw_banner = 0
 	let g:netrw_liststyle = 3
-	let g:netrw_browse_split = 4 "
+	let g:netrw_preview = 1 " preview vertically
 	let g:netrw_winsize = 15
 	let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
 	nnoremap <leader>rw :Vex<CR>
@@ -221,7 +221,7 @@ call plug#end()
 		nnoremap <leader>rg :execute 'Rg ' . expand('<cword>')<CR>
 		" Override default vim history with FZF's
 		cnoremap <C-f> :execute 'History:'<CR>
-		nnoremap q: :execute 'History:'<CR>
+		nnoremap q/ :execute 'History:'<CR>
 
 	" GUTENTAGS
 		" config project root markers.
@@ -258,4 +258,5 @@ call plug#end()
 	" Fugitive
 		nnoremap <leader>gs :Git<CR>
 		nnoremap <leader>gl :Gclog<CR>
+		nnoremap <leader>ge :Gedit<CR>
 
