@@ -105,6 +105,7 @@ call plug#end()
 			call cursor(l, c)
 		endfun
 		augroup strip_space
+			autocmd!
 			autocmd BufWritePre * undojoin | :call StripTrailingWhitespaces()
 		augroup end
 
@@ -121,8 +122,8 @@ call plug#end()
 		" modified for effect
 		nnoremap <C-w>+ :resize +10<CR>
 		nnoremap <C-w>- :resize -10<CR>
-		nnoremap <C-w>< :vert resize +10<CR>
-		nnoremap <C-w>> :vert resize -10<CR>
+		nnoremap <C-w>> :vert resize +10<CR>
+		nnoremap <C-w>< :vert resize -10<CR>
 		nnoremap <C-w>] :vsplit +tag\ <C-r><C-w><CR>
 
 "------------------- Style/Appearance ----------------------------------------
@@ -146,6 +147,7 @@ call plug#end()
 
 	" Set Filetypes for those not guessed
 		augroup ft_set
+			autocmd!
 			autocmd BufNewFile,BufRead Dockerfile* set syntax=dockerfile
 			autocmd BufNewFile,BufRead *.txt     set ft=text
 			autocmd BufNewFile,BufRead *.coffee  set ft=coffee
