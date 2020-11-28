@@ -224,6 +224,13 @@ call plug#end()
 		" Override default vim history with FZF's
 		cnoremap <C-f> :execute 'History:'<CR>
 		nnoremap q/ :execute 'History:'<CR>
+		" Have Ripgrep start from the current buffers root, not the cwd of the
+		" file first opened in vim. Think scenario when you jumped to a
+		" library
+		command! -bang -nargs=* Rg
+  			\ call fzf#vim#grep(
+			\ 	"rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+			\   {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
 
 	" GUTENTAGS
 		" config project root markers.
