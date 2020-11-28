@@ -296,6 +296,9 @@ set -g mouse on
 set -gu prefix2
 unbind C-a
 
+# the .tmux.conf clears scroll back with a standard bash screen clear
+unbind C-l
+
 
 # move status line to top
 #set -g status-position top
