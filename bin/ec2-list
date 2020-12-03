@@ -1,0 +1,38 @@
+#!/usr/bin/env python
+
+import boto3
+ec2 = boto3.client('ec2')
+
+keys = ('ID', 'Name', 'IP', 'KeyName')
+
+instances = [{**d, "Name": d['Name'][0]} for d in [
+    {
+        "ID": i['InstanceId'],
+        "Name": [d["Value"] for d in i['Tags'] if d["Key"] == "Name"],
+        "IP": i['PrivateIpAddress'],
+        "KeyName": i['KeyName'],
+    }
+    for r in ec2.describe_instances()['Reservations']
+    for i in r['Instances']
+] if len(d['Name'])]
+
+# Add heading
+instances.insert(0, {k: k for k in keys})
+
+# Get appropriate padding for each field
+w = width = {'ID': 0, "Name": 0, "IP": 16, "KeyName": 0}
+for i in instances:
+    for k in width:
+        if len(i[k]) > width[k]:
+            width[k] = len(i[k])
+
+p = padding = 4
+
+# Print Instances
+for i in instances:
+    # if not len(i['Name']):
+    # continue
+    print(f"{i['ID']:{w['ID']+p:d}s} " +
+          f"{i['Name']:{w['Name']+p:d}s} " +
+          f"{i['IP']:{w['IP']+p:d}s} " +
+          f"{i['KeyName']:{w['KeyName']+p:d}s} ")
