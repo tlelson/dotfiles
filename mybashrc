@@ -25,6 +25,10 @@ export CONDA_BLD_PATH=/tmp/
 # Add dotfiles binaries
 export PATH=${PATH}:${HOME}/dotfiles/bin
 
+# Stop node trying to write to root owned dirs
+# https://stackoverflow.com/questions/16724259/npm-command-sudo-or-not#18296178
+export PATH=$HOME/.node_modules/bin:$PATH
+
 #alias h="head -n 5"
 alias ll="ls -ltrh "
 alias llt="ls -ltrh --color=always | tail"
