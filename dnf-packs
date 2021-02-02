@@ -16,13 +16,13 @@ bat
 pv
 conda
 vim-enhanced
+ripgrep
 
 # For YCM
-cmake 
-gcc-c++ 
-make 
+cmake
+gcc-c++
+make
 python3-devel
-ripgrep
 
 # Install manually
 #fzf  (installed by vim, just make sure bin is in path)

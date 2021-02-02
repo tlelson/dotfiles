@@ -1,3 +1,3 @@
-setlocal colorcolumn=100
+setlocal colorcolumn=120
 "highlight ColorColumn ctermbg=8
-setlocal textwidth=100
+setlocal textwidth=120

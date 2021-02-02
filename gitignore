@@ -24,6 +24,8 @@ build/
 Untitled*.ipynb
 *.pyc
 .ignore
+# Project root marker for gutentags
+.root
 
 # Compiled source #
 ###################
