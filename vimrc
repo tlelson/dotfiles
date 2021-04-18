@@ -65,6 +65,7 @@ call plug#end()
 		endif
 		set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
 		nnoremap ; :
+		nnoremap <leader>nu :set nu!<CR>
 
 	" JSON fixer
 		function JSON()
