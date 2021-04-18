@@ -261,11 +261,26 @@ call plug#end()
 		\ }
 
 	" ALE
-		let g:ale_python_flake8_options = '--ignore=E501'
+		let g:ale_completion_enabled = 0
+		let g:ale_python_flake8_options = '--ignore=E501,W503'
+		let g:ale_python_pylint_options = '--disable=C0114,C0103,C0301,W1203,W1202'
+		let g:ale_python_black_options = '--line-length=120'
+		let g:ale_yaml_yamllint_options = '-c=$HOME/.yamllint.yaml'
 		let g:ale_sign_error = '✗'
+		let g:ale_linters = {
+		\  'cloudformation': ['cfn-lint'],
+		\  'python': ['mypy', 'flake8', 'pylint', 'pyright'],
+		\}
+		let g:ale_fix_on_save = 1 " ALEFix if you need it
+		let g:ale_fixers = {
+		\  '*': ['remove_trailing_lines', 'trim_whitespace'],
+		\  'javascript': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier', 'importjs'],
+		\  'python': ['remove_trailing_lines', 'trim_whitespace', 'black', 'isort'],
+		\  'yaml': ['remove_trailing_lines', 'trim_whitespace', 'yamlfix'],
+		\}
 
 	" Fugitive
 		nnoremap <leader>gs :Git<CR>
 		nnoremap <leader>gl :Gclog<CR>
 		nnoremap <leader>ge :Gedit<CR>
-
+		nnoremap <leader>gb :Gblame<CR>
