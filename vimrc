@@ -128,11 +128,8 @@ call plug#end()
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
-		color codedark " torte, elflord,
-		" seoul256 (dark):
-		"   Range:   233 (darkest) ~ 239 (lightest)
-		"   Default: 237
-		"let g:seoul256_background = 234
+		"color codedark "  Use for terminal profile 'Dark'
+		color desert " Use for terminal profile 'Light'
 
 	" Configure code folding
 		set foldmethod=indent
