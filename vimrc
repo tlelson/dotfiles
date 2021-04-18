@@ -97,18 +97,6 @@ call plug#end()
 		vnoremap < <gv
 		vnoremap > >gv
 
-	" Clear Whitespace on save
-		function StripTrailingWhitespaces()
-			let l = line(".")
-			let c = col(".")
-			keepp %s/\s\+$//e
-			call cursor(l, c)
-		endfun
-		augroup strip_space
-			autocmd!
-			autocmd BufWritePre * undojoin | :call StripTrailingWhitespaces()
-		augroup end
-
 	" Write under root
 		command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
