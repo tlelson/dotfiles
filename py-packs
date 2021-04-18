@@ -1,0 +1,6 @@
+# After installing conda and creating a general env
+ipython
+nodejs
+black
+flake8
+isort
