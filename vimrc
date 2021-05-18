@@ -117,8 +117,8 @@ call plug#end()
 
 "------------------- Style/Appearance ----------------------------------------
 	" COLOR
-		"color codedark "  Use for terminal profile 'Dark'
-		color desert " Use for terminal profile 'Light'
+		color codedark "  Use for terminal profile 'Dark'
+		"color desert " Use for terminal profile 'Light'
 
 	" Configure code folding
 		set foldmethod=indent
@@ -265,7 +265,7 @@ call plug#end()
 		\  'cloudformation': ['cfn-lint'],
 		\  'python': ['mypy', 'flake8', 'pylint', 'pyright'],
 		\}
-		let g:ale_fix_on_save = 1 " ALEFix if you need it
+		let g:ale_fix_on_save = 0 " ALEFix if you need it
 		let g:ale_fixers = {
 		\  '*': ['remove_trailing_lines', 'trim_whitespace'],
 		\  'javascript': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier', 'importjs'],
