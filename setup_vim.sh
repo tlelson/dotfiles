@@ -33,5 +33,6 @@ done
 
 
 echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to be '1'"
-echo "2.    Open vim and do the followining to get bundles:"
+echo "2.    !! Install go and node before the installing YCM."
+echo "3.    Open vim and do the followining to get bundles:"
 echo "          :PlugInstall"

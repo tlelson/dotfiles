@@ -61,4 +61,4 @@ else
 fi
 
 echo "LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)"
-echo "	If they don't for your system disable or regenerate var in dotfiles/bashrc_linux"
+echo "	If they don't work for your system, disable or regenerate var in dotfiles/bashrc_linux"
