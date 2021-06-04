@@ -33,7 +33,18 @@ echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for d
 git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 
-if ( command -v dnf  ); then
+if [[ $OSTYPE == "darwin"* ]]; then
+	echo "darwin based system detected. Assuming MacOS"
+	echo "Changing default shell back to bash ..."
+	chsh -s /bin/bash	
+	echo "Installing homebrew ..."
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	echo "Installing homebrew packages ..."
+	echo 'DO NOT `conda init` when it askes you to !'
+	brew install $(grep -v '#' brew-leaves.out | xargs)
+	echo "Setting up python/node sandbox ..."
+	conda create -n general python ipython nodejs
+elif ( command -v dnf  ); then
 	echo "'dnf' found. Assuming CentOS-ish ..."
 	sudo dnf update && sudo dnf upgrade -y
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
@@ -50,15 +61,11 @@ elif ( command -v apt ); then
 	sudo apt update && sudo apt upgrade -y
 	sudo apt install -y $(grep -v "#" apt-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
-elif ( command -v brew ); then
-	echo "'brew' found. Assuming OSX ..."
-	echo "NOT IMPLEMENTED !! TODO: Install brew homebrew!"
-	#brew install $(cat brew-leaves.out)
-	#ln -s $(pwd)/bashrc_osx ~/.bashrc_local
-	exit 1
 else
 	echo "Unknown system ... "
 fi
 
 echo "LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)"
 echo "	If they don't work for your system, disable or regenerate var in dotfiles/bashrc_linux"
+echo ""
+echo "RESTART your shell ..."

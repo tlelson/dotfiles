@@ -1,5 +1,6 @@
 # Exports
 export DEFAULT_GIT_EMAIL=tpj800@gmail.com
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ## Brew stuff
 alias ctags='$(brew --prefix)/bin/ctags'
@@ -30,5 +31,25 @@ export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 
 ## ----------- END TEMP COMPILATION STUFF  ------------ ##
 #
-## ----------- Testing iTerm2 shell integration -------- ##
-# source ~/.iterm2_shell_integration.bash
+
+# https://github.com/sharkdp/vivid/releases
+#export LS_COLORS=$(vivid generate solarized-dark)
+export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
+
+# Manual conda init 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+conda activate general
