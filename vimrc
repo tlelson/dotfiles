@@ -200,6 +200,7 @@ call plug#end()
 
 	" NERDCOMMENTER config
 		" This let you use Ctrl+/ to comment blocks
+		" N.B This won't work with default terminal on Mac OS !
 		nmap <C-_> <leader>c<Space>
 		vmap <C-_> <leader>c<Space>
 
