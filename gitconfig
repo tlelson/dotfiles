@@ -24,3 +24,5 @@
     autosquash = true
 [credential]
 	helper = store
+[init]
+	defaultBranch = main
