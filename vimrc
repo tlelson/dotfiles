@@ -60,10 +60,9 @@ call plug#end()
 		vnoremap p "_dP
 
 	" Misc
-		if &diff == 'nodiff'
-			set shellcmdflag=-c
-		endif
-		set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
+		set shell=bash
+		set shellcmdflag=-c "Load alias etc, DONOT use interactive (-i)
+
 		nnoremap ; :
 		nnoremap <leader>nu :set nu!<CR>
 
