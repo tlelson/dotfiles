@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-sensible'
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-endwise'
-	Plug 'tpope/vim-sleuth'  " Removes need for any tabstop/softtabstop/expandtab settings
+	Plug 'tpope/vim-sleuth'
+	Plug 'tpope/vim-abolish' 
 	Plug 'junegunn/fzf', { 'do': './install --all'}
 	Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 	" Navigation and Version Control
