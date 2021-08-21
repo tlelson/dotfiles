@@ -36,3 +36,12 @@ echo "1.    Test if vim has lua: ':echo has(\"lua\")' ... in vim.  This needs to
 echo "2.    !! Install go and node before the installing YCM."
 echo "3.    Open vim and do the followining to get bundles:"
 echo "          :PlugInstall"
+
+echo "TROUBLESHOOTING"
+echo << EOF 
+    Ycm Error: 'missing GLIBCXX_3.4.29':
+        $ strings /home/min/.conda/envs/general/lib/libstdc++.so.6 | grep GLIBCXX_3.4.29
+        $ strings /usr/lib64/libstdc++.so.6 | grep GLIBCXX_3.4.29
+
+        Soln: Softlink the conda lib to the system one with the required version
+EOF

@@ -29,7 +29,7 @@ ln -s $(pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
 
 # Set up TMUX
-echo "Using tmux config from `https://github.com/gpakosz/.tmux`.  See repo for details ..."
+echo 'Using tmux config from "https://github.com/gpakosz/.tmux".  See repo for details ...'
 git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
 ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 
@@ -65,7 +65,8 @@ else
 	echo "Unknown system ... "
 fi
 
-echo "LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)"
+echo 'LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)'
 echo "	If they don't work for your system, disable or regenerate var in dotfiles/bashrc_linux"
 echo ""
-echo "RESTART your shell ..."
+echo 'RESTART your shell ... resolve fzf errors by running `setup_vim.sh`.  Or install it manually.'
+

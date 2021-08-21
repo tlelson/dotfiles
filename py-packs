@@ -1,6 +1,12 @@
 # After installing conda and creating a general env
+pyyaml
+# Dev
+yamlfix
 ipython
+ipdb
 nodejs
 black
 flake8
 isort
+pylint
+mypy
