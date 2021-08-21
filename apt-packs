@@ -2,7 +2,6 @@
 # Ubu native packs
 tmux
 curl
-xclip
 
 # WSL or UBU
 exuberant-ctags

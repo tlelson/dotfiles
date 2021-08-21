@@ -1,7 +1,6 @@
 ## N.B! any line with a # anywhere will be skipped!!
 tmux
 curl
-xclip
 ctags
 htop
 hugo
