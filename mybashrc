@@ -28,6 +28,7 @@ export PATH=${PATH}:${HOME}/dotfiles/bin
 # Stop node trying to write to root owned dirs
 # https://stackoverflow.com/questions/16724259/npm-command-sudo-or-not#18296178
 export N_PREFIX=$HOME/.node # For `n` command (version managment)
+export PATH=$N_PREFIX/bin:$PATH # so that `n` new node is on the path
 export PATH=$N_PREFIX/.node_modules/bin:$PATH
 
 #alias h="head -n 5"
