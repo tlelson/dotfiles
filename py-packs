@@ -1,6 +1,7 @@
 # After installing conda and creating a general env
 pyyaml
 # Dev
+yamllint
 yamlfix
 ipython
 ipdb

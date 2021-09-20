@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Copying dotfiles into location ..."
-for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local fzf.bash ctags ripgreprc npmrc
+for file in mybashrc  bash_profile  htoprc gitconfig  gitignore  jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local fzf.bash ctags ripgreprc npmrc yamllint.yaml
 do
     echo "looking for ~/.${file} .."
     if [ -h ~/.${file} ]; then # Is it a sybolic link ?
@@ -36,7 +36,7 @@ ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 if [[ $OSTYPE == "darwin"* ]]; then
 	echo "darwin based system detected. Assuming MacOS"
 	echo "Changing default shell back to bash ..."
-	chsh -s /bin/bash	
+	chsh -s /bin/bash
 	echo "Installing homebrew ..."
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 	echo "Installing homebrew packages ..."
@@ -69,4 +69,3 @@ echo 'LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp
 echo "	If they don't work for your system, disable or regenerate var in dotfiles/bashrc_linux"
 echo ""
 echo 'RESTART your shell ... resolve fzf errors by running `setup_vim.sh`.  Or install it manually.'
-
