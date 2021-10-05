@@ -36,7 +36,6 @@ call plug#end()
 	let g:netrw_preview = 1 " preview vertically
 	let g:netrw_winsize = 15
 	let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'
-	nnoremap <leader>rw :Vex<CR>
 
 "------------------- Efficiency --------------------------------------------------------
 	" Auto paste toggle before and after paste - Never Remove!!
