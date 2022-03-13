@@ -150,11 +150,3 @@ gac(){
 		echo "${i}" >> /tmp/awscreds
 	done
 }
-
-# Reduce need to Get session creds multiple times for each shell
-# If opening a new shell inside tmux you'll get the env vars that
-# it started with ... which may be old.  Maybe sure they're gone
-unset AWS_ACCESS_KEY_ID AWS_SESSION_TOKEN AWS_SECRET_ACCESS_KEY
-if [ -f /tmp/awscreds ]; then
-    source /tmp/awscreds
-fi

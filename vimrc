@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdcommenter'
 	Plug 'ludovicchabant/vim-gutentags'
 	" Install go binary, `apt-packs` and nodejs BEFORE installing YCM
-	"Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'}
+	Plug 'ycm-core/YouCompleteMe', { 'do': './install.py --go-completer --ts-completer'}
 	Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': ['go'] }
 	Plug 'dense-analysis/ale'
@@ -266,12 +266,13 @@ call plug#end()
 		\  'cloudformation': ['cfn-lint'],
 		\  'python': ['mypy', 'flake8', 'pylint', 'pyright'],
 		\}
-		let g:ale_fix_on_save = 0 " ALEFix if you need it
+		let g:ale_fix_on_save = 1 " ALEFix if you need it
 		let g:ale_fixers = {
 		\  '*': ['remove_trailing_lines', 'trim_whitespace'],
 		\  'javascript': ['remove_trailing_lines', 'trim_whitespace', 'eslint', 'prettier', 'importjs'],
 		\  'python': ['remove_trailing_lines', 'trim_whitespace', 'black', 'isort'],
 		\  'yaml': ['remove_trailing_lines', 'trim_whitespace', 'yamlfix'],
+		\  'json': ['jq'],
 		\}
 
 	" Fugitive
