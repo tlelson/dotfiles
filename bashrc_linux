@@ -7,5 +7,5 @@ export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
 # Don't need conda init stuff if you dnf install conda
 conda activate general
 
-source /home/min/client/Kablamo/GPT/project_envs.sh
-source /home/min/client/Kablamo/RFS/project_envs.sh
+source $HOME/client/Kablamo/GPT/project_envs.sh
+source $HOME/client/Kablamo/RFS/project_envs.sh
