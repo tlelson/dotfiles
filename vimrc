@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-endwise'
 	Plug 'tpope/vim-sleuth'
-	Plug 'tpope/vim-abolish' 
+	Plug 'tpope/vim-abolish'
 	Plug 'junegunn/fzf', { 'do': './install --all'}
 	Plug 'junegunn/fzf.vim', { 'depends': 'fzf'  }
 	" Navigation and Version Control
@@ -66,6 +66,7 @@ call plug#end()
 		set shell=/usr/bin/env\ bash\ --rcfile\ ~/.bashrc  "Load alias etc, DONOT use interactive (-i)
 		nnoremap ; :
 		nnoremap <leader>nu :set nu!<CR>
+		set hlsearch
 
 	" JSON fixer
 		function JSON()
@@ -164,6 +165,7 @@ call plug#end()
 		set updatetime=1000
 		"let g:gitgutter_log=1 "For debugging issues
 		"let g:gitgutter_async=0 "Was failing when trying asyncronoushly
+		highlight clear SignColumn
 
 	" YCM
 		"let g:ycm_always_populate_location_list = 1
@@ -273,6 +275,7 @@ call plug#end()
 		\  'python': ['remove_trailing_lines', 'trim_whitespace', 'black', 'isort'],
 		\  'yaml': ['remove_trailing_lines', 'trim_whitespace', 'yamlfix'],
 		\  'json': ['jq'],
+		\  'xml': ['xmllint']
 		\}
 
 	" Fugitive
