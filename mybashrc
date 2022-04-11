@@ -23,13 +23,19 @@ export PATH=${PATH}:${GOPATH}/bin:/usr/local/go/bin
 export CONDA_BLD_PATH=/tmp/
 
 # Add dotfiles binaries
-export PATH=${PATH}:${HOME}/dotfiles/bin
+if [[ ! "$PATH" == *$HOME/dotfiles/bin* ]]; then
+    export PATH=${PATH}:${HOME}/dotfiles/bin
+fi
 
 # Stop node trying to write to root owned dirs
 # https://stackoverflow.com/questions/16724259/npm-command-sudo-or-not#18296178
 export N_PREFIX=$HOME/.node # For `n` command (version managment)
-export PATH=$N_PREFIX/bin:$PATH # so that `n` new node is on the path
-export PATH=$N_PREFIX/.node_modules/bin:$PATH
+if [[ ! "$PATH" == *$N_PREFIX/bin* ]]; then
+    export PATH=$N_PREFIX/bin:$PATH # so that `n` new node is on the path
+fi
+if [[ ! "$PATH" == *$N_PREFIX/.node_modules/bin* ]]; then
+    export PATH=$N_PREFIX/.node_modules/bin:$PATH
+fi
 
 #alias h="head -n 5"
 alias ll="ls -ltrh "
