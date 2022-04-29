@@ -42,6 +42,7 @@ if [[ $OSTYPE == "darwin"* ]]; then
 	echo "Installing homebrew packages ..."
 	echo 'DO NOT `conda init` when it askes you to !'
 	brew install $(grep -v '#' brew-leaves.out | xargs)
+	ln -s $(pwd)/bashrc_linux ~/.bashrc_local
 	echo "Setting up python/node sandbox ..."
 	conda create -n general python ipython nodejs
 elif ( command -v dnf  ); then

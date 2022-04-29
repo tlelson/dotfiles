@@ -3,6 +3,8 @@ export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ## Brew stuff
+export PATH="/opt/homebrew/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 alias ctags='$(brew --prefix)/bin/ctags'
 alias sed="gsed "
 # Get bash completions for stuff installed with brew.
@@ -14,8 +16,6 @@ if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
             source $f
         done
 fi
-export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
 
 ## ----------- FOR COMPILING CODE ONLY !! ------------ ##
 ## this may be required when installing from brew also. Only enable
@@ -39,14 +39,14 @@ export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
 # Manual conda init 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/local/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/usr/local/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
     else
-        export PATH="/usr/local/Caskroom/miniconda/base/bin:$PATH"
+        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
     fi
 fi
 unset __conda_setup

@@ -1,4 +1,4 @@
-#coreutils
+coreutils
 ctags
 gnu-sed
 htop
@@ -18,3 +18,5 @@ miniconda
 vim
 awscli
 cmake
+neovim
+vivid
