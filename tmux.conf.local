@@ -310,3 +310,6 @@ unbind C-l
 # Overriding .tmux.conf
 #unbind -n C-l  # his default config clear all tmux scoll back after a C-l
 #bind-key e setw synchronize-panes  # Toggle all input
+
+# I found the setting of 'tmux-256color' was messing with the cursor and bash defaults such as 'clear'
+set -g default-terminal "xterm-256color"
