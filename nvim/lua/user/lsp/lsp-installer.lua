@@ -9,6 +9,7 @@ lsp_installer.on_server_ready(function(server)
 	local opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
+		ensure_installed = {"sumneko_lua", "rome", "tsserver", "eslint", "pyright"}
 	}
 
 	 if server.name == "jsonls" then
