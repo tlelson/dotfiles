@@ -1,6 +1,6 @@
 coreutils
-ctags
 gnu-sed
+grep
 htop
 jq
 mosh
@@ -15,7 +15,6 @@ vnstat
 watch
 wget
 miniconda
-vim
 awscli
 cmake
 neovim
