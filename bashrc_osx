@@ -1,13 +1,15 @@
 # Exports
-export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ## Brew stuff
-export PATH="/opt/homebrew/bin:/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH" # Default install of brew executables such as `aws` and `ggrep`
+# Override BSD utilities with GNU alternatives
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"  
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
 export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
-alias ctags='$(brew --prefix)/bin/ctags'
-alias sed="gsed "
-# Get bash completions for stuff installed with brew.
+#/opt/homebrew/opt/coreutils/libexec/gnubin Get bash completions for stuff installed with brew.
 # you can also put your own ones here (see ssh example in dotfiles)
 if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
   . $(brew --prefix)/etc/bash_completion.d/*
@@ -28,13 +30,11 @@ fi
 #export CPPFLAGS=-I/usr/local/opt/openssl/include
 #export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig
 
-
 ## ----------- END TEMP COMPILATION STUFF  ------------ ##
 #
 
 # https://github.com/sharkdp/vivid/releases
-#export LS_COLORS=$(vivid generate solarized-dark)
-export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
+export LS_COLORS=$(vivid generate solarized-dark)
 
 # Manual conda init 
 # >>> conda initialize >>>
