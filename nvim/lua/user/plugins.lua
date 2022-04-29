@@ -50,7 +50,7 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
-  use "tlelson/vim-code-dark"
+  --use "tlelson/vim-code-dark"
 
   -- Completion plugins
   use "hrsh7th/nvim-cmp"
@@ -92,7 +92,7 @@ return packer.startup(function(use)
   use 'tpope/vim-sensible'
   use 'tpope/vim-surround'
   use 'tpope/vim-endwise'
-  --use 'tpope/vim-sleuth'
+  use 'tpope/vim-sleuth'
   use 'tpope/vim-abolish'
   use 'scrooloose/nerdcommenter'
   use 'vim-airline/vim-airline'

@@ -14,6 +14,7 @@ export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTCONTROL=erasedups
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
 shopt -s dotglob nullglob  # * match .git so moving files doesn't drop hidden ones
+export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 
 # GO setup
 export GOPATH=~/go

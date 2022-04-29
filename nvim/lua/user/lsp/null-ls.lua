@@ -91,15 +91,15 @@ local cfn_lint = {
 		end,
 	})
 }
+null_ls.register(cfn_lint)
 
 null_ls.setup({
-	debug = false,
+	debug = true,
 	sources = {
 		formatting.prettier.with({ extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" } }),
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		-- diagnostics.flake8
-		cfn_lint,
 	},
 })
 
