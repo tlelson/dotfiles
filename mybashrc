@@ -39,8 +39,9 @@ if [[ ! "$PATH" == *$N_PREFIX/.node_modules/bin* ]]; then
 fi
 
 #alias h="head -n 5"
+alias ls='ls --color=auto'  # Some distros have this by default, some do not
 alias ll="ls -ltrh "
-alias llt="ls -ltrh --color=always | tail"
+alias llt="ls -ltrh | tail"
 alias lsh="ls -a | grep '^\.'"
 alias llh="ls -lhta | grep ' \.'"
 alias grep="grep --color=auto -E "
