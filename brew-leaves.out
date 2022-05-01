@@ -1,4 +1,5 @@
 coreutils
+findutils
 gnu-sed
 grep
 htop

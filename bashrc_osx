@@ -7,8 +7,11 @@ export PATH="/opt/homebrew/bin:$PATH" # Default install of brew executables such
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"  
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/grep/libexec/gnuman:$MANPATH"
-export MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$PATH"  
+export MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
+export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
+export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$PATH"
 #/opt/homebrew/opt/coreutils/libexec/gnubin Get bash completions for stuff installed with brew.
 # you can also put your own ones here (see ssh example in dotfiles)
 if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
