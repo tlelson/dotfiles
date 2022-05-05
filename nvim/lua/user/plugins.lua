@@ -103,11 +103,10 @@ return packer.startup(function(use)
   }
 
   -- Experimental
-  use {
-    'crispgm/nvim-go',
-    run = ':GoInstallBinaries',
-    ft = {'go'},
-  }
+  --use {
+    --'crispgm/nvim-go',
+    --run = ':GoInstallBinaries',
+  --}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
