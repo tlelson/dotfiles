@@ -11,30 +11,29 @@
 
 -- Misc
 vim.cmd [[ 
-    command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit! 
+  command SudoWrite :execute ':silent w !sudo tee % > /dev/null' | :edit! 
 
-    " JSON fixer
-            function JSON()
-                    execute ":%!python -m json.tool --sort-keys"
-            endfun
-            command JSON call JSON()
+  " JSON fixer
+  function JSON()
+    execute ":%!python -m json.tool --sort-keys"
+  endfun
+  command JSON call JSON()
 
-            " Unfixer - Shrink all formated json to one line
-            " and remove unnessesary spaces UNTESTED
-            function JSONunpretty()
-                    %j 						" Remove linebreaks
-                    :%s/\v([{\[:,"]) /\1/g  " Space after
-                    :%s/\v ([}\]:,"])/\1/g  " Space before
-            endfun
+  " Unfixer - Shrink all formated json to one line
+  " and remove unnessesary spaces UNTESTED
+  function JSONunpretty()
+    %j 						" Remove linebreaks
+    :%s/\v([{\[:,"]) /\1/g  " Space after
+    :%s/\v ([}\]:,"])/\1/g  " Space before
+  endfun
 
-    " XML formatter
-            function XML()
-                    %!python -c "import sys, xml.dom.minidom as x; print(x.parse(sys.stdin).toprettyxml())"
-                    g/^\s*$/d
-                    :execute "normal gg=G"
-            endfunction
-            command XML call XML()
-
+  " XML formatter
+  function XML()
+    %!python -c "import sys, xml.dom.minidom as x; print(x.parse(sys.stdin).toprettyxml())"
+    g/^\s*$/d
+    :execute "normal gg=G"
+  endfunction
+  command XML call XML()
 ]]
 
 
@@ -44,15 +43,25 @@ vim.cmd [[
   " file first opened in vim. Think scenario when you jumped to a
   " library
   command! -bang -nargs=* Rg
-          \ call fzf#vim#grep(
-          \ 	"rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
-          \   {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
+    \ call fzf#vim#grep(
+    \ 	"rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+    \   {'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]}, <bang>0)
 
   " For when you have no git root or when you want to search
   " outside it.  Open a file below which you want to search then
   " RgCWD
   command! -bang -nargs=* RgCWD
-      \ call fzf#vim#grep(
-          \ 	"rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
-          \   {'dir': expand('%:p:h')}, <bang>0)
+    \ call fzf#vim#grep(
+    \ 	"rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1,
+    \   {'dir': expand('%:p:h')}, <bang>0)
+
+  " Experiement with this to see if its better
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
+  command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 ]]
