@@ -8,5 +8,7 @@ configs.setup {
     additional_vim_regex_highlighting = true,
 
   },
-  indent = { enable = true, disable = { "yaml" } },
+  -- Treesitters indent seems to double up on indents created by vim using
+  -- smartindent/autoindent.  When this feature is out of dev consider it again.
+  indent = { enable = false, disable = { "yaml" } },
 }
