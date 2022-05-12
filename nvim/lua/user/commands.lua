@@ -61,6 +61,8 @@ vim.cmd [[
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    " Search from git root not current file
+    let spec.dir = system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2]
     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
   endfunction
   command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
