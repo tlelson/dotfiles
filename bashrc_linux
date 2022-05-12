@@ -1,4 +1,5 @@
 alias open='xdg-open '
+alias bat='batcat '
 
 # https://github.com/sharkdp/vivid/releases
 #export LS_COLORS=$(vivid generate solarized-dark)

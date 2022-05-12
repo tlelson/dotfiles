@@ -20,3 +20,5 @@ awscli
 cmake
 neovim
 vivid
+# installed as batcat
+bat
