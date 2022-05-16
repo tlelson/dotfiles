@@ -99,8 +99,10 @@ null_ls.setup({
 		formatting.black.with({ extra_args = { "--fast" } }),
 		formatting.stylua,
 		diagnostics.flake8,
-		diagnostics.golangci_lint,
-		--diagnostics.golangci_lint.with({ extra_args = { "--enable", "golint,stylecheck" } }),
+		-- default args to golangci use `--fast` which hide errors
+		diagnostics.golangci_lint.with({
+			args = { "run", "--fix=false", "--out-format=json", "$DIRNAME", "--path-prefix", "$ROOT" }
+		}),
 	},
 })
 
