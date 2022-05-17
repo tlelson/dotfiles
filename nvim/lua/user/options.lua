@@ -24,7 +24,7 @@ local options = {
   -- This stuff is set by vim-sleuth
   --expandtab = false,                       -- convert tabs to spaces
   --shiftwidth = 4,                          -- the number of spaces inserted for each indentation
-  --tabstop = 4,                             -- insert 4 spaces for a tab
+  tabstop = 4,                             -- insert 4 spaces for a tab
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
   relativenumber = false,                  -- set relative numbered lines

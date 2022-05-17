@@ -465,6 +465,17 @@
 	<real>5.8511881828308105</real>
 	<key>GlobalKeyMap</key>
 	<dict>
+		<key>0x4d-0x60000-0x2e</key>
+		<dict>
+			<key>Action</key>
+			<integer>23</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string></string>
+			<key>Version</key>
+			<integer>1</integer>
+		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1168,7 +1179,7 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 			<key>Minimum Contrast</key>
 			<real>0.59184896945953369</real>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>

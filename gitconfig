@@ -1,4 +1,6 @@
 [user]
+	name = Tim
+	email = timothy.elson@finder.com
         # DO NOT CONFIGURE USER OR EMAIL HERE
         # The should be configured on a per directory basis
 [push]
@@ -26,5 +28,8 @@
 	helper = store
 [init]
 	defaultBranch = main
+	templatedir = /Users/timothyelson/Finder/code/git-bootstrap
 [merge]
 	log = true
+[url "https://tle-finder@github.com/finderau"]
+	insteadOf = https://github.com/finderau
