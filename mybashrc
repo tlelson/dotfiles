@@ -144,10 +144,6 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 
-if [ -f ~/.bashrc_local ]; then
-    source ~/.bashrc_local
-fi
-
 # Get AWS Credentials
 # Automatically load into existing session without copy/paste
 gac(){
@@ -158,3 +154,14 @@ gac(){
 		echo "${i}" >> /tmp/awscreds
 	done
 }
+
+# OS specific config. This is saved in dotfiles.
+if [ -f ~/.bashrc_os ]; then
+    source ~/.bashrc_os
+fi
+
+# Config that doesn't need to be saved in dotfiles. E.git
+#   - configuration of various commands, conda, gcloud etc
+if [ -f ~/.bashrc_local ]; then
+    source ~/.bashrc_local
+fi

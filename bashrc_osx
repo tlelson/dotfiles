@@ -22,6 +22,10 @@ if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
         done
 fi
 
+## MacOS Dev Tools
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+
 ## ----------- FOR COMPILING CODE ONLY !! ------------ ##
 ## this may be required when installing from brew also. Only enable
 ## this suff when you need it.
@@ -56,9 +60,3 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 conda activate general
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/timothyelson/Downloads/google-cloud-sdk/path.bash.inc' ]; then . '/Users/timothyelson/Downloads/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/timothyelson/Downloads/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/timothyelson/Downloads/google-cloud-sdk/completion.bash.inc'; fi
