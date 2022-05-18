@@ -101,12 +101,9 @@ return packer.startup(function(use)
     'tlelson/vim-notebook',
     branch = 'dev',
   }
+  use 'mechatroner/rainbow_csv'
 
   -- Experimental
-  --use {
-    --'crispgm/nvim-go',
-    --run = ':GoInstallBinaries',
-  --}
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
