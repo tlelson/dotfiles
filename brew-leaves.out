@@ -23,3 +23,5 @@ neovim
 vivid
 # installed as batcat
 bat
+stylua
+golangci-lint
