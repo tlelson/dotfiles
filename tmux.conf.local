@@ -11,7 +11,7 @@
 #   - and iTerm2 is configured to let option key act as +Esc
 #   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
 # then uncomment the following line to make Meta + arrow keys mapping work
-#set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
+set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D,xterm-256color:RGB"
 
 
 # -- windows & pane creation ---------------------------------------------------
@@ -312,4 +312,4 @@ unbind C-l
 #bind-key e setw synchronize-panes  # Toggle all input
 
 # I found the setting of 'tmux-256color' was messing with the cursor and bash defaults such as 'clear'
-set -g default-terminal "xterm-256color"
+set -g default-terminal "screen-256color"
