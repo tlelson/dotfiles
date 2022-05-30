@@ -16,6 +16,12 @@ do
     fi
 done
 
+echo 'Copy config files into `.config` ...' 
+fln -s /Users/timothyelson/dotfiles/config/pycodestyle ~/.config/pycodestylor file in $(ls ./config)
+do 
+	echo "ln -s $(pwd)/config/$file ~/.config/$file"
+done
+
 # Set use my bash config
 echo "Sourcing '~/.mybashrc' from system '~/.bashrc' ... "
 echo "source ~/.mybashrc" >> ~/.bashrc
