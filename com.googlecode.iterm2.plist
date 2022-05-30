@@ -456,7 +456,7 @@
 	<key>DimOnlyText</key>
 	<false/>
 	<key>DisableFullscreenTransparency</key>
-	<false/>
+	<true/>
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FocusFollowsMouse</key>
@@ -1179,7 +1179,7 @@ Broadcast Input.Toggle Broadcast Input to Current Session</string>
 			<key>Minimum Contrast</key>
 			<real>0.59184896945953369</real>
 			<key>Mouse Reporting</key>
-			<false/>
+			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>

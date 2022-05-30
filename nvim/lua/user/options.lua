@@ -12,7 +12,7 @@ local options = {
   showmode = false,                        -- we don't need to see things like -- INSERT -- anymore
   showtabline = 2,                         -- always show tabs
   smartcase = true,                        -- case sensitive when an upper case char is used
-  smartindent = true,                      -- make indenting smarter again
+  smartindent = false,                     -- This is apparently depricated in favor of cindent :help for deets
   splitbelow = false,                       -- force all horizontal splits to go below current window
   splitright = true,                       -- force all vertical splits to go to the right of current window
   swapfile = false,                        -- creates a swapfile
@@ -41,7 +41,7 @@ local options = {
   foldnestmax = 10,
   foldlevel = 1,
   scrollbind = false,
-  --cindent = true, 			   -- This should only be set for C files.  It jumps to 0 when you hit #
+  cindent = false, 			   -- This should only be set for C files.  It jumps to 0 when you hit #
   autoindent = true,
   listchars = "eol:$,tab:>-,trail:~,extends:>,precedes:<",
 }

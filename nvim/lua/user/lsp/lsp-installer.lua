@@ -24,38 +24,6 @@ lsp_installer.on_server_ready(function(server)
 
 	if server.name == "yamlls" then
 		local yamlls_opts = require("user.lsp.settings.yamlls")
-		--local yamlls_opts = {
-			--settings = {
-				--yaml = {
-					--format = {
-						--enable = true,
-					--},
-					--hover = true,
-					--completion = true,
-
-					--customTags = {
-						--"!fn",
-						--"!And",
-						--"!If",
-						--"!Not",
-						--"!Equals",
-						--"!Or",
-						--"!FindInMap sequence",
-						--"!Base64",
-						--"!Cidr",
-						--"!Ref",
-						--"!Ref Scalar",
-						--"!Sub",
-						--"!GetAtt",
-						--"!GetAZs",
-						--"!ImportValue",
-						--"!Select",
-						--"!Split",
-						--"!Join sequence"
-					--},
-				--}
-			--}
-		--}
 		opts = vim.tbl_deep_extend("force", yamlls_opts, opts)
 	end
 
