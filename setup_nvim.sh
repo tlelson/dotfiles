@@ -10,15 +10,12 @@ if [ -d ~/.config/nvim ];
         echo "~/.config/nvim does not exist or is not a directory.";
 fi
 
-if [ -d ~/.config ];
-    then
-	rm -rf ~/.config/nvim
-    else
-        mkdir ~/.config
+if [ ! -d ~/.config ];
+then
+    mkdir ~/.config
 fi
 
-ln -s $(pwd)/nvim ~/.config/nvim
-echo "dotfiles/nvim linked to ~/.config/nvim ..."
+git clone https://github.com/tlelson/nvim.git ~/.config/nvim
 
 if [[ $OSTYPE == "linux"* ]]; then
     echo 'Downloading latest stable release of neo-vim .... '
