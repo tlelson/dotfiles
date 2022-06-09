@@ -17,7 +17,7 @@ do
 done
 
 echo 'Copy config files into `.config` ...' 
-fln -s /Users/timothyelson/dotfiles/config/pycodestyle ~/.config/pycodestylor file in $(ls ./config)
+for file in $(ls ./config)
 do 
 	echo "ln -s $(pwd)/config/$file ~/.config/$file"
 done
