@@ -11,4 +11,5 @@ flake8
 isort
 pylint
 mypy
-cf-lint
+cfn-lint
+neovim
