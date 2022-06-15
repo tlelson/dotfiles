@@ -1,19 +1,17 @@
-dotfiles
-========
+# dotfiles
 
-repo of home dir configs
+Bash
 
-N.B  Do a recursive clone to get the submodules (vundle)
+```bash
+bash setup.sh         
+```
 
-SETUP ALL EXCEPT VIM DOTFILES
-    $ git clone --recursive https://github.com/eL0ck/dotfiles.git
-    $ cd dotfiles
-    $ bash setup.sh
+Vim
+```bash
+bash setup_vim.sh
+```
 
-SETUP AND CONFIGURE VIM ONLY
-    $ git clone --recursive https://github.com/eL0ck/dotfiles.git
-    $ cd dotfiles
-    $ bash setup_vim.sh
-
-... follow instructions from there.  The instructions will stay how to ensure you have vim with lua and will explain how to install all the pulgins
-
+NeoVim
+```bash
+bash setup_nvim.sh
+```
