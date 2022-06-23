@@ -5,5 +5,18 @@ alias bat='batcat '
 #export LS_COLORS=$(vivid generate solarized-dark)
 export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
 
+if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
+  echo "WSL detected. Setting up X Server ..."
+
+  # https://nickymeuleman.netlify.app/blog/gui-on-wsl2-cypress
+  # Summary:
+  # Instal https://sourceforge.net/projects/vcxsrv/ on windows and run 
+  # with 'Disable access control'
+  export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+  # add following to /etc/sudoers.d/dbus 
+  # <whoami user name> ALL = (root) NOPASSWD: /etc/init.d/dbus
+  sudo /etc/init.d/dbus start &> /dev/null
+fi
+
 # Don't need conda init stuff if you dnf install conda
 conda activate general
