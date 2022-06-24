@@ -1,7 +1,0 @@
-# WSL Alias
-alias open='cmd.exe /C start '
-
-# For WSL
-export DOCKER_HOST=tcp://localhost:2375
-
-# conda activate general
