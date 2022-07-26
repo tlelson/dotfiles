@@ -1,3 +1,4 @@
 --max-columns=140
 --max-columns-preview
 --hidden
+--glob=!**/.git/**
