@@ -18,6 +18,7 @@ vnstat
 vim-nox
 bat
 pv
+shellcheck
 
 # For YCM
 cmake

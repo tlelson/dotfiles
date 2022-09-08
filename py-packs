@@ -13,3 +13,4 @@ pylint
 mypy
 cfn-lint
 neovim
+beautysh
