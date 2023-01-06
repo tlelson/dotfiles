@@ -19,8 +19,6 @@ git clone https://github.com/tlelson/nvim.git ~/.config/nvim
 
 if [[ $OSTYPE == "linux"* ]]; then
     echo 'Downloading latest stable release of neo-vim .... '
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     curl -fLo /etc/alternatives/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod u+x /etc/alternatives/nvim
 
