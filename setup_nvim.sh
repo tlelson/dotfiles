@@ -20,11 +20,11 @@ git clone https://github.com/tlelson/nvim.git ~/.config/nvim
 if [[ $OSTYPE == "linux"* ]]; then
     echo 'Downloading latest stable release of neo-vim .... '
     curl -fLo /etc/alternatives/nvim https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-    chmod u+x /etc/alternatives/nvim
+    chmod +x /etc/alternatives/nvim
 
     echo "Call with 'nvim' or relink manually ..."
     #rm $(which vim)
-    #ln -s /usr/local/bin/vim /etc/alternatives/nvim
+    #ln -s /etc/alternatives/nvim /usr/local/bin/nvim
 
 elif [[ $OSTYPE == "darwin"* ]]; then
     echo 'Neo-vim alread downloaded by `setup.sh`. Linking `vim` to `nvim` ...'
