@@ -19,6 +19,7 @@ vim-nox
 bat
 pv
 shellcheck
+speedtest-cli
 
 # For YCM
 cmake
