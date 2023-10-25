@@ -22,11 +22,11 @@
     recurse = true
 [rebase]
     autosquash = true
-[credential]
-	helper = store
 [init]
 	defaultBranch = main
 [merge]
 	log = true
 [include]
         path = ~/.gitconfig_local
+[credential]
+	helper = store

@@ -4,10 +4,10 @@
 echo "Making a .config/nvim/ for configuration"
 if [ -d ~/.config/nvim ];
     then
-        echo "~/.config/nvim already exists. Moving to /tmp . Review it before next shutdown!";
+        echo '~/.config/nvim already exists. Moving to /tmp . Review it before next shutdown!';
         mv ~/.config/nvim /tmp
     else
-        echo "~/.config/nvim does not exist or is not a directory.";
+        echo '~/.config/nvim does not exist or is not a directory.';
 fi
 
 if [ ! -d ~/.config ];
