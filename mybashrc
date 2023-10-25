@@ -56,6 +56,7 @@ alias webtorrent="webtorrent --not-on-top --keep-seeding "
 alias recent="find  -maxdepth 1 -mtime -1 "
 alias rgall='rg --hidden --no-ignore '
 #alias golint='golangci-lint run --enable golint,stylecheck '
+alias my-tmux='${HOME}/dotfiles/tmux-env-starter.sh'
 
 # Python package
 list-py-reqs(){
@@ -134,6 +135,15 @@ what() {
     else
         ${@:1:$((${#@} - 1))} $(which ${@:${#@}})
     fi
+}
+
+wsl-proxy() {
+    # Proxy required for WSL2 so that windows based web browser can use the VPN clients
+    # started in WSL.
+    # Use FoxyProxy to route to localhost:8888 for required internal sites.
+    echo 'starting proxy on localhost:8888 for internal access'
+    tinyproxy -c "$HOME/dotfiles/tinyproxy.conf"
+    echo 'pkill tinyproxy to stop'
 }
 
 export FZF_DEFAULT_COMMAND='find .'
