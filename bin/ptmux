@@ -3,10 +3,10 @@
 cmd=$1
 shift
 
-# create a new window to shove the panes in to
+# create a new session to shove the panes in to
 tmux new-session -s 'PTMUX' -d
 
-for target in $@; do
+for target in "$@"; do
     if [ "$target" != "$1" ]; then  # don't split on the first iteration
         tmux split-window -t 'PTMUX'
     fi
@@ -19,4 +19,12 @@ done
 
 # synchronize panes by default
 tmux set-window-option -t 'PTMUX' synchronize-panes on >/dev/null
-tmux attach -t PTMUX
+
+if [ -n "${TMUX}" ]; then
+    echo "running inside existing TMUX session. Switch manually ..."
+elif ! test -t 0 ; then 
+    echo "not running in a terminal. Switch manually ..."
+else
+    echo "not running inside an existing TMUX session"
+    tmux attach -t 'PTMUX'
+fi

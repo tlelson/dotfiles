@@ -313,3 +313,5 @@ unbind C-l
 
 # I found the setting of 'tmux-256color' was messing with the cursor and bash defaults such as 'clear'
 set -g default-terminal "screen-256color"
+
+bind-key e setw synchronize-panes
