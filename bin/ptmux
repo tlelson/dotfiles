@@ -7,24 +7,16 @@ shift
 tmux new-session -s 'PTMUX' -d
 
 for target in "$@"; do
-    if [ "$target" != "$1" ]; then  # don't split on the first iteration
-        tmux split-window -t 'PTMUX'
-    fi
-    # run the command (C-m == newline)
-    tmux send-keys -t 'PTMUX' "$cmd $target" 'C-m'
+	if [ "$target" != "$1" ]; then # don't split on the first iteration
+		tmux split-window -t 'PTMUX'
+	fi
+	# run the command (C-m == newline)
+	tmux send-keys -t 'PTMUX' "$cmd $target" 'C-m'
 
-    # make sure we reset the layout or else we'll only be splitting inside the one window
-    tmux select-layout -t 'PTMUX' tiled >/dev/null
+	# make sure we reset the layout or else we'll only be splitting inside the one window
+	tmux select-layout -t 'PTMUX' tiled >/dev/null
 done
 
 # synchronize panes by default
 tmux set-window-option -t 'PTMUX' synchronize-panes on >/dev/null
-
-if [ -n "${TMUX}" ]; then
-    echo "running inside existing TMUX session. Switch manually ..."
-elif ! test -t 0 ; then 
-    echo "not running in a terminal. Switch manually ..."
-else
-    echo "not running inside an existing TMUX session"
-    tmux attach -t 'PTMUX'
-fi
+echo 'tmux attach -t PTMUX'
