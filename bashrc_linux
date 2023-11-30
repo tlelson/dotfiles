@@ -1,5 +1,10 @@
 alias open='xdg-open '
 
+# apt show fzf
+# → /usr/share/doc/fzf/README.Debian
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
+
 # https://github.com/sharkdp/vivid/releases
 #export LS_COLORS=$(vivid generate solarized-dark)
 export LS_COLORS=$(cat $HOME/dotfiles/vivid_colors-solarized_dark)
