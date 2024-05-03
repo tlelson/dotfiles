@@ -3,7 +3,6 @@ RED='\[\033[0;31m\]'
 NC='\[\033[0m\]'
 export PS1="${GREEN}\W ${RED}❯${NC} "
 
-
 export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
 export EDITOR=vim
@@ -13,7 +12,7 @@ export HISTSIZE=5000
 export HISTTIMEFORMAT="%d/%m/%y %T "
 export HISTCONTROL=erasedups
 export RIPGREP_CONFIG_PATH=~/.ripgreprc
-shopt -s dotglob nullglob  # * match .git so moving files doesn't drop hidden ones
+shopt -s dotglob nullglob # * match .git so moving files doesn't drop hidden ones
 export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 
 # GO setup
@@ -25,21 +24,21 @@ export CONDA_BLD_PATH=/tmp/
 
 # Add dotfiles binaries
 if [[ ! "$PATH" == *$HOME/dotfiles/bin* ]]; then
-    export PATH=${PATH}:${HOME}/dotfiles/bin
+	export PATH=${PATH}:${HOME}/dotfiles/bin
 fi
 
 # Stop node trying to write to root owned dirs
 # https://stackoverflow.com/questions/16724259/npm-command-sudo-or-not#18296178
 export N_PREFIX=$HOME/.node # For `n` command (version managment)
 if [[ ! "$PATH" == *$N_PREFIX/bin* ]]; then
-    export PATH=$N_PREFIX/bin:$PATH # so that `n` new node is on the path
+	export PATH=$N_PREFIX/bin:$PATH # so that `n` new node is on the path
 fi
 if [[ ! "$PATH" == *$N_PREFIX/.node_modules/bin* ]]; then
-    export PATH=$N_PREFIX/.node_modules/bin:$PATH
+	export PATH=$N_PREFIX/.node_modules/bin:$PATH
 fi
 
 #alias h="head -n 5"
-alias ls='ls --color=auto'  # Some distros have this by default, some do not
+alias ls='ls --color=auto' # Some distros have this by default, some do not
 alias ll="ls -ltrh "
 alias llt="ls -ltrh | tail"
 alias lsh="ls -a | grep '^\.'"
@@ -47,7 +46,7 @@ alias llh="ls -lhta | grep ' \.'"
 alias grep="grep --color=auto -E "
 #alias ssh="ssh -o StrictHostKeyChecking=no "
 alias pytags="ctags -R --fields=+l --languages=python --python-kinds=-iv -f .tags ./"
-alias tree="tree -C -L 3 " # Limit depth to 3
+alias tree="tree -C -L 3 "       # Limit depth to 3
 alias fullcurl="curl -sSL -D - " # Sick of not seeing any info
 alias prettyping="prettyping --nolegend "
 alias top="top -s1 -o cpu -R -F"
@@ -64,108 +63,102 @@ aws-shell() {
 }
 
 # Python package
-list-py-reqs(){
-    grep --include \*.py -r 'import' * -h | awk -F '[.[:space:]]' '{print $2}' | sort -u
+list-py-reqs() {
+	grep --include \*.py -r 'import' * -h | awk -F '[.[:space:]]' '{print $2}' | sort -u
 }
 
 # fast file filtering
-lsg(){
-        ls -a | grep -i "$1"
+lsg() {
+	ls -a | grep -i "$1"
 }
-llg(){
-        ll -ah | grep -i "$1"
+llg() {
+	ll -ah | grep -i "$1"
 }
 
 # Progress copy
-pcp(){
-    if [ "$#" != 2 ]
-    then
-      echo "Usage:  \n\t$ pcp {SRC_DIR} {DEST_DIR}"
-    else
-        rsync -avEP "${1}" "${2}"
-    fi
+pcp() {
+	if [ "$#" != 2 ]; then
+		echo "Usage:  \n\t$ pcp {SRC_DIR} {DEST_DIR}"
+	else
+		rsync -avEP "${1}" "${2}"
+	fi
 }
 
-weather(){
-    if [ "$#" -lt 1 ]
-    then
-      echo "Usage:  weather sydney"
-    else
-        for location in $@;
-            do
-                echo "Getting weather in: ${location}"
-                curl wttr.in/${location}
-            done
-    fi
+weather() {
+	if [ "$#" -lt 1 ]; then
+		echo "Usage:  weather sydney"
+	else
+		for location in $@; do
+			echo "Getting weather in: ${location}"
+			curl wttr.in/${location}
+		done
+	fi
 }
 
-timestampe_to_iso(){
-    if [ "$#" -lt 1 ]
-    then
-      echo "Usage:  timestamp_to_iso 1575551200"
-    else
-      #echo ${1}
-      python -c "from datetime import datetime, timezone; print(datetime.fromtimestamp(${1}, tz=timezone.utc).isoformat(sep=' ', timespec='minutes'))"
-    fi
+timestampe_to_iso() {
+	if [ "$#" -lt 1 ]; then
+		echo "Usage:  timestamp_to_iso 1575551200"
+	else
+		#echo ${1}
+		python -c "from datetime import datetime, timezone; print(datetime.fromtimestamp(${1}, tz=timezone.utc).isoformat())"
+	fi
 }
 
-refactor_recursive(){
-    # Usage: refactor_recursive <word to replace> <new word>
-    # Will recurse into any subdirectories
-    # recomend doing a git commit first to allow easy reversion if it breaks
-    if [ "$#" != 2 ]
-    then
-      echo "Usage:  refactor_recursive <old_word> <new_word>"
-      echo "When matching on parenthesis '()' enclose in []"
-    else
-        grep -Ir "$1" * | cut -d: -f1 | uniq | xargs -I {} sed -i 's/'"$1"'/'"$2"'/g' {}
-    fi
+refactor_recursive() {
+	# Usage: refactor_recursive <word to replace> <new word>
+	# Will recurse into any subdirectories
+	# recomend doing a git commit first to allow easy reversion if it breaks
+	if [ "$#" != 2 ]; then
+		echo "Usage:  refactor_recursive <old_word> <new_word>"
+		echo "When matching on parenthesis '()' enclose in []"
+	else
+		grep -Ir "$1" * | cut -d: -f1 | uniq | xargs -I {} sed -i 's/'"$1"'/'"$2"'/g' {}
+	fi
 }
 
-pyclean(){
-    find . -name '*egg-info' | xargs rm -rf
-    find . -name '__pycache__' | xargs rm -rf
-    find . -name 'build' | xargs rm -rf
-    find . -name 'dist' | xargs rm -rf
-    find . -name '*.pyc' | xargs rm -f
-    find . -name '*.pytest_cache' | xargs rm -rf
-    find . -name '.mypy_cache' | xargs rm -rf
+pyclean() {
+	find . -name '*egg-info' | xargs rm -rf
+	find . -name '__pycache__' | xargs rm -rf
+	find . -name 'build' | xargs rm -rf
+	find . -name 'dist' | xargs rm -rf
+	find . -name '*.pyc' | xargs rm -f
+	find . -name '*.pytest_cache' | xargs rm -rf
+	find . -name '.mypy_cache' | xargs rm -rf
 }
 
 what() {
-    if [ ${#@} -lt 2  ]; then
-		echo "what vim ipython instead of vim `which ipython`"
-        echo Usage:
-        echo "  what <command [args..]> <arg_to_resolve_with_which>"
-    else
-        ${@:1:$((${#@} - 1))} $(which ${@:${#@}})
-    fi
+	if [ ${#@} -lt 2 ]; then
+		echo "what vim ipython instead of vim $(which ipython)"
+		echo Usage:
+		echo "  what <command [args..]> <arg_to_resolve_with_which>"
+	else
+		${@:1:$((${#@} - 1))} $(which ${@:${#@}})
+	fi
 }
 
 wsl-proxy() {
-    # Proxy required for WSL2 so that windows based web browser can use the VPN clients
-    # started in WSL.
-    # Use FoxyProxy to route to localhost:8888 for required internal sites.
-    echo 'starting proxy on localhost:8888 for internal access'
-    tinyproxy -c "$HOME/dotfiles/tinyproxy.conf"
-    echo 'pkill tinyproxy to stop'
+	# Proxy required for WSL2 so that windows based web browser can use the VPN clients
+	# started in WSL.
+	# Use FoxyProxy to route to localhost:8888 for required internal sites.
+	echo 'starting proxy on localhost:8888 for internal access'
+	tinyproxy -c "$HOME/dotfiles/tinyproxy.conf"
+	echo 'pkill tinyproxy to stop'
 }
 
 export FZF_DEFAULT_COMMAND='find .'
-export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'"  # --preview-window down:3:hidden:wrap
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m --tiebreak=length'  # --algo=v1'  --exact  #
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'" # --preview-window down:3:hidden:wrap
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m --tiebreak=length'               # --algo=v1'  --exact  #
 export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 
 # Get AWS Credentials
 # Automatically load into existing session without copy/paste
-gac(){
+gac() {
 	rm -f /tmp/awscreds
-	for i in "$( get-aws-creds "$@" --quiet)"
-	do
+	for i in "$(get-aws-creds "$@" --quiet)"; do
 		eval "${i}"
-		echo "${i}" >> /tmp/awscreds
+		echo "${i}" >>/tmp/awscreds
 	done
 }
 
@@ -187,11 +180,11 @@ function highlight() {
 
 # OS specific config. This is saved in dotfiles.
 if [ -f ~/.bashrc_os ]; then
-    source ~/.bashrc_os
+	source ~/.bashrc_os
 fi
 
 # Config that doesn't need to be saved in dotfiles. E.git
 #   - configuration of various commands, conda, gcloud etc
 if [ -f ~/.bashrc_local ]; then
-    source ~/.bashrc_local
+	source ~/.bashrc_local
 fi
