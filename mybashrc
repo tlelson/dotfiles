@@ -58,6 +58,11 @@ alias rgall='rg --hidden --no-ignore '
 #alias golint='golangci-lint run --enable golint,stylecheck '
 alias my-tmux='${HOME}/dotfiles/tmux-env-starter.sh'
 
+aws-shell() {
+	#alias awsenv='bash --rcfile ${HOME}/Code/tlx/tools/rcfile'
+	aws-vault exec "$1" -- bash --rcfile ${HOME}/Code/tlx/tools/rcfile
+}
+
 # Python package
 list-py-reqs(){
     grep --include \*.py -r 'import' * -h | awk -F '[.[:space:]]' '{print $2}' | sort -u
