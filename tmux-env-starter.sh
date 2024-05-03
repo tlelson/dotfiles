@@ -11,16 +11,8 @@ tmux new-window -n 'OldSpice Notes' -c "$HOME/client/Kablamo/OldSpice/"
 tmux send-keys -t 'OldSpice Notes' 'vim notes.txt' Enter
 
 # Open some windows for the code
-tmux new-window -n 'osfin' -c "$HOME/client/Kablamo/OldSpice/code/osfin"
-tmux send-keys -t 'osfin' 'ls' Enter
-
-# Open some windows for the code
-tmux new-window -n 'osfin-security' -c "$HOME/client/Kablamo/OldSpice/osfin-security"
-tmux send-keys -t 'osfin-security' 'ls' Enter
-
-# Open some windows for the code
-tmux new-window -n 'osfin-customer' -c "$HOME/client/Kablamo/OldSpice/osfin-customer"
-tmux send-keys -t 'osfin-customer' 'ls' Enter
+tmux new-window -n 'all code' -c "$HOME/client/Kablamo/OldSpice/code"
+tmux send-keys -t 'all code' 'ls' Enter
 
 # Set focus on Notes window
 tmux select-window -t 'DEV':'OldSpice Notes'
