@@ -3,6 +3,7 @@ RED='\[\033[0;31m\]'
 NC='\[\033[0m\]'
 export PS1="${GREEN}\W ${RED}❯${NC} "
 
+export BROWSER=w3m
 export CLICOLOR=1
 export FIGNORE=CVS:\~:.svn
 export EDITOR=vim
@@ -151,32 +152,6 @@ export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m --tiebreak=le
 export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
-
-# Get AWS Credentials
-# Automatically load into existing session without copy/paste
-gac() {
-	rm -f /tmp/awscreds
-	for i in "$(get-aws-creds "$@" --quiet)"; do
-		eval "${i}"
-		echo "${i}" >>/tmp/awscreds
-	done
-}
-
-function highlight() {
-
-	declare -A fg_color_map
-	fg_color_map[black]=30
-	fg_color_map[red]=31
-	fg_color_map[green]=32
-	fg_color_map[yellow]=33
-	fg_color_map[blue]=34
-	fg_color_map[magenta]=35
-	fg_color_map[cyan]=36
-
-	fg_c=$(echo -e "\e[1;${fg_color_map[$1]}m")
-	c_rs=$'\e[0m'
-	sed -u s"/$2/$fg_c\0$c_rs/g"
-}
 
 # OS specific config. This is saved in dotfiles.
 if [ -f ~/.bashrc_os ]; then
