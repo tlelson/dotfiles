@@ -14,12 +14,22 @@ if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
 
   # https://nickymeuleman.netlify.app/blog/gui-on-wsl2-cypress
   # Summary:
-  # Instal https://sourceforge.net/projects/vcxsrv/ on windows and run 
+  # Instal https://sourceforge.net/projects/vcxsrv/ on windows and run
   # with 'Disable access control'
   export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-  # add following to /etc/sudoers.d/dbus 
+  # add following to /etc/sudoers.d/dbus
   # <whoami user name> ALL = (root) NOPASSWD: /etc/init.d/dbus
   sudo /etc/init.d/dbus start &> /dev/null
+
+  wsl-proxy() {
+      # Proxy required for WSL2 so that windows based web browser can use the VPN clients
+      # started in WSL.
+      # Use FoxyProxy to route to localhost:8888 for required internal sites.
+      echo 'starting proxy on localhost:8888 for internal access'
+      tinyproxy -c "$HOME/dotfiles/tinyproxy.conf"
+      echo 'pkill tinyproxy to stop'
+  }
+
 fi
 
 # Don't need conda init stuff if you dnf install conda

@@ -50,24 +50,25 @@ if [[ $OSTYPE == "darwin"* ]]; then
 	brew install $(grep -v '#' brew-leaves.out | xargs)
 	ln -s $(pwd)/bashrc_osx ~/.bashrc_os
 	echo "Setting up python/node sandbox ..."
-	conda create -n general python ipython nodejs
+	conda create -y -n general python ipython nodejs
 elif ( command -v dnf  ); then
 	echo "'dnf' found. Assuming CentOS-ish ..."
 	sudo dnf update && sudo dnf upgrade -y
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
-	conda create -n general python ipython nodejs
+	conda create -y -n general python ipython nodejs
 elif ( command -v yum  ); then
 	echo "'yum' found. Assuming Old CentOS-ish ..."
 	sudo yum update && sudo yum upgrade -y
 	sudo yum install -y $(grep -v "#" dnf-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
-	conda create -n general python ipython nodejs
+	conda create -y -n general python ipython nodejs
 elif ( command -v apt ); then
 	echo "'apt' found. Assuming debian ..."
 	sudo apt update && sudo apt upgrade -y
 	sudo apt install -y $(grep -v "#" apt-packs | xargs )
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
+	echo 'no easy way to install conda. Do it manually'
 else
 	echo "Unknown system ... "
 fi

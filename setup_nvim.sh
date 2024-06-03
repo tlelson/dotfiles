@@ -36,4 +36,4 @@ elif [[ $OSTYPE == "darwin"* ]]; then
 fi
 
 echo "3.    Open vim and install plugins with:"
-echo "          :Lazy
+echo "          :Lazy"

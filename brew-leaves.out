@@ -1,3 +1,4 @@
+# installed as batcat
 bat
 coreutils
 findutils
@@ -21,7 +22,6 @@ awscli
 cmake
 neovim
 vivid
-# installed as batcat
-bat
-stylua
-golangci-lint
+go
+aws-vault
+pass
