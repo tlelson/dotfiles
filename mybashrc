@@ -61,6 +61,7 @@ alias my-tmux='${HOME}/dotfiles/tmux-env-starter.sh'
 aws-shell() {
 	aws-vault exec --stdout "$1" -- bash --rcfile ${HOME}/Code/tlx/tools/rcfile
 }
+export -f aws-shell
 
 # Python package
 list-py-reqs() {
