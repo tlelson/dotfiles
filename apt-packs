@@ -23,6 +23,7 @@ speedtest-cli
 conda
 ripgrep
 fzf
+pass
 # Required for Neovim
 gcc
 fuse

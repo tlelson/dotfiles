@@ -6,11 +6,5 @@ yamlfix
 ipython
 ipdb
 nodejs
-black
-flake8
-isort
-pylint
-mypy
-cfn-lint
-neovim
-beautysh
+jtbl
+awslogs

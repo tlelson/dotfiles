@@ -63,7 +63,7 @@ aws-shell() {
 }
 export -f aws-shell
 
-push-client-files() {
+client-update-remote() {
 	./client/sync.sh
 }
 
