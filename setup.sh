@@ -50,28 +50,39 @@ if [[ $OSTYPE == "darwin"* ]]; then
 	echo 'DO NOT `conda init` when it askes you to !'
 	brew install $(grep -v '#' brew-leaves.out | xargs)
 	ln -s $(pwd)/bashrc_osx ~/.bashrc_os
-	echo "Setting up python/node sandbox ..."
-	conda create -y -n general python ipython nodejs
 elif (command -v dnf); then
 	echo "'dnf' found. Assuming CentOS-ish ..."
 	sudo dnf update && sudo dnf upgrade -y
 	sudo dnf install -y $(grep -v "#" dnf-packs | xargs)
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
-	conda create -y -n general python ipython nodejs
 elif (command -v yum); then
 	echo "'yum' found. Assuming Old CentOS-ish ..."
 	sudo yum update && sudo yum upgrade -y
 	sudo yum install -y $(grep -v "#" dnf-packs | xargs)
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
-	conda create -y -n general python ipython nodejs
 elif (command -v apt); then
 	echo "'apt' found. Assuming debian ..."
+
+	# Add conda repo
+	curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
+	sudo install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
+	gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" | \
+		sudo tee -a /etc/apt/sources.list.d/conda.list
+
 	sudo apt update && sudo apt upgrade -y
 	sudo apt install -y $(grep -v "#" apt-packs | xargs)
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
-	echo 'no easy way to install conda. Do it manually'
+
+	source /opt/conda/etc/profile.d/conda.sh  # to get `conda`
 else
 	echo "Unknown system ... "
+fi
+	echo "Setting up python/node sandbox ..."
+	conda create -y -n general python ipython nodejs
+
+if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
+	echo "$(whoami) ALL = (root) NOPASSWD: /etc/init.d/dbus" | sudo tee -a /etc/sudoers.d/dbus
 fi
 
 echo 'LS_COLORS have been pre-generated with `vivid` (https://github.com/sharkdp/vivid)'

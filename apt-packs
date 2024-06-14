@@ -20,8 +20,9 @@ bat
 pv
 shellcheck
 speedtest-cli
-
-# Install manually
-#ripgrep
-#fzf  (installed by vim, just make sure bin is in path)
-#vivid https://github.com/sharkdp/vivid/releases
+conda
+ripgrep
+fzf
+# Required for Neovim
+gcc
+fuse
