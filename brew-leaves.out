@@ -27,3 +27,5 @@ aws-vault
 pass
 fzf
 gh
+gron
+bash-completion@2

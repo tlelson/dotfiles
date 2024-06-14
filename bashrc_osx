@@ -1,7 +1,10 @@
+#!/usr/bin/env bash
+#
 # Exports
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 ## Brew stuff
+export HOMEBREW_NO_AUTO_UPDATE=1      # `brew update` done with a cronjob, because this is slow
 export PATH="/opt/homebrew/bin:$PATH" # Default install of brew executables such as `aws` and `ggrep`
 # Override BSD utilities with GNU alternatives
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
@@ -13,15 +16,9 @@ export MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$PATH"
 export MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
 export MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
 export MANPATH="/opt/homebrew/opt/findutils/libexec/gnuman:$MANPATH"
-#/opt/homebrew/opt/coreutils/libexec/gnubin Get bash completions for stuff installed with brew.
-# you can also put your own ones here (see ssh example in dotfiles)
-if [ -d $(brew --prefix)/etc/bash_completion.d ]; then
-  . $(brew --prefix)/etc/bash_completion.d/*
-    for f in $(brew --prefix)/etc/bash_completion.d/*
-        do
-            source $f
-        done
-fi
+
+# Bash Completion
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 # FZF stuff
 eval "$(fzf --bash)"
@@ -50,15 +47,15 @@ export LS_COLORS=$(vivid generate solarized-dark)
 # Manual conda init
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/opt/homebrew/Caskroom/miniconda/base/bin/conda' 'shell.bash' 'hook' 2>/dev/null)"
 if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
+	eval "$__conda_setup"
 else
-    if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
-    fi
+	if [ -f "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh" ]; then
+		. "/opt/homebrew/Caskroom/miniconda/base/etc/profile.d/conda.sh"
+	else
+		export PATH="/opt/homebrew/Caskroom/miniconda/base/bin:$PATH"
+	fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
