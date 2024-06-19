@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# NOTE: There is an issue where tmux commands don't seem to block, so before the window is
+# split and bash can come up, the keys are sent. The sleep seems to fix this on its own
+# but the lock make helps it make sense.
+#
+# Honestly I just wish tmux commands where blocking. They should be since they use context
+# like 'active split'.  I can't specify which split to send-keys to.
+
 # assume the command is the first arg
 cmd=$1
 shift
@@ -10,13 +18,26 @@ for target in "$@"; do
 	if [ "$target" != "$1" ]; then # don't split on the first iteration
 		tmux split-window -t 'PTMUX'
 	fi
-	# run the command (C-m == newline)
-	tmux send-keys -t 'PTMUX' "$cmd $target" 'C-m'
 
-	# make sure we reset the layout or else we'll only be splitting inside the one window
+	# Use a unique lock name for each pane
+	lock_name=$(uuidgen)
+
+	# Send a wait-for signal to ensure the bash prompt is ready
+	sleep 0.4
+
+	# Run the command (C-m == newline)
+	tmux send-keys -t 'PTMUX' "$cmd $target" Enter
+	tmux send-keys -t 'PTMUX' "tmux wait-for -S $lock_name" Enter clear Enter
+
+	# Wait for the lock to be released
+	tmux wait-for "$lock_name"
+
+	# Make sure we reset the layout or else we'll only be splitting inside the one window
 	tmux select-layout -t 'PTMUX' tiled >/dev/null
 done
 
-# synchronize panes by default
+# Synchronize panes by default
 tmux set-window-option -t 'PTMUX' synchronize-panes on >/dev/null
+
+# Output the command to attach to the session
 echo 'tmux attach -t PTMUX'
