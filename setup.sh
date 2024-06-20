@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "Copying dotfiles into location ..."
-for file in mybashrc bash_profile htoprc gitconfig gitignore jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local ctags ripgreprc npmrc yamllint.yaml; do
+for file in mybashrc bash_profile htoprc gitconfig gitignore jshintrc gitattributes eslintrc.js jnettop tigrc tmux.conf.local ctags ripgreprc npmrc yamllint.yaml tmux.conf; do
 	echo "looking for ~/.${file} .."
 	if [ -h ~/.${file} ]; then # Is it a sybolic link ?
 		echo "  Already exists as symbolic link. Not linking to new dotfiles version.  If you want it remove your current one ..."
@@ -34,11 +34,6 @@ ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.
 
 mkdir -p ~/.w3m
 ln -s $(pwd)/w3m-keymap ~/.w3m/keymap
-
-# Set up TMUX
-echo 'Using tmux config from "https://github.com/gpakosz/.tmux".  See repo for details ...'
-git clone https://github.com/gpakosz/.tmux.git ~/dotfiles/.tmux
-ln -s -f ~/dotfiles/.tmux/.tmux.conf ~/.tmux.conf
 
 if [[ $OSTYPE == "darwin"* ]]; then
 	echo "darwin based system detected. Assuming MacOS"
