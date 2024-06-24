@@ -33,7 +33,8 @@ ln -s $(pwd)/ipython_config.py ~/.ipython/profile_default/ipython_config.py
 ln -s $(pwd)/ipython_setup.ipy ~/.ipython/profile_default/startup/ipython_setup.ipy
 
 mkdir -p ~/.w3m
-ln -s $(pwd)/w3m-keymap ~/.w3m/keymap
+ln -s $(pwd)/w3m/keymap ~/.w3m/keymap
+ln -s $(pwd)/w3m/config ~/.w3m/config
 
 if [[ $OSTYPE == "darwin"* ]]; then
 	echo "darwin based system detected. Assuming MacOS"
