@@ -78,6 +78,7 @@ fi
 	conda create -y -n general python ipython nodejs
 
 if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
+	sudo ln -s $(pwd)/etc_wsl.conf /etc/wsl.conf
 	echo "$(whoami) ALL = (root) NOPASSWD: /etc/init.d/dbus" | sudo tee -a /etc/sudoers.d/dbus
 fi
 
