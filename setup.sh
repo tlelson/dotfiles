@@ -60,22 +60,22 @@ elif (command -v apt); then
 	echo "'apt' found. Assuming debian ..."
 
 	# Add conda repo
-	curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor > conda.gpg
+	curl https://repo.anaconda.com/pkgs/misc/gpgkeys/anaconda.asc | gpg --dearmor >conda.gpg
 	sudo install -o root -g root -m 644 conda.gpg /usr/share/keyrings/conda-archive-keyring.gpg
 	gpg --keyring /usr/share/keyrings/conda-archive-keyring.gpg --no-default-keyring --fingerprint 34161F5BF5EB1D4BFBBB8F0A8AEB4F8B29D82806
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" | \
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/conda-archive-keyring.gpg] https://repo.anaconda.com/pkgs/misc/debrepo/conda stable main" |
 		sudo tee -a /etc/apt/sources.list.d/conda.list
 
 	sudo apt update && sudo apt upgrade -y
 	sudo apt install -y $(grep -v "#" apt-packs | xargs)
 	ln -s $(pwd)/bashrc_linux ~/.bashrc_os
 
-	source /opt/conda/etc/profile.d/conda.sh  # to get `conda`
+	source /opt/conda/etc/profile.d/conda.sh # to get `conda`
 else
 	echo "Unknown system ... "
 fi
-	echo "Setting up python/node sandbox ..."
-	conda create -y -n general python ipython nodejs
+echo "Setting up python/node sandbox ..."
+conda create -y -n general python ipython nodejs
 
 if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
 	sudo ln -s $(pwd)/etc_wsl.conf /etc/wsl.conf
