@@ -30,12 +30,3 @@ if [[ ! -z "${WSL_DISTRO_NAME}" ]]; then
   }
 
 fi
-
-if (command -v apt > /dev/null); then
-      # Need to source conda if installed by setup.sh and apt
-      # https://docs.conda.io/projects/conda/en/latest/user-guide/install/rpm-debian.html
-      source /opt/conda/etc/profile.d/conda.sh
-fi
-
-# Don't need conda init stuff if you dnf install conda
-conda activate general

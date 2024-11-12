@@ -17,7 +17,6 @@ tree
 vnstat
 watch
 wget
-miniconda
 awscli
 cmake
 neovim

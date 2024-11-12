@@ -20,9 +20,6 @@ export DEFAULT_GIT_EMAIL=tpj800@gmail.com
 export GOPATH=~/go
 export PATH=${PATH}:${GOPATH}/bin:/usr/local/go/bin
 
-# Conda build path
-export CONDA_BLD_PATH=/tmp/
-
 # Add dotfiles binaries
 if [[ ! "$PATH" == *$HOME/dotfiles/bin* ]]; then
 	export PATH=${PATH}:${HOME}/dotfiles/bin
@@ -155,7 +152,7 @@ if [ -f ~/.bashrc_os ]; then
 fi
 
 # Config that doesn't need to be saved in dotfiles. E.git
-#   - configuration of various commands, conda, gcloud etc
+#   - configuration of various commands, gcloud etc
 if [ -f ~/.bashrc_local ]; then
 	source ~/.bashrc_local
 fi
