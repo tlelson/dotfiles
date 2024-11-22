@@ -147,6 +147,11 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
 
+# Use direnv to automaticaly switch to development environments and spawn subshells if
+# `.envrc` is found
+eval "$(direnv hook bash)"
+export DIRENV_LOG_FORMAT= # Suppress direnv logs. Remove or set in .envrc to debug
+
 # OS specific config. This is saved in dotfiles.
 if [ -f ~/.bashrc_os ]; then
 	source ~/.bashrc_os

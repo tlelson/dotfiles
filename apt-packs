@@ -4,6 +4,7 @@ tmux
 curl
 
 # WSL or UBU
+direnv
 exuberant-ctags
 htop
 hugo
