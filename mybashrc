@@ -54,7 +54,8 @@ alias recent="find  -maxdepth 1 -mtime -1 "
 alias rgall='rg --hidden --no-ignore '
 #alias golint='golangci-lint run --enable golint,stylecheck '
 alias my-tmux='${HOME}/dotfiles/tmux-env-starter.sh'
-alias speedtest-history='python ~/Code/pydemos/speedtest-plot.py'
+#alias speedtest-history='python ~/Code/pydemos/speedtest-plot.py'  # Get this into a nix shell
+alias ipython='nix develop -f "$HOME/dotfiles/nix-shells/ipython.nix"'
 
 aws-shell() {
 	aws-vault exec --stdout "$1" -- bash --rcfile ${HOME}/Code/tlx/tools/rcfile
