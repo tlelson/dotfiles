@@ -4,6 +4,8 @@ tmux
 curl
 
 # WSL or UBU
+# neovim LSPs need node
+nodejs
 direnv
 exuberant-ctags
 htop
