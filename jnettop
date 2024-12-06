@@ -1,7 +1,0 @@
-interface "en0"
-promisc off
-resolve on
-rule "https" "dst port 443 and proto TCP"
-select_rule "https"
-local_aggregation none
-remote_aggregation host

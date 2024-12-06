@@ -1,0 +1,132 @@
+# Customized for NIX
+GREEN='\[\033[1;32m\]'
+RED='\[\033[0;31m\]'
+NC='\[\033[0m\]'
+export PS1="${GREEN}\W ${RED}❯${NC} "
+
+export BROWSER=w3m
+export CLICOLOR=1
+export FIGNORE=CVS:\~:.svn
+export EDITOR=vim
+export SVN_EDITOR=vim
+export HISTFILESIZE=6000
+export HISTSIZE=5000
+export HISTTIMEFORMAT="%d/%m/%y %T "
+export HISTCONTROL=erasedups
+export RIPGREP_CONFIG_PATH=~/.ripgreprc
+shopt -s dotglob nullglob # * match .git so moving files doesn't drop hidden ones
+export DEFAULT_GIT_EMAIL=tpj800@gmail.com
+
+# TODO: Add dotfiles binaries
+# if [[ ! "$PATH" == *$HOME/dotfiles/bin* ]]; then
+# 	export PATH=${PATH}:${HOME}/dotfiles/bin
+# fi
+
+#alias h="head -n 5"
+alias ls='ls --color=auto' # Some distros have this by default, some do not
+alias ll="ls -ltrh "
+alias llt="ls -ltrh | tail"
+alias lsh="ls -a | grep '^\.'"
+alias llh="ls -lhta | grep ' \.'"
+#alias grep="grep --color=auto -E "
+#alias ssh="ssh -o StrictHostKeyChecking=no "
+#alias tree="tree -C -L 3 "       # Limit depth to 3
+alias prettyping="prettyping --nolegend "
+alias top="top -s1 -o cpu -R -F"
+alias recent="find  -maxdepth 1 -mtime -1 "
+alias rgall='rg --hidden --no-ignore '
+#alias my-tmux='${HOME}/dotfiles/tmux-env-starter.sh'
+#alias speedtest-history='python ~/Code/pydemos/speedtest-plot.py'  # Get this into a nix shell
+#alias ipython='nix develop -f "$HOME/dotfiles/nix-shells/ipython.nix"'
+
+# TODO: create a home-manager service
+# client-update-remote() {
+# 	./client/sync.sh
+# }
+
+# Python package
+python-reqs() {
+	grep --include \*.py -r 'import' * -h | awk -F '[.[:space:]]' '{print $2}' | sort -u
+}
+
+# fast file filtering
+lsg() {
+	ls -a | grep -i "$1"
+}
+llg() {
+	ll -ah | grep -i "$1"
+}
+
+# Progress copy
+pcp() {
+	if [ "$#" != 2 ]; then
+		echo "Usage:  \n\t$ pcp {SRC_DIR} {DEST_DIR}"
+	else
+		rsync -avEP "${1}" "${2}"
+	fi
+}
+
+weather() {
+	if [ "$#" -lt 1 ]; then
+		echo "Usage:  weather sydney"
+	else
+		for location in $@; do
+			echo "Getting weather in: ${location}"
+			curl wttr.in/${location}
+		done
+	fi
+}
+
+timestampe_to_iso() {
+	if [ "$#" -lt 1 ]; then
+		echo "Usage:  timestamp_to_iso 1575551200"
+	else
+		#echo ${1}
+		python -c "from datetime import datetime, timezone; print(datetime.fromtimestamp(${1}, tz=timezone.utc).isoformat())"
+	fi
+}
+
+refactor_recursive() {
+	# Usage: refactor_recursive <word to replace> <new word>
+	# Will recurse into any subdirectories
+	# recomend doing a git commit first to allow easy reversion if it breaks
+	if [ "$#" != 2 ]; then
+		echo "Usage:  refactor_recursive <old_word> <new_word>"
+		echo "When matching on parenthesis '()' enclose in []"
+	else
+		grep -Ir "$1" * | cut -d: -f1 | uniq | xargs -I {} sed -i 's/'"$1"'/'"$2"'/g' {}
+	fi
+}
+
+what() {
+	if [ ${#@} -lt 2 ]; then
+		echo "what vim ipython instead of vim $(which ipython)"
+		echo Usage:
+		echo "  what <command [args..]> <arg_to_resolve_with_which>"
+	else
+		${@:1:$((${#@} - 1))} $(which ${@:${#@}})
+	fi
+}
+
+export FZF_DEFAULT_COMMAND='find .'
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:wrap --bind '?:toggle-preview'" # --preview-window down:3:hidden:wrap
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border -m --tiebreak=length'               # --algo=v1'  --exact  #
+export FZF_ALT_C_OPTS="--preview 'tree -C {} ' "
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
+export FZF_COMPLETION_OPTS="--preview 'bat --style=numbers,changes --color always {}' "
+
+# Use direnv to automaticaly switch to development environments and spawn subshells if
+# `.envrc` is found
+eval "$(direnv hook bash)"
+export DIRENV_LOG_FORMAT= # Suppress direnv logs. Remove or set in .envrc to debug
+
+# OS specific config. This is saved in dotfiles.
+if [ -f ~/.bashrc_os ]; then
+	source ~/.bashrc_os
+fi
+
+# Config that doesn't need to be saved in dotfiles. E.git
+#   - configuration of various commands, gcloud etc
+if [ -f ~/.bashrc_local ]; then
+	source ~/.bashrc_local
+fi
