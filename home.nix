@@ -136,9 +136,11 @@
 
     extraLuaConfig =
       let
+        # Have nix save plugins to nix store so that lazy doesn't have to save them to ~/.local.
+        # NOTE: If you remove a plugin. You need to remove it from here but also remove all reference to it in
+        # lua.  If it is in the plugins/ directory, it will be lazy loaded by Lazy and installed into `.local/`
         plugins = with pkgs.vimPlugins; [
           LazyVim
-          # Have nix save plugins to nix store so that lazy doesn't have to save them to ~/.local
           # My plugins
           vim-fugitive
           vim-fubitive
@@ -151,7 +153,6 @@
           vim-sleuth
           vim-abolish
           fzf-vim
-          nerdcommenter  # TODO: Chieck mini
           toggleterm-nvim
 	      cmp-emoji
           # LazyVim Defaults

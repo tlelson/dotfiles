@@ -51,11 +51,6 @@ keymap("n", ";", ":", opts) -- who needs semi-colon
 keymap("n", "<leader>nu", ":set nu!<CR>", opts)
 keymap("n", "Q", "@q", opts) -- Make replaying macros faster
 
--- Plugin: Nerdcommenter
--- Tried to set these in the plugin itself but wouldn't work
-keymap("n", "<C-_>", "<leader>c<Space>", {})
-keymap("v", "<C-_>", "<leader>c<Space>", {})
-
 -- Efficiency
 keymap("n", "<leader>sr", ":%s#<C-R><C-W>#", {})
 keymap("v", "<leader>sr", '"py | :%s#<C-R>p#', {})
