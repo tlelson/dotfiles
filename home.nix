@@ -266,9 +266,13 @@
   #   "${parsers}/parser";
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
-  # NOTE: This unfortunately get copied (not linked) from the source
+  # NOTE: All files are copied into their new immutable location
   xdg.configFile."nvim/lua" = {
     recursive = true;
-    source = ./lua;  # this source is `.config/home-manager/lua`
+    source = ./nvim/lua;  # this source is `.config/home-manager/lua`
+  };
+  xdg.configFile."nvim/after" = {
+    recursive = true;
+    source = ./nvim/after;
   };
 }
