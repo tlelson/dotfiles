@@ -96,6 +96,8 @@
   # Shell
   programs.bash = {
     enable = true;
+    # This file is sourced directly rather than copied like `home.file` so changes wont be
+    # preserved in generations.
     initExtra = ''
       source "$HOME/.config/home-manager/dotfiles/bashrc"
     '';
