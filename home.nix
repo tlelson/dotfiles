@@ -22,6 +22,7 @@
     # # "Hello, world!" when run.
     # pkgs.hello
     tmux
+    wl-clipboard  # wayland clipboard, needed for tmux
     htop
     jq
     ncdu
