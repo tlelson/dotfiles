@@ -1,55 +1,62 @@
 return {
-  -- Can't find this in the Nixpkgs. Is it required since we've already installed fzf??
-  -- {
-  --   "junegunn/fzf",
-  --   --build = "./install --all"
-  --   build = function()
-  --     vim.cmd("call fzf#install()")
-  --   end,
-  -- },
-  {
-    "junegunn/fzf.vim",
-    dependecies = { "junegunn/fzf" },
-    lazy = false,
-    keys = {
-      { "q/", ":History:<CR>", desc = "command history override (fzf)" },
-      { "<leader>bb", "<cmd>execute 'Buffers '<CR>", desc = "grep currently open buffers (fzf)" },
-      { "<leader>rg", "<cmd>execute 'Rg '<CR>", desc = "ripgrep (fzf)" },
-      { "<leader>rgw", "<cmd>execute 'Rg ' . expand('<cword>')<CR>", desc = "ripgrep for word cusor is on (fzf)" },
-      { "<leader>bl", "<cmd>execute 'BLines '<CR>", desc = "grep current buffer (fzf)" },
-      {
-        "<leader>blw",
-        "<cmd>execute 'BLines ' . expand('<cword>')<CR>",
-        desc = "grep current buffer for word cursor is on (fzf)",
-      },
-    },
-    init = function()
-      vim.cmd([[
-        " By default it uses find and skips hidden files. This respects .ripgreprc
-        let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore 2> /dev/null'
+	-- Can't find this in the Nixpkgs. Is it required since we've already installed fzf??
+	-- TODO: Find a way to get this from nixpkgs like all other plugins.  Currently it and
+	-- darkplus are the only locally installed plugins: `ls {share,state}/nvim/lazy`
+	{
+		"junegunn/fzf",
+		--build = "./install --all"
+		lazy = false,
+		build = function()
+			vim.cmd("call fzf#install()")
+		end,
+	},
+	{
+		"junegunn/fzf.vim",
+		--dependecies = { "junegunn/fzf" },
+		lazy = false,
+		keys = {
+			{ "q/", ":History:<CR>", desc = "command history override (fzf)" },
+			{ "<leader>bb", "<cmd>execute 'Buffers '<CR>", desc = "grep currently open buffers (fzf)" },
+			{ "<leader>rg", "<cmd>execute 'Rg '<CR>", desc = "ripgrep (fzf)" },
+			{
+				"<leader>rgw",
+				"<cmd>execute 'Rg ' . expand('<cword>')<CR>",
+				desc = "ripgrep for word cusor is on (fzf)",
+			},
+			{ "<leader>bl", "<cmd>execute 'BLines '<CR>", desc = "grep current buffer (fzf)" },
+			{
+				"<leader>blw",
+				"<cmd>execute 'BLines ' . expand('<cword>')<CR>",
+				desc = "grep current buffer for word cursor is on (fzf)",
+			},
+		},
+		init = function()
+			vim.cmd([[
+              " By default it uses find and skips hidden files. This respects .ripgreprc
+              let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore 2> /dev/null'
 
-        " Have Ripgrep start from the current buffers git root, not the cwd of the
-        " file first opened in vim. Think scenario when you jumped to a
-        " library
-        command! -bang -nargs=* RG
-          \ call fzf#vim#grep(
-          \ 	"rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
-          \   fzf#vim#with_preview({
-          \     'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2],
-          \     'options': ['--prompt', 'RG> '],
-          \   }),
-          \   <bang>0)
+              " Have Ripgrep start from the current buffers git root, not the cwd of the
+              " file first opened in vim. Think scenario when you jumped to a
+              " library
+              command! -bang -nargs=* RG
+                \ call fzf#vim#grep(
+                \ 	"rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1,
+                \   fzf#vim#with_preview({
+                \     'dir': system('git -C '.expand('%:p:h').' rev-parse --show-toplevel 2> /dev/null')[:-2],
+                \     'options': ['--prompt', 'RG> '],
+                \   }),
+                \   <bang>0)
 
-        " FZF for all vim runtime files
-        command! VimRuntime call fzf#run(fzf#wrap({
-          \ 'source': split(substitute(execute('scriptnames'), ' *\d*: ', '', 'g'), "\n"),
-          \ 'options': ['--prompt', 'Vim> ', '--nth=1'],
-          \ }))
-      ]])
+              " FZF for all vim runtime files
+              command! VimRuntime call fzf#run(fzf#wrap({
+                \ 'source': split(substitute(execute('scriptnames'), ' *\d*: ', '', 'g'), "\n"),
+                \ 'options': ['--prompt', 'Vim> ', '--nth=1'],
+                \ }))
+            ]])
 
-      -- Modified version from: https://gist.github.com/davidmh/f35fba1f9cde176d1ec9b4919769653a#file-quickfix-fzf-vim
-      -- Significant changes to allow previewing. The `column` and `options` are taken from fzf#grep command.
-      vim.cmd([[
+			-- Modified version from: https://gist.github.com/davidmh/f35fba1f9cde176d1ec9b4919769653a#file-quickfix-fzf-vim
+			-- Significant changes to allow previewing. The `column` and `options` are taken from fzf#grep command.
+			vim.cmd([[
         function! s:format_qf_line(line)
           let parts = split(a:line, ':')
           return { 'filename': parts[0]
@@ -105,7 +112,7 @@ return {
         \ })))
       ]])
 
-      vim.cmd([[
+			vim.cmd([[
         function! s:format_qf_line(line)
           let parts = split(a:line, ':')
           return { 'filename': parts[0]
@@ -135,6 +142,6 @@ return {
               \ 'options': '--reverse --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all --prompt "quickfix> "',
               \ })
       ]])
-    end,
-  },
+		end,
+	},
 }

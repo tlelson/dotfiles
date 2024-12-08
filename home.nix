@@ -180,9 +180,9 @@
           nvim-notify
           nvim-snippets
           nvim-spectre
-          nvim-treesitter
-          nvim-treesitter-context
-          nvim-treesitter-textobjects
+          # nvim-treesitter
+          # nvim-treesitter-context
+          # nvim-treesitter-textobjects
           nvim-ts-autotag
           nvim-ts-context-commentstring
           nvim-web-devicons
@@ -241,24 +241,27 @@
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+            -- { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
+            { "nvim-treesitter/nvim-treesitter", enabled = false },
+            { "nvim-treesitter/nvim-treesitter-context", enabled = false },
+            { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
           },
         })
       '';
   };
 
   # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
-  xdg.configFile."nvim/parser".source =
-    let
-      parsers = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
-        paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
-          c
-          lua
-        ])).dependencies;
-      };
-    in
-    "${parsers}/parser";
+  # xdg.configFile."nvim/parser".source =
+  #   let
+  #     parsers = pkgs.symlinkJoin {
+  #       name = "treesitter-parsers";
+  #       paths = (pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+  #         c
+  #         lua
+  #       ])).dependencies;
+  #     };
+  #   in
+  #   "${parsers}/parser";
 
   # Normal LazyVim config here, see https://github.com/LazyVim/starter/tree/main/lua
   # NOTE: This unfortunately get copied (not linked) from the source
