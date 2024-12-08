@@ -157,6 +157,7 @@
           fzf-vim
           toggleterm-nvim
 	      cmp-emoji
+	      vim-nix
           # LazyVim Defaults
           # bufferline-nvim  # I don't use
           cmp-buffer
@@ -202,7 +203,6 @@
           vim-illuminate
           vim-startuptime
           which-key-nvim
-	      vim-nix
           { name = "LuaSnip"; path = luasnip; }
           { name = "catppuccin"; path = catppuccin-nvim; }
           { name = "mini.ai"; path = mini-nvim; }
