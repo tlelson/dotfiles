@@ -31,8 +31,9 @@ local term_opts = { silent = true }
 local keymap = vim.api.nvim_set_keymap
 
 -- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
+-- Seems to work by default ??
+-- keymap("v", "<", "<gv", opts)
+-- keymap("v", ">", ">gv", opts)
 
 -- Terminal --
 -- Neovim uses different navigation keys to normal vim. Resore:
@@ -41,7 +42,8 @@ keymap("t", "<C-w>j", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-w>k", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-w>l", "<C-\\><C-N><C-w>l", term_opts)
 -- need clear bash command
-keymap("t", "<C-l>", "<C-l>", term_opts)
+-- Seems to work by default too!?
+-- keymap("t", "<C-l>", "<C-l>", term_opts)
 
 -- Spell checking: Ctrl-f moves to the next error and chooses the first suggestion
 keymap("i", "<c-f>", "<c-g>u<Esc>]s1z=`]a<c-g>u", opts)
