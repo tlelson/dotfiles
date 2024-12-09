@@ -114,9 +114,7 @@
   };
 
 
-# TODO: Migrate neovim config to nix:
-  # https://nixalted.com/
-  # Following config is copy pasted from:
+  # Based on:
   #https://github.com/LazyVim/LazyVim/discussions/1972
   programs.neovim = {
 	enable = true;
@@ -124,12 +122,12 @@
     vimdiffAlias = true;
 
     extraPackages = with pkgs; [
-      # LazyVim
+      # LSPs
       lua-language-server
+      # terraform-ls
+      # Linters
       stylua
-      # Telescope
-      #ripgrep
-      #fzf
+      # pyright  # Try putting into project instead
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -185,9 +183,9 @@
           nvim-notify
           nvim-snippets
           nvim-spectre
-          # nvim-treesitter
-          # nvim-treesitter-context
-          # nvim-treesitter-textobjects
+          nvim-treesitter.withAllGrammars
+          nvim-treesitter-context
+          nvim-treesitter-textobjects
           nvim-ts-autotag
           nvim-ts-context-commentstring
           nvim-web-devicons
@@ -245,15 +243,13 @@
             -- import/override with your plugins
             { import = "plugins" },
             -- treesitter handled by xdg.configFile."nvim/parser", put this line at the end of spec to clear ensure_installed
-            -- { "nvim-treesitter/nvim-treesitter", opts = { ensure_installed = {} } },
-            { "nvim-treesitter/nvim-treesitter", enabled = false },
-            { "nvim-treesitter/nvim-treesitter-context", enabled = false },
-            { "nvim-treesitter/nvim-treesitter-textobjects", enabled = false },
+            { "nvim-treesitter/nvim-treesitter", opts = function(_, opts) opts.ensure_installed = {} end,},
           },
         })
       '';
   };
 
+  # Seems like this is unnessesary snince we use `withAllGrammar`
   # https://github.com/nvim-treesitter/nvim-treesitter#i-get-query-error-invalid-node-type-at-position
   # xdg.configFile."nvim/parser".source =
   #   let
